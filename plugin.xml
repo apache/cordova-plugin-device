@@ -12,6 +12,6 @@ id="org.apache.cordova.core">
             <plugin name="Device" value="org.apache.cordova.core.Device"/>
         </config-file>
 
-        <source-file src="Device.java" target-dir="org/apache/cordova/core" />
+        <source-file src="src/android/Device.java" target-dir="org/apache/cordova/core" />
        </platform>
 </plugin>
