@@ -13,5 +13,17 @@ id="org.apache.cordova.core">
         </config-file>
 
         <source-file src="src/android/Device.java" target-dir="org/apache/cordova/core" />
-       </platform>
+    </platform>
+
+    <!-- wp7 -->
+    <platform name="wp7">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="wp-package" value="Device"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/wp7/Device.cs" /> 
+    </platform>
+
 </plugin>
