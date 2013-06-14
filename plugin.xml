@@ -23,6 +23,10 @@ id="org.apache.cordova.core.device">
             </feature>
         </config-file>
 
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+        </config-file>
+
         <source-file src="src/wp7/Device.cs" /> 
     </platform>
 
