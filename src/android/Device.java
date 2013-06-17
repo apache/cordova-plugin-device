@@ -20,6 +20,7 @@ package org.apache.cordova.core;
 
 import java.util.TimeZone;
 
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaPlugin;
 import org.apache.cordova.api.LOG;

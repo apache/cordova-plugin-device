@@ -7,7 +7,7 @@ id="org.apache.cordova.core.device">
     <name>Device</name>
 
     <js-module src="www/device.js" name="device">
-        <clobbers target="device">
+        <clobbers target="device" />
     </js-module>
 
     <!-- android -->
@@ -20,8 +20,8 @@ id="org.apache.cordova.core.device">
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/core" />
 
-        <js-module src="www/android/device.js" name="device">
-            <merges target="device">
+        <js-module src="www/android/device.js" name="device2">
+            <merges target="device" />
         </js-module>
 
     </platform>
