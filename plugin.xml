@@ -6,13 +6,30 @@ id="org.apache.cordova.core.device">
     version="0.1.0">
     <name>Device</name>
 
+    <js-module src="www/device.js" name="device">
+        <clobbers target="device">
+    </js-module>
+
     <!-- android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/cordova/plugins">
-            <plugin name="Device" value="org.apache.cordova.core.Device"/>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Device" >
+                <param name="android-package" value="org.apache.cordova.core.Device"/>
+            </feature>
         </config-file>
 
-        <source-file src="src/android/Device.java" target-dir="org/apache/cordova/core" />
+        <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/core" />
+
+        <js-module src="www/android/device.js" name="device">
+            <merges target="device">
+        </js-module>
+
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+        </config-file>
     </platform>
 
     <!-- wp7 -->

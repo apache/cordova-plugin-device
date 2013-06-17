@@ -20,7 +20,6 @@ package org.apache.cordova.core;
 
 import java.util.TimeZone;
 
-import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaPlugin;
 import org.apache.cordova.api.LOG;
@@ -39,7 +38,7 @@ import android.telephony.TelephonyManager;
 public class Device extends CordovaPlugin {
     public static final String TAG = "Device";
 
-    public static String cordovaVersion = "2.6.0";              // Cordova version
+    public static String cordovaVersion = "dev";              // Cordova version
     public static String platform = "Android";                  // Device OS
     public static String uuid;                                  // Device UUID
 
@@ -102,7 +101,7 @@ public class Device extends CordovaPlugin {
     /**
      * Listen for telephony events: RINGING, OFFHOOK and IDLE
      * Send these events to all plugins using
-     *      DroidGap.onMessage("telephone", "ringing" | "offhook" | "idle")
+     *      CordovaActivity.onMessage("telephone", "ringing" | "offhook" | "idle")
      */
     private void initTelephonyReceiver() {
         IntentFilter intentFilter = new IntentFilter();
