@@ -29,7 +29,13 @@ id="org.apache.cordova.core.device">
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="ios-package" value="CDVDevice"/>
+            </feature>
         </config-file>
+        
+        <header-file src="src/ios/CDVDevice.h" />
+        <source-file src="src/ios/CDVDevice.m" />
     </platform>
 
     <!-- wp7 -->
