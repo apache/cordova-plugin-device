@@ -24,6 +24,7 @@ var argscheck = require('cordova/argscheck'),
     utils = require('cordova/utils'),
     exec = require('cordova/exec');
 
+channel.createSticky('onCordovaInfoReady');
 // Tell cordova channel to wait on the CordovaInfoReady event
 channel.waitForInitialization('onCordovaInfoReady');
 
@@ -45,9 +46,6 @@ function Device() {
     channel.onCordovaReady.subscribe(function() {
         me.getInfo(function(info) {
             var buildLabel = info.cordova;
-            if (buildLabel != CORDOVA_JS_BUILD_LABEL) {
-                buildLabel += ' JS=' + CORDOVA_JS_BUILD_LABEL;
-            }
             me.available = true;
             me.platform = info.platform;
             me.version = info.version;
