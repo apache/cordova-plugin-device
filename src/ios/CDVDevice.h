@@ -18,7 +18,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "CDVPlugin.h"
+#import <Cordova/CDVPlugin.h>
 
 @interface CDVDevice : CDVPlugin
 {}
