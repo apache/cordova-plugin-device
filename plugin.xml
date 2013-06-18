@@ -2,8 +2,7 @@
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-id="org.apache.cordova.core.device">
-    version="0.1.0">
+id="org.apache.cordova.core.device" version="0.1.0">
     <name>Device</name>
 
     <js-module src="www/device.js" name="device">
@@ -19,11 +18,6 @@ id="org.apache.cordova.core.device">
         </config-file>
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/core" />
-
-        <js-module src="www/android/device.js" name="device2">
-            <merges target="device" />
-        </js-module>
-
     </platform>
 
     <!-- ios -->
