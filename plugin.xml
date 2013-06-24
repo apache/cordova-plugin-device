@@ -32,6 +32,14 @@ id="org.apache.cordova.core.device" version="0.1.0">
         <source-file src="src/ios/CDVDevice.m" />
     </platform>
 
+    <!-- blackberry10 -->
+    <platform name="blackberry10">
+        <source-file src="src/blackberry10/index.js" target-dir="Device" />
+        <config-file target="www/config.xml" parent="/widget">
+            <feature name="Device" value="Device"/>
+        </config-file>
+    </platform>
+
     <!-- wp7 -->
     <platform name="wp7">
         <config-file target="config.xml" parent="/*">
