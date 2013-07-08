@@ -52,7 +52,7 @@
             <Capability Name="ID_CAP_IDENTITY_DEVICE" />
         </config-file>
 
-        <source-file src="src/wp7/Device.cs" />
+        <source-file src="src/wp/Device.cs" />
     </platform>
 
     <!-- wp8 -->
@@ -67,7 +67,7 @@
             <Capability Name="ID_CAP_IDENTITY_DEVICE" />
         </config-file>
 
-        <source-file src="src/wp8/Device.cs" />
+        <source-file src="src/wp/Device.cs" />
     </platform>
 
 </plugin>
