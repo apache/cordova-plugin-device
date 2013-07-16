@@ -27,7 +27,7 @@
                 <param name="ios-package" value="CDVDevice"/>
             </feature>
         </config-file>
-        
+
         <header-file src="src/ios/CDVDevice.h" />
         <source-file src="src/ios/CDVDevice.m" />
     </platform>
@@ -37,6 +37,13 @@
         <source-file src="src/blackberry10/index.js" target-dir="Device" />
         <config-file target="www/config.xml" parent="/widget">
             <feature name="Device" value="Device"/>
+        </config-file>
+        <config-file target="www/config.xml" parent="/widget">
+            <rim:permissions>
+            </rim:permissions>
+        </config-file>
+        <config-file target="www/config.xml" parent="/widget/rim:permissions">
+            <rim:permit>read_device_identifying_information</rim:permit>
         </config-file>
     </platform>
 
