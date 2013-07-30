@@ -73,8 +73,8 @@
     <!-- windows8 -->
     <platform name="windows8">
         <js-module src="src/windows8/DeviceProxy.js" name="DeviceProxy">
+            <merges target="" />
         </js-module>
-        <!--<source-file src="src/windows8/DeviceProxy.js" target-dir="wtf" /> -->
     </platform>
 
 </plugin>

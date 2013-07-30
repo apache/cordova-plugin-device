@@ -1,5 +1,3 @@
-
-cordova.define("org.apache.cordova.core.device.DeviceProxy", function (require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -48,7 +46,5 @@ module.exports = {
 
 };
 
+require("cordova/commandProxy").add("Device", module.exports);
 
-    require("cordova/commandProxy").add("Device", module.exports);
-
-});
