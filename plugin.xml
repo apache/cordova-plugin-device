@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+xmlns:android="http://schemas.android.com/apk/res/android"
            id="org.apache.cordova.core.device"
       version="0.1.0">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
-    <license>Apache</license>
+    <license>Apache 2.0</license>
     <keywords>cordova,device</keywords>
 
     <js-module src="www/device.js" name="device">
