@@ -64,7 +64,6 @@ module.exports = {
                 cordova: "dev"
             };
 
-        console.log("BSOBSTEUHSOETUHSOH");
         result.ok(info);
     }
 };
