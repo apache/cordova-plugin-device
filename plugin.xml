@@ -14,6 +14,19 @@
         <clobbers target="device" />
     </js-module>
 
+    <!-- firefoxos -->
+    <platform name="firefoxos">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="firefoxos-package" value="Device" />
+            </feature>
+        </config-file>                                         
+        
+        <js-module src="src/firefoxos/device.js" name="device-impl">
+          <runs />
+        </js-module>
+    </platform>
+
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
