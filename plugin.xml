@@ -43,10 +43,6 @@
         <config-file target="www/config.xml" parent="/widget">
             <feature name="Device" value="Device"/>
         </config-file>
-        <config-file target="www/config.xml" parent="/widget">
-            <rim:permissions>
-            </rim:permissions>
-        </config-file>
         <config-file target="www/config.xml" parent="/widget/rim:permissions">
             <rim:permit>read_device_identifying_information</rim:permit>
         </config-file>
