@@ -46,5 +46,5 @@ module.exports = {
 
 };
 
-require("cordova/commandProxy").add("Device", module.exports);
+require("cordova/windows8/commandProxy").add("Device", module.exports);
 
