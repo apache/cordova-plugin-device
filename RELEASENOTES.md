@@ -23,3 +23,13 @@
 ### 0.2.1 (Sept 5, 2013)
 * removed extraneous print statement
 * [CB-4432] copyright notice change
+
+### 0.2.3 (Sept 25, 2013)
+* CB-4889 bumping&resetting version
+* [windows8] commandProxy has moved
+* [BlackBerry10] removed uneeded permission tags in plugin.xml
+* CB-4889 renaming org.apache.cordova.core.device to org.apache.cordova.device
+* Rename CHANGELOG.md -> RELEASENOTES.md
+* updated to use commandProxy for ffos
+* add firefoxos support
+* [CB-4752] Incremented plugin version on dev branch.

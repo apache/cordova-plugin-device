@@ -3,8 +3,8 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="org.apache.cordova.core.device"
-    version="0.2.1">
+    id="org.apache.cordova.device"
+    version="0.2.3">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -13,6 +13,19 @@
     <js-module src="www/device.js" name="device">
         <clobbers target="device" />
     </js-module>
+
+    <!-- firefoxos -->
+    <platform name="firefoxos">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="firefoxos-package" value="Device" />
+            </feature>
+        </config-file>                                         
+        
+        <js-module src="src/firefoxos/DeviceProxy.js" name="DeviceProxy">
+            <runs />
+        </js-module>
+    </platform>
 
     <!-- android -->
     <platform name="android">
