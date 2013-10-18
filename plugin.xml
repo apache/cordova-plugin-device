@@ -40,6 +40,17 @@
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
     </platform>
 
+    <!-- amazon-fireos -->
+    <platform name="amazon-fireos">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Device" >
+                <param name="android-package" value="org.apache.cordova.device.Device"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
+    </platform>
+    
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
