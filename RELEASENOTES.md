@@ -32,4 +32,9 @@
 * Rename CHANGELOG.md -> RELEASENOTES.md
 * updated to use commandProxy for ffos
 * add firefoxos support
-* [CB-4752] Incremented plugin version on dev branch.
+* [CB-4752] Incremented plugin version on dev branch. 
+
+### 0.2.4 (Oct 28, 2013)
+* CB-5128: added repo + issue tag in plugin.xml for device plugin
+* CB-5085 device.cordova returning wrong value
+* [CB-4915] Incremented plugin version on dev branch.
