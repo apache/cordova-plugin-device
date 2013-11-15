@@ -40,8 +40,12 @@ public class Device extends CordovaPlugin {
     public static final String TAG = "Device";
 
     public static String cordovaVersion = "dev";              // Cordova version
-    public static String platform = "Android";                  // Device OS
-    public static String uuid;                                  // Device UUID
+    public static String platform;                            // Device OS
+    public static String uuid;                                // Device UUID
+
+    private static final String ANDROID_PLATFORM = "Android";
+    private static final String AMAZON_PLATFORM = "amazon-fireos";
+    private static final String AMAZON_DEVICE = "Amazon";
 
     BroadcastReceiver telephonyReceiver = null;
 
@@ -77,7 +81,7 @@ public class Device extends CordovaPlugin {
             JSONObject r = new JSONObject();
             r.put("uuid", Device.uuid);
             r.put("version", this.getOSVersion());
-            r.put("platform", Device.platform);
+            r.put("platform", this.getPlatform());
             r.put("cordova", Device.cordovaVersion);
             r.put("model", this.getModel());
             callbackContext.success(r);
@@ -111,7 +115,7 @@ public class Device extends CordovaPlugin {
         this.telephonyReceiver = new BroadcastReceiver() {
 
             @Override
-            public void onReceive(Context context, Intent intent) {
+           public void onReceive(Context context, Intent intent) {
 
                 // If state has changed
                 if ((intent != null) && intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) {
@@ -140,11 +144,17 @@ public class Device extends CordovaPlugin {
 
     /**
      * Get the OS name.
-     *
+     * 
      * @return
      */
     public String getPlatform() {
-        return Device.platform;
+        String platform;
+        if (isAmazonDevice()) {
+            platform = AMAZON_PLATFORM;
+        } else {
+            platform = ANDROID_PLATFORM;
+        }
+        return platform;
     }
 
     /**
@@ -195,6 +205,18 @@ public class Device extends CordovaPlugin {
     public String getTimeZoneID() {
         TimeZone tz = TimeZone.getDefault();
         return (tz.getID());
+    }
+
+    /**
+     * Function to check if the device is manufactured by Amazon
+     * 
+     * @return
+     */
+    public boolean isAmazonDevice() {
+        if (android.os.Build.MANUFACTURER.equals(AMAZON_DEVICE)) {
+            return true;
+        }
+        return false;
     }
 
 }
