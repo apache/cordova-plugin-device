@@ -31,4 +31,4 @@ module.exports = {
     }
 };
 
-require("cordova/commandProxy").add("Device", module.exports);
+require("cordova/exec/proxy").add("Device", module.exports);
