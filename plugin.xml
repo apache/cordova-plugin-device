@@ -51,6 +51,15 @@
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
     </platform>
     
+    <!-- ubuntu -->
+    <platform name="ubuntu">
+        <header-file src="src/ubuntu/device.h" />
+        <source-file src="src/ubuntu/device.cpp" />
+        <js-module src="src/ubuntu/device.js" name="DeviceProxy">
+            <merges target="device" />
+        </js-module>
+    </platform>
+
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
