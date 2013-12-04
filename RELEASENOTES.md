@@ -38,3 +38,10 @@
 * CB-5128: added repo + issue tag in plugin.xml for device plugin
 * CB-5085 device.cordova returning wrong value
 * [CB-4915] Incremented plugin version on dev branch.
+
+### 0.2.5 (Dec 4, 2013)
+* CB-5316 Spell Cordova as a brand unless it's a command or script
+* [ubuntu] use cordova/exec/proxy
+* add ubuntu platform
+* Modify Device.platform logic to use amazon-fireos as the platform for Amazon Devices
+* 1. Added amazon-fireos platform. 2. Change to use cordova-amazon-fireos as the platform if user agent contains 'cordova-amazon-fireos'
