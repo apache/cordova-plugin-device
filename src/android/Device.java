@@ -65,7 +65,6 @@ public class Device extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Device.uuid = getUuid();
-        this.initTelephonyReceiver();
     }
 
     /**
@@ -102,45 +101,6 @@ public class Device extends CordovaPlugin {
     //--------------------------------------------------------------------------
     // LOCAL METHODS
     //--------------------------------------------------------------------------
-
-    /**
-     * Listen for telephony events: RINGING, OFFHOOK and IDLE
-     * Send these events to all plugins using
-     *      CordovaActivity.onMessage("telephone", "ringing" | "offhook" | "idle")
-     */
-    private void initTelephonyReceiver() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(TelephonyManager.ACTION_PHONE_STATE_CHANGED);
-        //final CordovaInterface mycordova = this.cordova;
-        this.telephonyReceiver = new BroadcastReceiver() {
-
-            @Override
-           public void onReceive(Context context, Intent intent) {
-
-                // If state has changed
-                if ((intent != null) && intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) {
-                    if (intent.hasExtra(TelephonyManager.EXTRA_STATE)) {
-                        String extraData = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
-                        if (extraData.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
-                            LOG.i(TAG, "Telephone RINGING");
-                            webView.postMessage("telephone", "ringing");
-                        }
-                        else if (extraData.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
-                            LOG.i(TAG, "Telephone OFFHOOK");
-                            webView.postMessage("telephone", "offhook");
-                        }
-                        else if (extraData.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-                            LOG.i(TAG, "Telephone IDLE");
-                            webView.postMessage("telephone", "idle");
-                        }
-                    }
-                }
-            }
-        };
-
-        // Register the receiver
-        this.cordova.getActivity().registerReceiver(this.telephonyReceiver, intentFilter);
-    }
 
     /**
      * Get the OS name.
