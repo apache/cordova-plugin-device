@@ -45,3 +45,7 @@
 * add ubuntu platform
 * Modify Device.platform logic to use amazon-fireos as the platform for Amazon Devices
 * 1. Added amazon-fireos platform. 2. Change to use cordova-amazon-fireos as the platform if user agent contains 'cordova-amazon-fireos'
+
+### 0.2.6 (Jan 02, 2014)
+* CB-5658 Add doc/index.md for Device plugin
+* CB-5504 Moving Telephony Logic out of Device
