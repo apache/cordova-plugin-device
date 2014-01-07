@@ -49,3 +49,6 @@
 ### 0.2.6 (Jan 02, 2014)
 * CB-5658 Add doc/index.md for Device plugin
 * CB-5504 Moving Telephony Logic out of Device
+
+### 0.2.7 (Jan 07, 2014)
+* CB-5737 Fix exception on close caused by left over telephony code from CB-5504
