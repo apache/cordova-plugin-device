@@ -23,18 +23,12 @@ import java.util.TimeZone;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.LOG;
 import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 
 public class Device extends CordovaPlugin {
     public static final String TAG = "Device";
@@ -46,8 +40,6 @@ public class Device extends CordovaPlugin {
     private static final String ANDROID_PLATFORM = "Android";
     private static final String AMAZON_PLATFORM = "amazon-fireos";
     private static final String AMAZON_DEVICE = "Amazon";
-
-    BroadcastReceiver telephonyReceiver = null;
 
     /**
      * Constructor.
@@ -89,13 +81,6 @@ public class Device extends CordovaPlugin {
             return false;
         }
         return true;
-    }
-
-    /**
-     * Unregister receiver.
-     */
-    public void onDestroy() {
-        this.cordova.getActivity().unregisterReceiver(this.telephonyReceiver);
     }
 
     //--------------------------------------------------------------------------
