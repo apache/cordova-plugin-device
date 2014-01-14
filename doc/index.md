@@ -49,6 +49,7 @@ Get the version of Cordova running on the device.
 - Amazon Fire OS
 - Android
 - BlackBerry 10
+- Firefox OS
 - iOS
 - Tizen
 - Windows Phone 7 and 8
@@ -104,6 +105,7 @@ Get the device's operating system name.
 
 - Android
 - BlackBerry 10
+- Firefox OS
 - iOS
 - Tizen
 - Windows Phone 7 and 8
