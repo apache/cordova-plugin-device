@@ -22,9 +22,16 @@
             <feature name="Device">
                 <param name="firefoxos-package" value="Device" />
             </feature>
-        </config-file>                                         
-        
+        </config-file>
+
         <js-module src="src/firefoxos/DeviceProxy.js" name="DeviceProxy">
+            <runs />
+        </js-module>
+    </platform>
+
+    <!-- tizen -->
+    <platform name="tizen">
+        <js-module src="src/tizen/DeviceProxy.js" name="DeviceProxy">
             <runs />
         </js-module>
     </platform>
