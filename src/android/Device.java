@@ -37,6 +37,7 @@ public class Device extends CordovaPlugin {
     public static String cordovaVersion = "dev";              // Cordova version
     public static String platform;                            // Device OS
     public static String uuid;                                // Device UUID
+    public static String macAddress;                          // Device MacAddress
 
     private static final String ANDROID_PLATFORM = "Android";
     private static final String AMAZON_PLATFORM = "amazon-fireos";
