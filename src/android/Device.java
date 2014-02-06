@@ -29,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.provider.Settings;
+
+import android.content.Context;
 import android.net.wifi.WifiManager;
 
 public class Device extends CordovaPlugin {
