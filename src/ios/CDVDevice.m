@@ -20,6 +20,11 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
+#include <sys/socket.h>
+#include <sys/sysctl.h>
+#include <net/if.h>
+#include <net/if_dl.h>
+
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
 
@@ -88,31 +93,25 @@
     // With all configured interfaces requested, get handle index
     if ((mgmtInfoBase[5] = if_nametoindex("en0")) == 0)
         errorFlag = @"if_nametoindex failure";
-    else
-    {
-        // Get the size of the data available (store in len)
-        if (sysctl(mgmtInfoBase, 6, NULL, &length, NULL, 0) < 0)
-            errorFlag = @"sysctl mgmtInfoBase failure";
-        else
-        {
-            // Alloc memory based on above call
-            if ((msgBuffer = malloc(length)) == NULL)
-                errorFlag = @"buffer allocation failure";
-            else
-            {
-                // Get system information, store in buffer
-                if (sysctl(mgmtInfoBase, 6, msgBuffer, &length, NULL, 0) < 0)
-                    errorFlag = @"sysctl msgBuffer failure";
-            }
-        }
+
+    // Get the size of the data available (store in len)
+    else if (sysctl(mgmtInfoBase, 6, NULL, &length, NULL, 0) < 0)
+        errorFlag = @"sysctl mgmtInfoBase failure";
+
+    // Alloc memory based on above call
+    else if ((msgBuffer = malloc(length)) == NULL)
+        errorFlag = @"buffer allocation failure";
+
+    // Get system information, store in buffer
+    else if (sysctl(mgmtInfoBase, 6, msgBuffer, &length, NULL, 0) < 0){
+        errorFlag = @"sysctl msgBuffer failure";
     }
     
     // Befor going any further...
     if (errorFlag != NULL)
-    {
-        //NSLog(@"Error: %@", errorFlag);
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorFlag];
-    } else {
+        NSLog(@"Error: %@", errorFlag);
+        
+    else {
         // Map msgbuffer to interface message structure
         interfaceMsgStruct = (struct if_msghdr *) msgBuffer;
         
@@ -123,7 +122,7 @@
         memcpy(&macAddress, socketStruct->sdl_data + socketStruct->sdl_nlen, 6);
         
         // Read from char array into a string object, into traditional Mac address format
-        NSString *macAddressString = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
+        macAddressString = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
                                       macAddress[0], macAddress[1], macAddress[2],
                                       macAddress[3], macAddress[4], macAddress[5]];
         //NSLog(@"Mac Address: %@", macAddressString);
