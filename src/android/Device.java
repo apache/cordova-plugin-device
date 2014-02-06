@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.provider.Settings;
+import android.net.wifi.WifiManager;
 
 public class Device extends CordovaPlugin {
     public static final String TAG = "Device";
@@ -57,6 +58,7 @@ public class Device extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Device.uuid = getUuid();
+        Device.macAddress = getMacAddress();
     }
 
     /**
@@ -71,6 +73,7 @@ public class Device extends CordovaPlugin {
         if (action.equals("getDeviceInfo")) {
             JSONObject r = new JSONObject();
             r.put("uuid", Device.uuid);
+            r.put("mac_address", Device.macAddress);
             r.put("version", this.getOSVersion());
             r.put("platform", this.getPlatform());
             r.put("cordova", Device.cordovaVersion);
@@ -100,6 +103,23 @@ public class Device extends CordovaPlugin {
             platform = ANDROID_PLATFORM;
         }
         return platform;
+    }
+
+    /**
+     * Get the device's Mac Address.
+     *
+     * @return
+     */
+    public String getMacAddress() {
+        String macAddress = null;
+        WifiManager wm = (WifiManager) this.cordova.getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        macAddress = wm.getConnectionInfo().getMacAddress();
+
+        if (macAddress == null || macAddress.length() == 0) {
+            macAddress = "00:00:00:00:00:00";
+        }
+
+        return macAddress;
     }
 
     /**
