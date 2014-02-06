@@ -52,3 +52,6 @@
 
 ### 0.2.7 (Jan 07, 2014)
 * CB-5737 Fix exception on close caused by left over telephony code from CB-5504
+
+### 0.2.8 (Feb 05, 2014)
+* Tizen support added
