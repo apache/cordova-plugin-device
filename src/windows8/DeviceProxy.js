@@ -40,7 +40,7 @@ module.exports = {
         }
 
         setTimeout(function () {
-            win({ platform: "windows8", version: "8", uuid: deviceId, cordova: '0.0.0', model: window.clientInformation.platform });
+            win({ platform: "windows8", version: "8", uuid: deviceId, model: window.clientInformation.platform });
         }, 0);
     }
 
