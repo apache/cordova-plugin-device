@@ -55,3 +55,9 @@
 
 ### 0.2.8 (Feb 05, 2014)
 * Tizen support added
+
+### 0.2.9 (Apr 17, 2014)
+* CB-5105: [Android, windows8, WP, BlackBerry10] Removed dead code for device.version
+* CB-6422: [windows8] use cordova/exec/proxy
+* CB-6460: Update license headers
+* Add NOTICE file
