@@ -1,4 +1,4 @@
-/*
+cordova.define("org.apache.cordova.device.DeviceProxy", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,19 +17,41 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
-
+ */
+//example UA String for Firefox OS 
+//Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0
 var firefoxos = require('cordova/platform');
 var cordova = require('cordova');
 
+//UA parsing not recommended but currently this is the only way to get the Firefox OS version
+//https://developer.mozilla.org/en-US/docs/Gecko_user_agent_string_reference
+
+function getVersion() {
+    if (navigator.userAgent.match(/(mobile|tablet)/i)) {
+        var ffVersionArray = (navigator.userAgent.match(/Firefox\/([\d]+\.[\w]?\.?[\w]+)/));
+        if (ffVersionArray.length === 2) {
+            return (ffVersionArray[1]);
+        }
+    }
+    return (null);
+}
+function getModel() {
+    var uaArray = navigator.userAgent.split(/\s*[;)(]\s*/);
+    if (navigator.userAgent.match(/(mobile|tablet)/i)) {
+        if (uaArray.length === 5) {
+            return (uaArray[2]);
+        }
+    }
+    return (null);
+}
 module.exports = {
-    getDeviceInfo: function(success, error) {
+    getDeviceInfo: function (success, error) {
         setTimeout(function () {
             success({
                 cordova: firefoxos.cordovaVersion,
                 platform: 'firefoxos',
-                model: null,
-                version: null,
+                model: getModel(),
+                version: getVersion(),
                 uuid: null
             });
         }, 0);
@@ -37,3 +59,4 @@ module.exports = {
 };
 
 require("cordova/firefoxos/commandProxy").add("Device", module.exports);
+});
