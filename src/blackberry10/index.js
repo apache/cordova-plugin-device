@@ -60,8 +60,7 @@ module.exports = {
                 platform: "blackberry10",
                 version: window.qnx.webplatform.device.scmBundle,
                 model: modelName,
-                uuid: uuid,
-                cordova: "dev"
+                uuid: uuid
             };
 
         result.ok(info);
