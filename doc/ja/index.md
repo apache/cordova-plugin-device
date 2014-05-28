@@ -19,7 +19,7 @@
 
 # org.apache.cordova.device
 
-This plugin defines a global `device` object, which describes the device's hardware and software. Although the object is in the global scope, it is not available until after the `deviceready` event.
+このプラグインをグローバル定義します `device` オブジェクトは、デバイスのハードウェアとソフトウェアについて説明します。 それは後まで利用可能なオブジェクトがグローバル スコープでは、 `deviceready` イベント。
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
@@ -50,7 +50,7 @@ This plugin defines a global `device` object, which describes the device's hardw
 *   アマゾン火 OS
 *   アンドロイド
 *   ブラックベリー 10
-*   Firefox OS
+*   Firefox の OS
 *   iOS
 *   Tizen
 *   Windows Phone 7 と 8
@@ -104,7 +104,7 @@ This plugin defines a global `device` object, which describes the device's hardw
 
 *   アンドロイド
 *   ブラックベリー 10
-*   Firefox OS
+*   Firefox の OS
 *   iOS
 *   Tizen
 *   Windows Phone 7 と 8
