@@ -34,8 +34,8 @@ function convertVersionNumber(ver) {
         '26.0': '1.2',
         '28.0': '1.3',
         '30.0': '1.4',
-        '32.0': '1.5'
-    }
+        '32.0': '2.0'
+    };
     var rver = ver;
     var sStr = ver.substring(0, 4);
     if (hashVersion[sStr]) {
