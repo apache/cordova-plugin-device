@@ -61,3 +61,11 @@
 * CB-6422: [windows8] use cordova/exec/proxy
 * CB-6460: Update license headers
 * Add NOTICE file
+
+### 0.2.10 (Jun 05, 2014)
+* CB-6127 Spanish and French Translations added. Github close #12
+* Changing 1.5 to 2.0
+* added firefoxos version - conversion
+* added firefoxos version
+* CB-6800 Add license
+* CB-6491 add CONTRIBUTING.md
