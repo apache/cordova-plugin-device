@@ -39,6 +39,7 @@ function Device() {
     this.platform = null;
     this.version = null;
     this.uuid = null;
+    this.mac_address = null;
     this.cordova = null;
     this.model = null;
 
@@ -53,6 +54,7 @@ function Device() {
             me.platform = info.platform;
             me.version = info.version;
             me.uuid = info.uuid;
+            me.mac_address = info.mac_address ? info.mac_address : '';
             me.cordova = buildLabel;
             me.model = info.model;
             channel.onCordovaInfoReady.fire();
