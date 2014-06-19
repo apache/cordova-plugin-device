@@ -54,7 +54,7 @@ function Device() {
             me.version = info.version;
             me.uuid = info.uuid;
             me.cordova = buildLabel;
-            me.model = info.model;
+            me.model = info.model || info.name;
             channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
