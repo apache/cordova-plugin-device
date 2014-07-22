@@ -19,7 +19,7 @@
 
 # org.apache.cordova.device
 
-Este plugin define un global `device` objeto que describe del dispositivo hardware y software. Aunque el objeto está en el ámbito global, no está disponible hasta después de la `deviceready` evento.
+Este plugin define un objeto global `device` que describe el hardware y software del dispositivo. Aunque el objeto es global, no está disponible hasta después del evento `deviceready`.
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
@@ -43,7 +43,7 @@ Este plugin define un global `device` objeto que describe del dispositivo hardwa
 
 ## device.cordova
 
-Obtener la versión de Córdoba en el dispositivo.
+Obtiener la versión de Córdoba en el dispositivo.
 
 ### Plataformas soportadas
 
@@ -58,7 +58,7 @@ Obtener la versión de Córdoba en el dispositivo.
 
 ## device.model
 
-El `device.model` devuelve el nombre del producto o modelo del dispositivo. El valor es fijado por el fabricante del dispositivo y puede variar entre versiones del mismo producto.
+`device.model` devuelve el nombre del producto o modelo del dispositivo. El valor es fijado por el fabricante del dispositivo y puede variar entre versiones del mismo producto.
 
 ### Plataformas soportadas
 
@@ -96,7 +96,7 @@ El `device.model` devuelve el nombre del producto o modelo del dispositivo. El v
 
 ## device.name
 
-**ADVERTENCIA**: `device.name` es obsoleto desde la versión 2.3.0. Uso `device.model` en su lugar.
+**ADVERTENCIA**: `device.name` está obsoleto desde la versión 2.3.0. Usar `device.model` en su lugar.
 
 ## device.platform
 
@@ -136,7 +136,7 @@ Dispositivos Windows Phone 8 Informe la plataforma como`Win32NT`.
 
 ## device.uuid
 
-Obtener identificador universal única del dispositivo ([UUID][3]).
+Obtener identificador único universal del dispositivo ([UUID][3]).
 
  [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
 
@@ -145,7 +145,7 @@ Obtener identificador universal única del dispositivo ([UUID][3]).
 
 ### Descripción
 
-Los detalles de cómo se genera un UUID son determinados por el fabricante del dispositivo y son específicos a la plataforma del dispositivo o modelo.
+Los detalles de cómo se genera un UUID son determinados por el fabricante del dispositivo y son específicos de la plataforma del dispositivo o modelo.
 
 ### Plataformas soportadas
 
@@ -173,11 +173,11 @@ Los detalles de cómo se genera un UUID son determinados por el fabricante del d
 
 ### iOS chanfle
 
-El `uuid` en iOS no es exclusiva de un dispositivo, pero varía para cada aplicación, para cada instalación. Cambia si borrar y volver a instalar la aplicación, y posiblemente también cuándo actualizar iOS, o incluso mejorar la aplicación por la versión (evidente en iOS 5.1). El `uuid` no es un valor confiable.
+El `uuid` en iOS no es exclusivo de un dispositivo, varía para cada aplicación y para cada instalación de la aplicación. Cambia si se borra y se vuelve a instalar la aplicación, y posiblemente también cuándo se actualiza iOS, o incluso cuando se mejorara la versión de la aplicación (evidente en iOS 5.1). El `uuid` no es un valor confiable.
 
 ### Windows Phone 7 y 8 rarezas
 
-El `uuid` para Windows Phone 7 requiere el permiso `ID_CAP_IDENTITY_DEVICE` . Microsoft pronto probablemente descartan esta propiedad. Si la capacidad no está disponible, la aplicación genera un guid persistente que se mantiene durante la duración de la instalación de la aplicación en el dispositivo.
+El `uuid` para Windows Phone 7 requiere el permiso `ID_CAP_IDENTITY_DEVICE`. Microsoft probablemente pronto descartará esta propiedad. Si la capacidad no está disponible, la aplicación genera un guid persistente que se mantiene durante la duración de la instalación de la aplicación en el dispositivo.
 
 ## device.version
 
