@@ -67,7 +67,6 @@ module.exports = {
     getDeviceInfo: function (success, error) {
         setTimeout(function () {
             success({
-                cordova: firefoxos.cordovaVersion,
                 platform: 'firefoxos',
                 model: getModel(),
                 version: getVersion(),
