@@ -49,6 +49,7 @@ Get the version of Cordova running on the device.
 - Amazon Fire OS
 - Android
 - BlackBerry 10
+- Browser
 - Firefox OS
 - iOS
 - Tizen
@@ -65,6 +66,7 @@ different across versions of the same product.
 
 - Android
 - BlackBerry 10
+- Browser
 - iOS
 - Tizen
 - Windows Phone 7 and 8
@@ -75,6 +77,8 @@ different across versions of the same product.
     // Android:    Nexus One       returns "Passion" (Nexus One code name)
     //             Motorola Droid  returns "voles"
     // BlackBerry: Torch 9800      returns "9800"
+    // Browser:    Google Chrome   returns "Chrome"
+    //             Safari          returns "Safari"
     // iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
     //
     var model = device.model;
@@ -105,6 +109,7 @@ Get the device's operating system name.
 
 - Android
 - BlackBerry 10
+- Browser4
 - Firefox OS
 - iOS
 - Tizen
@@ -116,6 +121,8 @@ Get the device's operating system name.
     // Depending on the device, a few examples are:
     //   - "Android"
     //   - "BlackBerry 10"
+    //   - Browser:         returns "MacIntel" on Mac
+    //                      returns "Win32" on Windows
     //   - "iOS"
     //   - "WinCE"
     //   - "Tizen"
@@ -192,6 +199,7 @@ Get the operating system version.
 
 - Android 2.1+
 - BlackBerry 10
+- Browser
 - iOS
 - Tizen
 - Windows Phone 7 and 8
@@ -204,6 +212,8 @@ Get the operating system version.
     //             Version can also return update level "2.1-update1"
     //
     // BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
+    //
+    // Browser:    Returns version number for the browser
     //
     // iPhone:     iOS 3.2 returns "3.2"
     //
