@@ -74,6 +74,7 @@ public class Device extends CordovaPlugin {
             r.put("platform", this.getPlatform());
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
+            r.put("serial", this.getSerialNumber());
             callbackContext.success(r);
         }
         else {
@@ -88,7 +89,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Get the OS name.
-     * 
+     *
      * @return
      */
     public String getPlatform() {
@@ -125,6 +126,12 @@ public class Device extends CordovaPlugin {
         String manufacturer = android.os.Build.MANUFACTURER;
         return manufacturer;
     }
+
+    public String getSerialNumber() {
+        String serial = android.os.Build.SERIAL;
+        return serial;
+    }
+
     /**
      * Get the OS version.
      *
@@ -148,7 +155,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Function to check if the device is manufactured by Amazon
-     * 
+     *
      * @return
      */
     public boolean isAmazonDevice() {
