@@ -58,9 +58,10 @@ function Device() {
             channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
-            if (console && console.log) {
-              console.log("[ERROR] Error initializing Cordova Device Plugin: " + e);
+            if (console && console.error) {
+              console.error("[ERROR] Error initializing Cordova Device Plugin: " + e);
             }
+            channel.onCordovaInfoReady.fire();
         });
     });
 }
