@@ -41,6 +41,7 @@ function Device() {
     this.uuid = null;
     this.cordova = null;
     this.model = null;
+    this.isMockLocationEnabled = null;
 
     var me = this;
 
