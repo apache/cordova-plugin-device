@@ -53,6 +53,7 @@ function Device() {
             me.platform = info.platform;
             me.version = info.version;
             me.uuid = info.uuid;
+            me.isMockLocationEnabled = info.isMockLocationEnabled;
             me.cordova = buildLabel;
             me.model = info.model;
             channel.onCordovaInfoReady.fire();

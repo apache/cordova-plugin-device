@@ -73,6 +73,7 @@ public class Device extends CordovaPlugin {
             r.put("version", this.getOSVersion());
             r.put("platform", this.getPlatform());
             r.put("model", this.getModel());
+            r.put("isMockLocationEnabled", this.isMockLocationEnabled());
             callbackContext.success(r);
         }
         else {
@@ -139,6 +140,14 @@ public class Device extends CordovaPlugin {
     public String getTimeZoneID() {
         TimeZone tz = TimeZone.getDefault();
         return (tz.getID());
+    }
+
+    public Boolean isMockLocationEnabled() {
+        // returns true if mock location enabled, false if not enabled.
+        if (Settings.Secure.getString(this.cordova.getActivity().getContentResolver(),
+               Settings.Secure.ALLOW_MOCK_LOCATION).equals("0")) 
+               return false; 
+               else return true;
     }
 
     /**
