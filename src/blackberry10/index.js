@@ -57,7 +57,7 @@ module.exports = {
             modelName = getModelName(),
             uuid = getUUID(),
             info = {
-                manufacturer: 'Research in Motion',
+                manufacturer: 'BlackBerry',
                 platform: "blackberry10",
                 version: window.qnx.webplatform.device.scmBundle,
                 model: modelName,
