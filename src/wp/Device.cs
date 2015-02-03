@@ -77,33 +77,36 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             get
             {
-                string returnVal = "";
                 object id;
-                UserExtendedProperties.TryGetValue("ANID", out id);
 
+                UserExtendedProperties.TryGetValue("ANID", out id);
                 if (id != null)
                 {
-                    returnVal = id.ToString().Substring(2, 32);
+                    return id.ToString().Substring(2, 32);
                 }
-                else
+
+                UserExtendedProperties.TryGetValue("ANID2", out id);
+                if (id != null)
                 {
-                    returnVal = "???unknown???";
+                    return id.ToString();
+                }
 
-                    using (IsolatedStorageFile appStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                string returnVal = "???unknown???";
+
+                using (IsolatedStorageFile appStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    try
                     {
-                        try
-                        {
-                            IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream("DeviceID.txt", FileMode.Open, FileAccess.Read, appStorage);
+                        IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream("DeviceID.txt", FileMode.Open, FileAccess.Read, appStorage);
 
-                            using (StreamReader reader = new StreamReader(fileStream))
-                            {
-                                returnVal = reader.ReadLine();
-                            }
-                        }
-                        catch (Exception /*ex*/)
+                        using (StreamReader reader = new StreamReader(fileStream))
                         {
-
+                            returnVal = reader.ReadLine();
                         }
+                    }
+                    catch (Exception /*ex*/)
+                    {
+
                     }
                 }
 
