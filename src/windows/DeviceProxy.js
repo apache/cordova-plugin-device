@@ -25,8 +25,8 @@ var DEVICE_CLASS_KEY_NO_SEMICOLON = '{A45C254E-DF1C-4EFD-8020-67D146A850E0}10';
 var ROOT_CONTAINER_QUERY = "System.Devices.ContainerId:=\"" + ROOT_CONTAINER + "\"";
 var HAL_DEVICE_CLASS = "4d36e966-e325-11ce-bfc1-08002be10318";
 var DEVICE_DRIVER_VERSION_KEY = "{A8B865DD-2E3D-4094-AD97-E593A70C75D6},3";
-var MANU_KEY "System.Devices.Manufacturer";
-    
+var MANU_KEY = "System.Devices.Manufacturer";
+
 module.exports = {
 
     getDeviceInfo:function(win, fail, args) {
@@ -60,7 +60,7 @@ module.exports = {
             // See https://github.com/apache/cordova-js/blob/master/src/windows/platform.js#L25
         var devicePlatform = userAgent.indexOf("MSAppHost/1.0") == -1 ? "windows" : "windows8";
         var versionString = userAgent.match(/Windows (?:Phone |NT )?([0-9.]+)/)[1];
-        
+
 
 
         var Pnp = Windows.Devices.Enumeration.Pnp;
