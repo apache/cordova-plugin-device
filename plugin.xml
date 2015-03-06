@@ -138,13 +138,6 @@
         <source-file src="src/wp/Device.cs" />
     </platform>
 
-    <!-- windows8 -->
-    <platform name="windows8">
-        <js-module src="src/windows8/DeviceProxy.js" name="DeviceProxy">
-            <merges target="" />
-        </js-module>
-    </platform>
-
     <!-- windows -->
     <platform name="windows">
         <js-module src="src/windows/DeviceProxy.js" name="DeviceProxy">
