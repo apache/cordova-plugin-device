@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# org.apache.cordova.device
+# cordova-plugin-device
 
 這個外掛程式定義全球 `device` 物件，描述該設備的硬體和軟體。 雖然物件是在全球範圍內，但不是可用，直到後 `deviceready` 事件。
 
@@ -29,7 +29,7 @@
 
 ## 安裝
 
-    cordova plugin add org.apache.cordova.device
+    cordova plugin add cordova-plugin-device
     
 
 ## 屬性

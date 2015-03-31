@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# org.apache.cordova.device
+# cordova-plugin-device
 
 이 플러그인 정의 전역 `device` 개체, 디바이스의 하드웨어 및 소프트웨어에 설명 합니다. 개체는 전역 범위에서 비록 그것은 후까지 사용할 수 있는 `deviceready` 이벤트.
 
@@ -29,7 +29,7 @@
 
 ## 설치
 
-    cordova plugin add org.apache.cordova.device
+    cordova plugin add cordova-plugin-device
     
 
 ## 속성

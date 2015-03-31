@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# org.apache.cordova.device
+# cordova-plugin-device
 
 このプラグインをグローバル定義します `device` オブジェクトは、デバイスのハードウェアとソフトウェアについて説明します。 それは後まで利用可能なオブジェクトがグローバル スコープでは、 `deviceready` イベント。
 
@@ -29,7 +29,7 @@
 
 ## インストール
 
-    cordova plugin add org.apache.cordova.device
+    cordova plugin add cordova-plugin-device
     
 
 ## プロパティ

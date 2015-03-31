@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# org.apache.cordova.device
+# cordova-plugin-device
 
 Ten plugin określa globalne `device` obiekt, który opisuje urządzenia sprzętowe i programowe. Mimo, że obiekt jest w globalnym zasięgu, nie jest dostępne dopiero po `deviceready` zdarzenie.
 
@@ -29,7 +29,7 @@ Ten plugin określa globalne `device` obiekt, który opisuje urządzenia sprzęt
 
 ## Instalacja
 
-    cordova plugin add org.apache.cordova.device
+    cordova plugin add cordova-plugin-device
     
 
 ## Właściwości

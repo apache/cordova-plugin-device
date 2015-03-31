@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# org.apache.cordova.device
+# cordova-plugin-device
 
 Этот плагин определяет глобальный объект `device`, который описывает оборудование и программное обеспечение устройства. Несмотря на то что объект в глобальной области видимости, он не доступен до того момента пока не произойдет событие `deviceready`.
 
@@ -29,7 +29,7 @@
 
 ## Установка
 
-    cordova plugin add org.apache.cordova.device
+    cordova plugin add cordova-plugin-device
     
 
 ## Параметры
