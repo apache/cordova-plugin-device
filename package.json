@@ -3,7 +3,7 @@
   "version": "0.3.1-dev",
   "description": "Cordova Device Plugin",
   "cordova": {
-    "id": "cordova-plugin-device",
+    "id": "org.apache.cordova.device",
     "platforms": [
       "firefoxos",
       "tizen",
