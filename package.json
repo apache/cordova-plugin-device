@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-device",
-  "version": "0.3.1-dev",
+  "version": "1.0.0-dev",
   "description": "Cordova Device Plugin",
   "cordova": {
     "id": "cordova-plugin-device",
