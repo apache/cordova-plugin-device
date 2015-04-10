@@ -218,3 +218,13 @@ Get the operating system version.
     // Tizen: returns "TIZEN_20120425_2"
     var deviceVersion = device.version;
 
+## device.isSimulator
+
+whether the device is running on a simulator.
+
+    var isSimulator = device.isSimulator;
+
+### Supported Platforms
+
+- Android 2.1+
+- iOS
