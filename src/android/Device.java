@@ -67,13 +67,14 @@ public class Device extends CordovaPlugin {
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getDeviceInfo")) {
+        if ("getDeviceInfo".equals(action)) {
             JSONObject r = new JSONObject();
             r.put("uuid", Device.uuid);
             r.put("version", this.getOSVersion());
             r.put("platform", this.getPlatform());
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
+	    r.put("is_simulator", this.isSimulator())
             callbackContext.success(r);
         }
         else {
@@ -88,7 +89,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Get the OS name.
-     * 
+     *
      * @return
      */
     public String getPlatform() {
@@ -148,7 +149,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Function to check if the device is manufactured by Amazon
-     * 
+     *
      * @return
      */
     public boolean isAmazonDevice() {
@@ -156,6 +157,11 @@ public class Device extends CordovaPlugin {
             return true;
         }
         return false;
+    }
+
+    public boolean isSimulator() {
+	return Build.FINGERPRINT.contains("generic") ||
+	    Build.PRODUCT.contains("sdk");
     }
 
 }
