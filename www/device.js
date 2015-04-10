@@ -42,7 +42,7 @@ function Device() {
     this.cordova = null;
     this.model = null;
   this.manufacturer = null;
-  this.is_simulator = null;
+  this.isSimulator = null;
 
     var me = this;
 
@@ -57,7 +57,7 @@ function Device() {
             me.uuid = info.uuid;
             me.cordova = buildLabel;
             me.model = info.model;
-	    me.is_simulator = info.is_simulator || false;
+	    me.isSimulator = info.isSimulator || false;
             me.manufacturer = info.manufacturer || 'unknown';
             channel.onCordovaInfoReady.fire();
         },function(e) {
