@@ -96,3 +96,15 @@
 * Support for Windows Phone 8 ANID2 ANID is only supported up to Windows Phone 7.5
 * CB-8351 Use a local copy of uniqueAppInstanceIdentifier rather than CordovaLib's version
 * browser: Fixed a bug that caused an "cannot call method of undefined" error if the browser's user agent wasn't recognized
+
+### 1.0.0 (Apr 15, 2015)
+* CB-8746 gave plugin major version bump
+* CB-8683 changed plugin-id to pacakge-name
+* CB-8653 properly updated translated docs to use new id
+* CB-8653 updated translated docs to use new id
+* Use TRAVIS_BUILD_DIR, install paramedic by npm
+* CB-8653 Updated Readme
+* remove defunct windows8 version
+* add travis badge
+* Add cross-plugin ios paramedic test running for TravisCI
+* CB-8538 Added package.json file
