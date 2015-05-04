@@ -31,7 +31,7 @@ Although the object is in the global scope, it is not available until after the 
 
 ## Installation
 
-    cordova plugin add cordova-plugin-device
+    cordova plugin add org.apache.cordova.device
 
 ## Properties
 
