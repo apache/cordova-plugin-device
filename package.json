@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git"
+    "url": "https://github.com/apache/cordova-plugin-device"
   },
   "keywords": [
     "cordova",
