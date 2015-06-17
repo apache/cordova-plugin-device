@@ -108,3 +108,7 @@
 * add travis badge
 * Add cross-plugin ios paramedic test running for TravisCI
 * CB-8538 Added package.json file
+
+### 1.0.1 (Jun 17, 2015)
+* CB-9128 cordova-plugin-device documentation translation: cordova-plugin-device
+* Attempts to corrent npm markdown issue
