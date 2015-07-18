@@ -159,9 +159,7 @@ The details of how a UUID is generated are determined by the device manufacturer
     //             This is a nine-digit unique integer (as a string, though!)
     //
     // iPhone: (Paraphrased from the UIDevice Class documentation)
-    //         Returns a string of hash values created from multiple hardware identifies.
-    //         It is guaranteed to be unique for every device and can't be tied
-    //         to the user account.
+    //         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it. Please see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor
     // Windows Phone 7 : Returns a hash of device+current user,
     // if the user is not defined, a guid is generated and will persist until the app is uninstalled
     // Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
@@ -170,11 +168,9 @@ The details of how a UUID is generated are determined by the device manufacturer
 
 ### iOS Quirk
 
-The `uuid` on iOS is not unique to a device, but varies for each
-application, for each installation.  It changes if you delete and
-re-install the app, and possibly also when you upgrade iOS, or even
-upgrade the app per version (apparent in iOS 5.1). The `uuid` is not
-a reliable value.
+The `uuid` on iOS uses the identifierForVendor property. It is unique to the device across the same vendor, but will be different for different vendors and will change if all apps from the vendor are deleted and then reinstalled. 
+See https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor
+The UUID will be the same if app is restored from a backup or iCloud as it is saved in preferences.
 
 ### Windows Phone 7 and 8 Quirks
 
