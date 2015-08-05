@@ -104,7 +104,7 @@ Get the device's operating system name.
 
 - Android
 - BlackBerry 10
-- Browser4
+- Browser
 - Firefox OS
 - iOS
 - Tizen
