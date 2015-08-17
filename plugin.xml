@@ -141,7 +141,7 @@
     <!-- windows -->
     <platform name="windows">
         <js-module src="src/windows/DeviceProxy.js" name="DeviceProxy">
-            <merges target="" />
+            <runs />
         </js-module>
     </platform>
 
