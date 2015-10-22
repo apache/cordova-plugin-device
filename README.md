@@ -215,7 +215,6 @@ Get the operating system version.
     // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
     // Tizen: returns "TIZEN_20120425_2"
     var deviceVersion = device.version;
-<<<<<<< HEAD
 
 ## device.isVirtual
 
@@ -228,5 +227,4 @@ whether the device is running on a simulator.
 - Android 2.1+
 - iOS
 - Windows Phone 8
-=======
->>>>>>> 0d82bc984174c34a4e2ff5dc08020c21d7bc27a1
+
