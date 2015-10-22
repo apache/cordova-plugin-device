@@ -74,7 +74,7 @@ public class Device extends CordovaPlugin {
             r.put("platform", this.getPlatform());
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
-	    r.put("isSimulator", this.isSimulator());
+	        r.put("isVirtual", this.isVirtual());
             callbackContext.success(r);
         }
         else {
@@ -159,7 +159,7 @@ public class Device extends CordovaPlugin {
         return false;
     }
 
-    public boolean isSimulator() {
+    public boolean isVirtual() {
 	return android.os.Build.FINGERPRINT.contains("generic") ||
 	    android.os.Build.PRODUCT.contains("sdk");
     }

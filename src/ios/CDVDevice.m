@@ -82,7 +82,7 @@
     [devProps setObject:[device systemVersion] forKey:@"version"];
     [devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
     [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-    [devProps setObject:@([self isSimulator]) forKey:@"isSimulator"];
+    [devProps setObject:@([self isVirtual]) forKey:@"isVirtual"];
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
 }
@@ -92,7 +92,7 @@
     return CDV_VERSION;
 }
 
-- (BOOL)isSimulator
+- (BOOL)isVirtual
 {
     return TARGET_IPHONE_SIMULATOR;
 }
