@@ -38,6 +38,7 @@ Although the object is in the global scope, it is not available until after the 
 - device.platform
 - device.uuid
 - device.version
+- device.isVirtual
 
 ## device.cordova
 
@@ -212,13 +213,14 @@ Get the operating system version.
     // Tizen: returns "TIZEN_20120425_2"
     var deviceVersion = device.version;
 
-## device.isSimulator
+## device.isVirtual
 
 whether the device is running on a simulator.
 
-    var isSimulator = device.isSimulator;
+    var isSim = device.isVirtual;
 
 ### Supported Platforms
 
 - Android 2.1+
 - iOS
+- Windows Phone 8
