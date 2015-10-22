@@ -19,6 +19,7 @@
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
+#include "TargetConditionals.h"
 
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
@@ -81,7 +82,7 @@
     [devProps setObject:[device systemVersion] forKey:@"version"];
     [devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
     [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-
+    [devProps setObject:@([self isSimulator]) forKey:@"isSimulator"];
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
 }
@@ -89,6 +90,11 @@
 + (NSString*)cordovaVersion
 {
     return CDV_VERSION;
+}
+
+- (BOOL)isSimulator
+{
+    return TARGET_IPHONE_SIMULATOR;
 }
 
 @end
