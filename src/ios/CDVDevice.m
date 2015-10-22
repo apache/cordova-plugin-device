@@ -94,7 +94,7 @@
 
 - (BOOL)isVirtual
 {
-    return TARGET_IPHONE_SIMULATOR;
+    return TARGET_OS_SIMULATOR;
 }
 
 @end
