@@ -67,6 +67,12 @@ exports.defineAutoTests = function() {
       expect(window.device.manufacturer).toBeDefined();
       expect((new String(window.device.manufacturer)).length > 0).toBe(true);
     });
+
+    it("should contain an isVirtual property that is a boolean", function() {
+      expect(window.device.isVirtual).toBeDefined();
+      expect(typeof window.device.isVirtual).toBe("boolean");
+    });
+
   });
 };
 
