@@ -35,16 +35,16 @@ namespace WPCordovaClassLib.Cordova.Commands
         public void getDeviceInfo(string notused)
         {
 
-            string res = String.Format("\"name\":\"{0}\",\"platform\":\"{1}\",\"uuid\":\"{2}\",\"version\":\"{3}\",\"model\":\"{4}\",\"manufacturer\":\"{5}\"",
+            string res = String.Format("\"name\":\"{0}\",\"platform\":\"{1}\",\"uuid\":\"{2}\",\"version\":\"{3}\",\"model\":\"{4}\",\"manufacturer\":\"{5}\",\"isVirtual\":{6}",
                                         this.name,
                                         this.platform,
                                         this.uuid,
                                         this.version,
                                         this.model,
-                                        this.manufacturer);
+                                        this.manufacturer,
+                                        this.isVirtual ? "true" : "false");
 
             res = "{" + res + "}";
-            //Debug.WriteLine("Result::" + res);
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
         }
 
@@ -54,6 +54,14 @@ namespace WPCordovaClassLib.Cordova.Commands
             {
                 return DeviceStatus.DeviceName;
                 //return String.Format("{0},{1},{2}", DeviceStatus.DeviceManufacturer, DeviceStatus.DeviceHardwareVersion, DeviceStatus.DeviceFirmwareVersion); 
+            }
+        }
+
+        public bool isVirtual
+        {
+            get 
+            {
+                return (Microsoft.Devices.Environment.DeviceType == DeviceType.Emulator);
             }
         }
 
