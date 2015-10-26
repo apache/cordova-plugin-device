@@ -94,7 +94,13 @@
 
 - (BOOL)isVirtual
 {
-    return TARGET_OS_SIMULATOR;
+    #if TARGET_OS_SIMULATOR
+        return true;
+    #elif TARGET_IPHONE_SIMULATOR
+        return true;
+    #else
+        return false;
+    #endif
 }
 
 @end
