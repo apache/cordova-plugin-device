@@ -71,6 +71,11 @@ exports.defineAutoTests = function() {
     it("should contain an isVirtual property that is a boolean", function() {
       expect(window.device.isVirtual).toBeDefined();
       expect(typeof window.device.isVirtual).toBe("boolean");
+
+    it("should contain a serial number specification that is a string", function() {
+      expect(window.device.serial).toBeDefined();
+      expect((new String(window.device.serial)).length > 0).toBe(true);
+
     });
 
   });

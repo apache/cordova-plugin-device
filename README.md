@@ -42,6 +42,7 @@ Although the object is in the global scope, it is not available until after the 
 - device.uuid
 - device.version
 - device.isVirtual
+- device.serial
 
 ## device.cordova
 
@@ -227,4 +228,15 @@ whether the device is running on a simulator.
 - Android 2.1+
 - iOS
 - Windows Phone 8
+
+
+## device.serial
+
+Get the device hardware serial number ([SERIAL](http://developer.android.com/reference/android/os/Build.html#SERIAL)).
+
+    var string = device.serial;
+
+### Supported Platforms
+
+- Android
 
