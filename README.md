@@ -214,6 +214,7 @@ Get the operating system version.
     // iPhone:     iOS 3.2 returns "3.2"
     //
     // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
+    // Windows 8: return the current OS version, ex on Windows 8.1 returns 6.3.9600.16384
     // Tizen: returns "TIZEN_20120425_2"
     var deviceVersion = device.version;
 
@@ -228,6 +229,7 @@ whether the device is running on a simulator.
 - Android 2.1+
 - iOS
 - Windows Phone 8
+- Windows 8
 
 
 ## device.serial
