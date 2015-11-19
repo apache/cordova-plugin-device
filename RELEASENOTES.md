@@ -20,6 +20,22 @@
 -->
 # Release Notes
 
+### 1.1.0 (Nov 18, 2015)
+* CB-10035 Updated `RELEASENOTES` to be newest to oldest
+* Add `isVirtual` for **Windows Phone 8.x**
+* Added basic **Android** support for hardware serial number
+* CB-9865 Better simulator detection for **iOS**
+* Fixing contribute link.
+* Added **WP8** implementation
+* update to use `TARGET_OS_SIMULATOR` as `TARGET_IPHONE_SIMULATOR` is deprecated.
+* update code to use 'isVirtual'
+* create test to verify existence and type of new property 'isVirtual'
+* add `isSimulator` for **iOS** & **Android** device
+* Updated documentation to mention backwards compatibility
+* Updated **README** to reflect new behaviour and quirks on **iOS**
+* Check user defaults first to maintain backwards compatibility
+* Changed `UUID` to use `[UIDevice identifierForVendor]`
+
 ### 1.0.1 (Jun 17, 2015)
 * CB-9128 cordova-plugin-device documentation translation: cordova-plugin-device
 * Attempts to corrent npm markdown issue
