@@ -41,6 +41,7 @@ Although the object is in the global scope, it is not available until after the 
 - device.platform
 - device.uuid
 - device.version
+- device.manufacturer
 - device.isVirtual
 - device.serial
 
@@ -217,6 +218,28 @@ Get the operating system version.
     // Windows 8: return the current OS version, ex on Windows 8.1 returns 6.3.9600.16384
     // Tizen: returns "TIZEN_20120425_2"
     var deviceVersion = device.version;
+
+## device.manufacturer
+
+Get the device's manufacturer.
+
+    var string = device.manufacturer;
+
+### Supported Platforms
+
+- Android 
+- BlackBerry 10
+- iOS
+- Windows Phone 7 and 8
+- Windows 8
+
+### Quick Example
+
+    // Android:    Motorola XT1032 would return "motorola"
+    // BlackBerry: returns "BlackBerry"
+    // iPhone:     returns "Apple"
+    //
+    var deviceManufacturer = device.manufacturer;
 
 ## device.isVirtual
 
