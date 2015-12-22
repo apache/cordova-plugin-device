@@ -17,90 +17,97 @@
  under the License.
  */
 
-#include <sys/types.h>
 #include <sys/sysctl.h>
-#include "TargetConditionals.h"
 
-#import <Cordova/CDV.h>
 #import "CDVDevice.h"
 
-@implementation UIDevice (ModelVersion)
+#define SYSTEM_VERSION_PLIST    @"/System/Library/CoreServices/SystemVersion.plist"
 
-- (NSString*)modelVersion
-{
+@implementation CDVDevice
+
+- (NSString*) modelVersion {
     size_t size;
 
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char* machine = malloc(size);
     sysctlbyname("hw.machine", machine, &size, NULL, 0);
-    NSString* platform = [NSString stringWithUTF8String:machine];
+    NSString* modelVersion = [NSString stringWithUTF8String:machine];
     free(machine);
 
-    return platform;
+    return modelVersion;
 }
 
-@end
 
-@interface CDVDevice () {}
-@end
+- (NSString*) getSerialNr {
+    NSString* serialNr;
+    io_service_t platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"));
+    if (platformExpert) {
+        CFTypeRef serialNumberAsCFString =
+                IORegistryEntryCreateCFProperty(platformExpert,
+                        CFSTR(kIOPlatformSerialNumberKey),
+                        kCFAllocatorDefault, 0);
+        if (serialNumberAsCFString) {
+            serialNr = (__bridge NSString*) serialNumberAsCFString;
+        }
+        IOObjectRelease(platformExpert);
+    }
+    return serialNr;
+}
 
-@implementation CDVDevice
-
-- (NSString*)uniqueAppInstanceIdentifier:(UIDevice*)device
-{
+- (NSString*) uniqueAppInstanceIdentifier {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString* UUID_KEY = @"CDVUUID";
-    
-    // Check user defaults first to maintain backwards compaitibility with previous versions
-    // which didn't user identifierForVendor
+
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
+
     if (app_uuid == nil) {
-        app_uuid = [[device identifierForVendor] UUIDString];
+        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+
+        app_uuid = [NSString stringWithString:(__bridge NSString*) uuidString];
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
+
+        CFRelease(uuidString);
+        CFRelease(uuidRef);
     }
-    
+
     return app_uuid;
 }
 
-- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
-{
+- (NSString*) platform {
+    return [NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST][@"ProductName"];
+}
+
+- (NSString*) systemVersion {
+    return [NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST][@"ProductVersion"];
+}
+
+- (void) getDeviceInfo:(CDVInvokedUrlCommand*) command {
     NSDictionary* deviceProperties = [self deviceProperties];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceProperties];
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (NSDictionary*)deviceProperties
-{
-    UIDevice* device = [UIDevice currentDevice];
+- (NSDictionary*) deviceProperties {
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
-    [devProps setObject:@"Apple" forKey:@"manufacturer"];
-    [devProps setObject:[device modelVersion] forKey:@"model"];
-    [devProps setObject:@"iOS" forKey:@"platform"];
-    [devProps setObject:[device systemVersion] forKey:@"version"];
-    [devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
-    [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-    [devProps setObject:@([self isVirtual]) forKey:@"isVirtual"];
+    devProps[@"manufacturer"] = @"Apple";
+    devProps[@"model"] = [self modelVersion];
+    devProps[@"platform"] = [self platform];
+    devProps[@"version"] = [self systemVersion];
+    devProps[@"uuid"] = [self uniqueAppInstanceIdentifier];
+    devProps[@"cordova"] = [[self class] cordovaVersion];
+    devProps[@"serial"] = [self getSerialNr];
+    devProps[@"isVirtual"] = @NO;
+
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
 }
 
-+ (NSString*)cordovaVersion
-{
++ (NSString*) cordovaVersion {
     return CDV_VERSION;
-}
-
-- (BOOL)isVirtual
-{
-    #if TARGET_OS_SIMULATOR
-        return true;
-    #elif TARGET_IPHONE_SIMULATOR
-        return true;
-    #else
-        return false;
-    #endif
 }
 
 @end
