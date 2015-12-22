@@ -16,7 +16,8 @@
       "wp8",
       "windows8",
       "windows",
-      "browser"
+      "browser",
+      "osx"
     ]
   },
   "repository": {
@@ -38,7 +39,8 @@
     "cordova-wp8",
     "cordova-windows8",
     "cordova-windows",
-    "cordova-browser"
+    "cordova-browser",
+    "cordova-osx"
   ],
   "author": "Apache Software Foundation",
   "license": "Apache 2.0"
