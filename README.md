@@ -129,7 +129,7 @@ Get the device's operating system name.
     //   - "iOS"
     //   - "WinCE"
     //   - "Tizen"
-    //   - "Max OS X"
+    //   - "Mac OS X"
     var devicePlatform = device.platform;
 
 ### Windows Phone 7 Quirks
