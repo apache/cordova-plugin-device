@@ -20,6 +20,10 @@
 -->
 # Release Notes
 
+### 1.1.1 (Jan 15, 2016)
+* CB-10238 **OSX** Move `device-plugin` out from `cordovalib` to the plugin repository
+* CB-9923 Update `device.platform` documentation for **Browser** platform
+
 ### 1.1.0 (Nov 18, 2015)
 * [CB-10035](https://issues.apache.org/jira/browse/CB-10035) Updated `RELEASENOTES` to be newest to oldest
 * Add `isVirtual` for **Windows Phone 8.x**
