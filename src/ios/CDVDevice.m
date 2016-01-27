@@ -74,17 +74,16 @@
 - (NSDictionary*)deviceProperties
 {
     UIDevice* device = [UIDevice currentDevice];
-    NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
-    [devProps setObject:@"Apple" forKey:@"manufacturer"];
-    [devProps setObject:[device modelVersion] forKey:@"model"];
-    [devProps setObject:@"iOS" forKey:@"platform"];
-    [devProps setObject:[device systemVersion] forKey:@"version"];
-    [devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
-    [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-    [devProps setObject:@([self isVirtual]) forKey:@"isVirtual"];
-    NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
-    return devReturn;
+    return @{
+             @"manufacturer": @"Apple",
+             @"model": [device modelVersion],
+             @"platform": @"iOS",
+             @"version": [device systemVersion],
+             @"uuid": [self uniqueAppInstanceIdentifier:device],
+             @"cordova": [[self class] cordovaVersion],
+             @"isVirtual": @([self isVirtual])
+             };
 }
 
 + (NSString*)cordovaVersion
