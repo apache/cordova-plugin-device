@@ -172,7 +172,7 @@ The details of how a UUID is generated are determined by the device manufacturer
     //             This is a nine-digit unique integer (as a string, though!)
     //
     // iPhone: (Paraphrased from the UIDevice Class documentation)
-    //         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it. Refer [here](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor) for details
+    //         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it.
     // Windows Phone 7 : Returns a hash of device+current user,
     // if the user is not defined, a guid is generated and will persist until the app is uninstalled
     // Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
