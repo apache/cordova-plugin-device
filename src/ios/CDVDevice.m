@@ -55,10 +55,12 @@
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
     if (app_uuid == nil) {
-        if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
+        if ([device respondsToSelector:@selector(identifierForVendor)]) {
             app_uuid = [[device identifierForVendor] UUIDString];
         } else {
-            app_uuid = (__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL));
+            CFUUIDRef uuid = CFUUIDCreate(NULL);
+            app_uuid = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+            CFRelease(uuid);
         }
 
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
