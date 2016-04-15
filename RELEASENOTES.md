@@ -20,6 +20,13 @@
 -->
 # Release Notes
 
+### 1.1.2 (Apr 15, 2016)
+* Use passed device, follow create policy forf `CFUUIDCreate`
+* CB-10631 Fix for `device.uuid` in **iOS 5.1.1**
+* Updating the comment to exclude URL
+* CB-10636 Add `JSHint` for plugins
+* Refactored `deviceInfo` on **iOS** for better readability.
+
 ### 1.1.1 (Jan 15, 2016)
 * CB-10238 **OSX** Move `device-plugin` out from `cordovalib` to the plugin repository
 * CB-9923 Update `device.platform` documentation for **Browser** platform
