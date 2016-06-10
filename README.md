@@ -21,7 +21,9 @@ description: Get device information.
 #         under the License.
 -->
 
-[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
+|Android|iOS| Windows 8.1 Store | Windows 8.1 Phone | Windows 10 Store | Travis CI |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device/)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)|
 
 # cordova-plugin-device
 
@@ -97,7 +99,7 @@ different across versions of the same product.
 //             Safari          returns "Safari"
 // iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
 // OSX:                        returns "x86_64"
-// 
+//
 var model = device.model;
 ```
 
@@ -202,7 +204,7 @@ The UUID will be the same if app is restored from a backup or iCloud as it is sa
 
 ### OSX Quirk
 
-The `uuid` on OSX is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property. 
+The `uuid` on OSX is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property.
 
 ### Windows Phone 7 and 8 Quirks
 
@@ -258,7 +260,7 @@ Get the device's manufacturer.
 
 ### Supported Platforms
 
-- Android 
+- Android
 - BlackBerry 10
 - iOS
 - Windows Phone 7 and 8
@@ -288,7 +290,7 @@ var isSim = device.isVirtual;
 - iOS
 - Windows Phone 8
 - Windows
-- OSX 
+- OSX
 
 ### OSX Quirk
 
