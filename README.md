@@ -218,8 +218,9 @@ application's installation on the device.
 
 Get the operating system version.
 
-    var string = device.version;
-
+```js
+var string = device.version;
+```
 ### Supported Platforms
 
 - Android 2.1+
@@ -255,9 +256,9 @@ var deviceVersion = device.version;
 ## device.manufacturer
 
 Get the device's manufacturer.
-
-    var string = device.manufacturer;
-
+```js
+var string = device.manufacturer;
+```js
 ### Supported Platforms
 
 - Android
