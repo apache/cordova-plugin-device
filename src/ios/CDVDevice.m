@@ -24,6 +24,9 @@
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
 
+#import "Macros.h"
+#import <WebKit/WebKit.h>
+
 @implementation UIDevice (ModelVersion)
 
 - (NSString*)modelVersion
@@ -55,13 +58,13 @@
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
     if (app_uuid == nil) {
-        if ([device respondsToSelector:@selector(identifierForVendor)]) {
+        /*if ([device respondsToSelector:@selector(identifierForVendor)]) {
             app_uuid = [[device identifierForVendor] UUIDString];
-        } else {
+        } else {*/
             CFUUIDRef uuid = CFUUIDCreate(NULL);
             app_uuid = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
             CFRelease(uuid);
-        }
+        //}
 
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
@@ -81,6 +84,12 @@
 - (NSDictionary*)deviceProperties
 {
     UIDevice* device = [UIDevice currentDevice];
+    
+    NSString *versionString = [NSString stringWithFormat:@"%@ (%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+    NSString *nameString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    
+    NSNumber *adjustment = [NSNumber numberWithInt:[self calculateFontSizeAdjustment]];
+    NSDictionary *accessability = [NSDictionary dictionaryWithObject:adjustment forKey:@"textSizeAdjustment"];
 
     return @{
              @"manufacturer": @"Apple",
@@ -89,7 +98,15 @@
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],
              @"cordova": [[self class] cordovaVersion],
-             @"isVirtual": @([self isVirtual])
+             @"isVirtual": @([self isVirtual]),
+             
+             @"appversion": versionString,
+             @"appname": nameString,
+             
+             @"isTablet": @([self isTablet]),
+             @"has3DTouch": @([self has3DTouch]),
+             
+             @"accessbilitity": accessability
              };
 }
 
@@ -107,6 +124,60 @@
     #else
         return false;
     #endif
+}
+
+
+
+# pragma mark - Custom
+
+-(void)pluginInitialize {
+    [super pluginInitialize];
+    
+    // clearing the webView cache.. (we had a view problems with cached, invalid local responses)
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    WKWebView *webview = (WKWebView *)[self webView];
+    [webview evaluateJavaScript:[NSString stringWithFormat:@"window.HD_APP = %@;", [self isTablet] ? @"true" : @"false"] completionHandler:nil];
+    
+    UIScreenEdgePanGestureRecognizer *screenEdgeRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(navigateBack:)];
+    screenEdgeRecognizer.edges = UIRectEdgeLeft;
+    [webview addGestureRecognizer:screenEdgeRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fontSizeDidChange) name:UIContentSizeCategoryDidChangeNotification object:nil];
+}
+
+-(BOOL)isTablet {
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+}
+
+-(BOOL)has3DTouch {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+        UIWindow *mainWindow = [[UIApplication sharedApplication] delegate].window;
+        return [mainWindow traitCollection].forceTouchCapability == UIForceTouchCapabilityAvailable;
+    } else {
+        return false;
+    }
+}
+
+
+-(void)navigateBack:(UIScreenEdgePanGestureRecognizer *)screenEdgeRecognizer {
+    UIGestureRecognizerState state = screenEdgeRecognizer.state;
+    if (state == UIGestureRecognizerStateRecognized) {
+        WKWebView *webview = (WKWebView *)[self webView];
+        [webview evaluateJavaScript:@"window.onNativeNavigateBack()" completionHandler:nil];
+    }
+}
+
+-(void)fontSizeDidChange {
+    int adjustment = [self calculateFontSizeAdjustment];
+    WKWebView *webview = (WKWebView *)[self webView];
+    [webview evaluateJavaScript:[NSString stringWithFormat:@"window.onFontSizeAdjustmentDidChange('%i')", adjustment] completionHandler:nil];
+}
+
+-(int)calculateFontSizeAdjustment {
+    CGFloat defaultSize = 17;
+    CGFloat currSize = [[UIFont preferredFontForTextStyle:UIFontTextStyleBody] pointSize];
+    return currSize / defaultSize * 100;
 }
 
 @end

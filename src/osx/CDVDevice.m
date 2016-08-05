@@ -91,6 +91,10 @@
 }
 
 - (NSDictionary*) deviceProperties {
+    
+    NSString *versionString = [NSString stringWithFormat:@"%@ (%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+    NSString *nameString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+        
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
     devProps[@"manufacturer"] = @"Apple";
@@ -101,6 +105,9 @@
     devProps[@"cordova"] = [[self class] cordovaVersion];
     devProps[@"serial"] = [self getSerialNr];
     devProps[@"isVirtual"] = @NO;
+    
+    devProps[@"appversion"] = versionString;
+    devProps[@"appname"] = nameString;
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;

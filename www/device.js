@@ -45,6 +45,14 @@ function Device() {
     this.isVirtual = null;
     this.serial = null;
 
+    this.appversion = null;
+    this.appname = null;
+
+    this.isTablet = null;
+    this.has3DTouch = null;
+
+    this.accessibility = null;
+
     var me = this;
 
     channel.onCordovaReady.subscribe(function() {
@@ -61,6 +69,15 @@ function Device() {
             me.isVirtual = info.isVirtual;
             me.manufacturer = info.manufacturer || 'unknown';
             me.serial = info.serial || 'unknown';
+
+            me.appversion = info.appversion;
+            me.appname = info.appname;
+
+            me.isTablet = info.isTablet || false;
+            me.has3DTouch = info.has3DTouch || false;
+
+            me.accessibility = info.accessibility || { textSizeAdjustment: 100 };
+
             channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
