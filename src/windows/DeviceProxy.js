@@ -67,6 +67,9 @@ module.exports = {
         var manufacturer = deviceInfo.systemManufacturer;
         var model = deviceInfo.systemProductName;
 
+        var applicationPackage = Windows.ApplicationModel.Package.current;
+        var appVersionInfo = applicationPackage.id.version;
+
         var Pnp = Windows.Devices.Enumeration.Pnp;
 
         Pnp.PnpObject.findAllAsync(Pnp.PnpObjectType.device,
@@ -83,12 +86,24 @@ module.exports = {
                 }
 
                 setTimeout(function () {
-                    win({ platform: devicePlatform,
-                          version: versionString,
-                          uuid: deviceId,
-                          isVirtual: isVirtual,
-                          model: model,
-                          manufacturer:manufacturer});
+                    win({
+                        manufacturer:manufacturer,
+                        model: model,
+                        platform: devicePlatform,
+                        version: versionString,
+                        uuid: deviceId,
+                        isVirtual: isVirtual,
+
+                        appversion: appVersionInfo.major + " " + appVersionInfo.minor,
+                        appname: applicationPackage.displayName,
+
+                        isTablet: true,
+                        has3DTouch: false,
+                        accessbilitity: {
+
+                        }
+
+                    });
                 }, 0);
         });
     }
