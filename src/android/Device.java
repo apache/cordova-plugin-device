@@ -28,9 +28,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.hardware.SensorManager;
 import android.provider.Settings;
+import android.util.Log;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
-public class Device extends CordovaPlugin {
+import com.squareup.seismic.ShakeDetector;
+
+public class Device extends CordovaPlugin implements ShakeDetector.Listener {
     public static final String TAG = "Device";
 
     public static String platform;                            // Device OS
@@ -39,6 +50,10 @@ public class Device extends CordovaPlugin {
     private static final String ANDROID_PLATFORM = "Android";
     private static final String AMAZON_PLATFORM = "amazon-fireos";
     private static final String AMAZON_DEVICE = "Amazon";
+
+    private static boolean isTablet = false;
+
+    private long lastShakeTimestamp = 0;
 
     /**
      * Constructor.
@@ -56,6 +71,31 @@ public class Device extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Device.uuid = getUuid();
+
+        WebView systemWebView = (WebView) webView.getView();
+
+        // clearing the webView cache.. (we had a view problems with cached, invalid local responses)
+        systemWebView.clearCache(true);
+        systemWebView.getSettings().setAppCacheEnabled(false);
+        systemWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        systemWebView.getSettings().setAppCacheMaxSize(0);
+        systemWebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+
+        // check if HD, set orientation and variable!
+        isTablet = isTabletDevice(this.cordova.getActivity(), this.cordova.getActivity().getApplicationContext());
+        if (!isTablet) {
+            this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        String javaScript = "try { window.HD_APP = " + isTablet + "; } catch(e) { Android.onError(e.message); }";
+        javaScript = "javascript:" + javaScript;
+        Log.i(TAG, "using loadUrl:" + javaScript);
+        systemWebView.loadUrl(javaScript); // ATTENTION: using 'evaluateJavascript' hides the Cursor/Caret in input fields! ID: 67913872
+
+        // shake recognition
+        SensorManager sensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
+        ShakeDetector sd = new ShakeDetector(this);
+        sd.setSensitivity(ShakeDetector.SENSITIVITY_HARD);
+        sd.start(sensorManager);
     }
 
     /**
@@ -76,6 +116,17 @@ public class Device extends CordovaPlugin {
             r.put("manufacturer", this.getManufacturer());
 	        r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
+
+            r.put("appname", getAppName());
+            r.put("appversion", getAppVersion());
+
+            r.put("tablet", isTablet);
+            r.put("has3DTouch", false);
+
+            JSONObject accessibility = new JSONObject();
+            accessibility.put("textSizeAdjustment", 200);
+            r.put("accessibility", accessibility);
+
             callbackContext.success(r);
         }
         else {
@@ -171,4 +222,56 @@ public class Device extends CordovaPlugin {
 	    android.os.Build.PRODUCT.contains("sdk");
     }
 
+    @Override
+    public void hearShake() {
+        long currentTimestamp = System.currentTimeMillis();
+        if (currentTimestamp - lastShakeTimestamp > 1000) {
+            WebView systemWebView = (WebView) webView.getView();
+            String javaScript = "(typeof window.onShakeEvent === \"function\") && window.onShakeEvent();";
+            javaScript = "javascript:" + javaScript;
+            Log.i(TAG, "using loadUrl:" + javaScript);
+            systemWebView.loadUrl(javaScript); // ATTENTION: using 'evaluateJavascript' hides the Cursor/Caret in input fields! ID: 67913872
+
+            lastShakeTimestamp = currentTimestamp;
+        }
+    }
+
+
+
+    private String getAppVersion() {
+        String packageName = getAppName();
+        String versionName = null;
+        try {
+            PackageManager packageManager = cordova.getActivity().getPackageManager();
+            if (packageManager != null) {
+                versionName = packageManager.getPackageInfo(packageName, 0).versionName;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(this.toString(), e.getMessage());
+            versionName = "0";
+        }
+        return versionName;
+    }
+
+    private String getAppName() {
+        return cordova.getActivity().getPackageName();
+    }
+
+    private boolean isTabletDevice(Activity activity, Context activityContext) {
+        return ((activityContext.getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE);
+        /*if (large) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            if (metrics.densityDpi == DisplayMetrics.DENSITY_DEFAULT
+                    || metrics.densityDpi == DisplayMetrics.DENSITY_HIGH
+                    || metrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM
+                    || metrics.densityDpi == DisplayMetrics.DENSITY_TV
+                    || metrics.densityDpi == DisplayMetrics.DENSITY_XHIGH) {
+                return true;
+            }
+        }
+        return false;*/
+    }
 }
