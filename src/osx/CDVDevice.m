@@ -108,6 +108,11 @@
     
     devProps[@"appversion"] = versionString;
     devProps[@"appname"] = nameString;
+    
+    devProps[@"isTablet"] = @NO;
+    devProps[@"has3DTouch"] = @NO;
+    
+    devProps[@"accessibility"] = @{@"textSizeAdjustment": @100};
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;

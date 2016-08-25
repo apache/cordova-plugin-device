@@ -89,7 +89,7 @@
     NSString *nameString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     
     NSNumber *adjustment = [NSNumber numberWithInt:[self calculateFontSizeAdjustment]];
-    NSDictionary *accessability = [NSDictionary dictionaryWithObject:adjustment forKey:@"textSizeAdjustment"];
+    NSDictionary *accessibility = [NSDictionary dictionaryWithObject:adjustment forKey:@"textSizeAdjustment"];
 
     return @{
              @"manufacturer": @"Apple",
@@ -106,7 +106,7 @@
              @"isTablet": @([self isTablet]),
              @"has3DTouch": @([self has3DTouch]),
              
-             @"accessbilitity": accessability
+             @"accessibility": accessibility
              };
 }
 
