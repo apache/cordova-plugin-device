@@ -111,16 +111,16 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             JSONObject r = new JSONObject();
             r.put("uuid", Device.uuid);
             r.put("version", this.getOSVersion());
-            r.put("platform", this.getPlatform());
+            r.put("platform", ANDROID_PLATFORM);
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
-	        r.put("isVirtual", this.isVirtual());
+	    r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
 
             r.put("appname", getAppName());
             r.put("appversion", getAppVersion());
 
-            r.put("tablet", isTablet);
+            r.put("isTablet", isTablet);
             r.put("has3DTouch", false);
 
             JSONObject accessibility = new JSONObject();
