@@ -137,7 +137,7 @@
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     WKWebView *webview = (WKWebView *)[self webView];
-    [webview evaluateJavaScript:[NSString stringWithFormat:@"window.HD_APP = %@;", [self isTablet] ? @"true" : @"false"] completionHandler:nil];
+    //[webview evaluateJavaScript:[NSString stringWithFormat:@"window.HD_APP = %@;", [self isTablet] ? @"true" : @"false"] completionHandler:nil];
     
     UIScreenEdgePanGestureRecognizer *screenEdgeRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(navigateBack:)];
     screenEdgeRecognizer.edges = UIRectEdgeLeft;
