@@ -28,9 +28,9 @@
 - (NSString*) modelVersion {
     size_t size;
 
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    sysctlbyname("hw.model", NULL, &size, NULL, 0);
     char* machine = malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    sysctlbyname("hw.model", machine, &size, NULL, 0);
     NSString* modelVersion = [NSString stringWithUTF8String:machine];
     free(machine);
 
