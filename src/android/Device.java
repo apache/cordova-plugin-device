@@ -144,8 +144,7 @@ public class Device extends CordovaPlugin {
     }
 
     public String getSDKVersion() {
-        @SuppressWarnings("deprecation")
-        String sdkversion = android.os.Build.VERSION.SDK;
+        String sdkversion = "" + android.os.Build.VERSION.SDK_INT;
         return sdkversion;
     }
 
