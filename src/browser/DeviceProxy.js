@@ -37,7 +37,9 @@ function getBrowserInfo(getModel) {
     var returnVal = '';
     var offset;
 
-    if ((offset = userAgent.indexOf('Chrome')) !== -1) {
+    if ((offset = userAgent.indexOf('Edge')) !== -1) {
+        returnVal = (getModel) ? 'Edge' : userAgent.substring(offset + 5);
+    } else if ((offset = userAgent.indexOf('Chrome')) !== -1) {
         returnVal = (getModel) ? 'Chrome' : userAgent.substring(offset + 7);
     } else if ((offset = userAgent.indexOf('Safari')) !== -1) {
         if (getModel) {
