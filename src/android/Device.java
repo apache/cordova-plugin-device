@@ -109,7 +109,7 @@ public class Device extends CordovaPlugin {
      * @return
      */
     public String getUuid() {
-        String uuid = Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        String uuid = Settings.Secure.getString(this.cordova.getContext().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
         return uuid;
     }
 
