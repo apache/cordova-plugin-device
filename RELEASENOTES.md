@@ -20,6 +20,11 @@
 -->
 # Release Notes
 
+### 1.1.6 (Apr 27, 2017)
+* [CB-12622](https://issues.apache.org/jira/browse/CB-12622) Added **Android 6.0** build badge to `README`
+* [CB-12685](https://issues.apache.org/jira/browse/CB-12685) added `package.json` to tests folder
+* [CB-12105](https://issues.apache.org/jira/browse/CB-12105) (browser) Properly detect Edge
+
 ### 1.1.5 (Feb 28, 2017)
 * [CB-12353](https://issues.apache.org/jira/browse/CB-12353) Corrected merges usage in `plugin.xml`
 * [CB-12369](https://issues.apache.org/jira/browse/CB-12369) Add plugin typings from `DefinitelyTyped`
