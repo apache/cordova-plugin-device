@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-device"
-    version="1.1.5">
+    version="1.1.6">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -171,5 +171,6 @@
         <header-file src="src/osx/CDVDevice.h" />
         <source-file src="src/osx/CDVDevice.m" />
     </platform>
+
 
 </plugin>
