@@ -17,17 +17,25 @@
 #         under the License.
 -->
 
+|Android|iOS| Windows 8.1 Store | Windows 8.1 Phone | Windows 10 Store | Travis CI |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device/)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)|
+
 # cordova-plugin-device
 
-[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
-이 플러그인 정의 전역 `device` 개체, 디바이스의 하드웨어 및 소프트웨어에 설명 합니다. 개체는 전역 범위에서 비록 그것은 후까지 사용할 수 있는 `deviceready` 이벤트.
+이 플러그인은 전역 `device` 개체를 정의합니다, 이 개체는 디바이스의 하드웨어 및 소프트웨어에 설명 합니다.
+개체는 전역 범위에서 사용할 수 있지만, `deviceready` 이벤트 후에 사용할 수 있습니다.
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        console.log(device.cordova);
-    }
-    
+```js
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(device.cordova);
+}
+```
+
+이 플러그인에 대한 이슈들은 여기에 보고해주세요. [Apache Cordova issue tracker](https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20%22Plugin%20Device%22%20ORDER%20BY%20priority%20DESC%2C%20summary%20ASC%2C%20updatedDate%20DESC)
+
 
 ## 설치
 
@@ -36,168 +44,275 @@
 
 ## 속성
 
-  * device.cordova
-  * device.model
-  * device.platform
-  * device.uuid
-  * device.version
+- device.cordova
+- device.model
+- device.platform
+- device.uuid
+- device.version
+- device.manufacturer
+- device.isVirtual
+- device.serial
 
 ## device.cordova
 
-코르도바는 장치에서 실행 중인 버전을 얻을.
+기기에서 실행되고 있는 코르도바의 버전을 얻을 수 있습니다.
 
 ### 지원 되는 플랫폼
 
-  * 아마존 화재 운영 체제
-  * 안 드 로이드
-  * 블랙베리 10
-  * 브라우저
-  * Firefox 운영 체제
-  * iOS
-  * Tizen
-  * Windows Phone 7과 8
-  * 윈도우 8
+- 아마존 Fire 운영 체제
+- 안드로이드
+- 블랙베리 10
+- 브라우저
+- Firefox 운영 체제
+- iOS
+- Tizen
+- Windows Phone 7과 8
+- 윈도우 8
 
 ## device.model
 
-`device.model`소자의 모델 또는 제품의 이름을 반환 합니다. 값 장치 제조업체에서 설정 되 고 동일 제품의 버전 간에 다를 수 있습니다.
+`device.model` 의 모델 또는 제품의 이름을 반환 합니다.
+값은 장치 제조업체에서 설정 되고 동일 제품이라도 버전은 다를 수 있습니다.
 
 ### 지원 되는 플랫폼
 
-  * 안 드 로이드
-  * 블랙베리 10
-  * 브라우저
-  * iOS
-  * Tizen
-  * Windows Phone 7과 8
-  * 윈도우 8
+- 안드로이드
+- 블랙베리 10
+- 브라우저
+- iOS
+- Tizen
+- Windows Phone 7과 8
+- 윈도우 8
 
 ### 빠른 예제
 
-    // Android:    Nexus One       returns "Passion" (Nexus One code name)
-    //             Motorola Droid  returns "voles"
-    // BlackBerry: Torch 9800      returns "9800"
-    // Browser:    Google Chrome   returns "Chrome"
-    //             Safari          returns "Safari"
-    // iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. Http://theiphonewiki.com/wiki/index.php?title=Models 참조 / / var 모델 = device.model;
-    
+```js
+// Android:    Nexus One       returns "Passion" (Nexus One code name)
+//             Motorola Droid  returns "voles"
+// BlackBerry: Torch 9800      returns "9800"
+// Browser:    Google Chrome   returns "Chrome"
+//             Safari          returns "Safari"
+// iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
+// OSX:                        returns "x86_64"
+//
+var model = device.model;
+```
 
-### 안 드 로이드 단점
+### 안드로이드 특징
 
-  * 어떤은 종종 프로덕션 코드 이름 대신 [제품 모델 이름](http://developer.android.com/reference/android/os/Build.html#MODEL), [제품 이름](http://developer.android.com/reference/android/os/Build.html#PRODUCT) 을 가져옵니다. 예를 들어 넥서스 하나 반환 합니다 `Passion` , 모토로라 Droid를 반환 합니다`voles`.
+- 어떤 것은 종종 프로덕션 코드 이름 대신 [제품 모델 이름][1], [제품 이름][2] 을 가져옵니다.
+예를 들어 Nexus One은 `Passion`을 반환하고, 모토로라 Droid는 `voles` 를 반환 합니다.
 
-### Tizen 특수
+ [1]: http://developer.android.com/reference/android/os/Build.html#MODEL
+ [2]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
 
-  * 예를 들어, 공급 업체에 의해 할당 된 디바이스 모델을 반환 합니다.`TIZEN`
+### Tizen 특징
 
-### Windows Phone 7, 8 특수
+- 공급 업체에 의해 할당된 디바이스 모델을 반환 합니다. 예를 들면, `TIZEN`
 
-  * 제조업체에서 지정 하는 장치 모델을 반환 합니다. 예를 들어 삼성 포커스를 반환 합니다.`SGH-i917`.
+### Windows Phone 7, 8 특징
+
+- 제조업체에서 지정하는 장치 모델을 반환 합니다. 예를 들면, 삼성 포커스는 `SGH-i917`를 반환 합니다.
 
 ## device.platform
 
-장치의 운영 체제 이름을 얻을.
-
-    var string = device.platform;
-    
+기기의 운영체제 이름을 얻어옵니다.
+```js
+var string = device.platform;
+```  
 
 ### 지원 되는 플랫폼
 
-  * 안 드 로이드
-  * 블랙베리 10
-  * Browser4
-  * Firefox 운영 체제
-  * iOS
-  * Tizen
-  * Windows Phone 7과 8
-  * 윈도우 8
+- 안드로이드
+- 블랙베리 10
+- Browser
+- Firefox 운영 체제
+- iOS
+- Tizen
+- Windows Phone 7과 8
+- 윈도우 8
 
 ### 빠른 예제
+```js
+// Depending on the device, a few examples are:
+//   - "Android"
+//   - "BlackBerry 10"
+//   - "browser"
+//   - "iOS"
+//   - "WinCE"
+//   - "Tizen"
+//   - "Mac OS X"
+var devicePlatform = device.platform;
+```
 
-    // Depending on the device, a few examples are:
-    //   - "Android"
-    //   - "BlackBerry 10"
-    //   - Browser:         returns "MacIntel" on Mac
-    //                      returns "Win32" on Windows
-    //   - "iOS"
-    //   - "WinCE"
-    //   - "Tizen"
-    var devicePlatform = device.platform;
-    
+### Windows Phone 7 특징
 
-### Windows Phone 7 단점
+Windows Phone 7 장치를 `WinCE` 플랫폼으로 알려줍니다.
 
-Windows Phone 7 장치 보고 플랫폼으로`WinCE`.
+### Windows Phone 8 특징
 
-### Windows Phone 8 단점
-
-Windows Phone 8 장치 보고 플랫폼으로`Win32NT`.
+Windows Phone 8 장치 `Win32NT` 플랫폼으로 알려줍니다.
 
 ## device.uuid
 
-소자의 보편적으로 고유 식별자 ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier) 를 얻을합니다).
+기기의 고유 식별자를 얻습니다. ([UUID][3]).
 
-    var string = device.uuid;
-    
+ [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+
+```js
+var string = device.uuid;
+```
 
 ### 설명
 
-UUID 생성 방법의 자세한 내용은 장치 제조업체에 의해 결정 됩니다 및 소자의 플랫폼 이나 모델.
+UUID 생성 방법의 자세한 내용은 장치 제조업체에 의해 결정 됩니다.
+기기의 플랫폼이나 모델에 따라 특정됩니다.
 
 ### 지원 되는 플랫폼
 
-  * 안 드 로이드
-  * 블랙베리 10
-  * iOS
-  * Tizen
-  * Windows Phone 7과 8
-  * 윈도우 8
+- 안드로이드
+- 블랙베리 10
+- iOS
+- Tizen
+- Windows Phone 7과 8
+- 윈도우 8
 
 ### 빠른 예제
 
-    / / 안 드 로이드: (문자열로 다시!) 임의의 64 비트 정수를 반환 합니다 / / 정수 장치의 첫 번째 부팅에서 생성 / / / / 블랙베리: 디바이스의 핀 번호를 반환 합니다 / / 이것은 9 자리 고유 정수 (문자열로 비록!) / / / / 아이폰: (UIDevice 클래스 설명서에서 읊 었) / / 문자열 여러 하드웨어에서 생성 하는 해시 값을 식별 하는 반환 합니다.
-    / 그것은 모든 장치에 대 한 고유 해야 보장 되 고 묶일 수 없습니다 / / / 사용자 계정에.
-    / / Windows Phone 7: 장치 + 현재 사용자의 해시를 반환 합니다 / / 사용자 정의 되지 않은 경우 guid 생성 되 고 응용 프로그램을 제거할 때까지 유지 됩니다 / / Tizen: 반환 장치 IMEI (국제 모바일 기기 식별 또는 IMEI 숫자입니다 / / 모든 GSM와 UMTS 휴대 전화 고유.
-    var deviceID = device.uuid;
+```js
+// Android: Returns a random 64-bit integer (as a string, again!)
+//          The integer is generated on the device's first boot
+//
+// BlackBerry: Returns the PIN number of the device
+//             This is a nine-digit unique integer (as a string, though!)
+//
+// iPhone: (Paraphrased from the UIDevice Class documentation)
+//         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it.
+// Windows Phone 7 : Returns a hash of device+current user,
+// if the user is not defined, a guid is generated and will persist until the app is uninstalled
+// Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
+// unique to every GSM and UMTS mobile phone.
+var deviceID = device.uuid;
+```
     
 
-### iOS 특질
+### iOS 특징
 
-`uuid`ios 장치에 고유 하지 않습니다 하지만 각 설치에 대 한 응용 프로그램 마다 다릅니다. 삭제 하 고 다시 애플 리 케이 션을 설치 하는 경우 변경 가능 하 게 또한 iOS를 업그레이드 하거나 때 버전 (iOS 5.1에에서 명백한) 당 응용 프로그램 업그레이드도 하 고. `uuid`은 신뢰할 수 있는 값이 아닙니다.
+iOS의`uuid`는 identifierForVendor 속성을 사용합니다. 
+이 같은 공급 업체에서 장치에는 고유하지만 서로 다른 벤더에서는 다를 수 있습니다.
+공급 업체의 모든 앱을 삭제하고 다시 설치하는 경우 변경됩니다.
+자세한 내용은 [여기](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor)를 참조하십시오.
 
-### Windows Phone 7, 8 특수
+이 환경 설정에 저장 될 때 응용 프로그램이 백업 또는 아이 클라우드에서 복원되는 경우 UUID는 동일합니다.
+이 환경 설정에서 검색되는 바와 같이,
+이 플러그인의 이전 버전을 사용하는 사용자는 여전히 다른 수단에 의해 생성된 같은 이전 UUID를 받게 됩니다.
 
-`uuid`Windows Phone 7 필요 허가 `ID_CAP_IDENTITY_DEVICE` . Microsoft는 곧이 속성을 세웁니다 가능성이 것입니다. 기능을 사용할 수 없는 경우 응용 프로그램 장치에 응용 프로그램의 설치 하는 동안 유지 하는 영구 guid를 생성 합니다.
+### OSX 특징
+
+OSX에`uuid`는 아직 존재하지 않는 경우 자동으로 생성되고 
+`CDVUUID` 속성에 `standardUserDefaults`에 저장된다.
+
+### Windows Phone 7, 8 특징
+
+윈도우 폰 7에 대한`uuid`는 권한이 필요합니다
+`ID_CAP_IDENTITY_DEVICE`. Microsoft는 이 속성을 곧 deprecate 할 것입니다.
+이 기능을 사용할 수 없는 경우, 애플리케이션은 기기에 설치시 일정 기간 동안 지속되는 GUID를 생성합니다. 
 
 ## device.version
 
-운영 체제 버전을 얻을.
+기기의 운영체제 버전을 얻습니다.
 
-    var string = device.version;
-    
+```js
+var string = device.version;
+```
 
 ### 지원 되는 플랫폼
 
-  * 안 드 로이드 2.1 +
-  * 블랙베리 10
-  * 브라우저
-  * iOS
-  * Tizen
-  * Windows Phone 7과 8
-  * 윈도우 8
+- 안드로이드 2.1 +
+- 블랙베리 10
+- 브라우저
+- iOS
+- Tizen
+- Windows Phone 7과 8
+- 윈도우즈 8
+- OSX
 
 ### 빠른 예제
 
-    // Android:    Froyo OS would return "2.2"
-    //             Eclair OS would return "2.1", "2.0.1", or "2.0"
-    //             Version can also return update level "2.1-update1"
-    //
-    // BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
-    //
-    // Browser:    Returns version number for the browser
-    //
-    // iPhone:     iOS 3.2 returns "3.2"
-    //
-    // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
-    // Tizen: returns "TIZEN_20120425_2"
-    var deviceVersion = device.version;
+```js
+// Android:    Froyo OS would return "2.2"
+//             Eclair OS would return "2.1", "2.0.1", or "2.0"
+//             Version can also return update level "2.1-update1"
+//
+// BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
+//
+// Browser:    Returns version number for the browser
+//
+// iPhone:     iOS 3.2 returns "3.2"
+//
+// Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
+// Tizen: returns "TIZEN_20120425_2"
+// OSX:        El Capitan would return "10.11.2"
+//
+var deviceVersion = device.version;
+```
+
+## device.manufacturer
+
+기기의 제조업체 정보를 얻습니다.
+
+```js
+var string = device.manufacturer;
+```
+
+### 지원되는 플랫폼
+
+- 안드로이드
+- BlackBerry 10
+- iOS
+- Windows Phone 7 and 8
+- Windows
+
+### 빠른 예제
+
+```js
+// Android:    Motorola XT1032 would return "motorola"
+// BlackBerry: returns "BlackBerry"
+// iPhone:     returns "Apple"
+//
+var deviceManufacturer = device.manufacturer;
+```
+
+## device.isVirtual
+
+기기의 시뮬레이터 여부를 얻습니다.
+
+```js
+var isSim = device.isVirtual;
+```
+
+### 지원되는 플랫폼
+
+- 안드로이드 2.1+
+- iOS
+- Windows Phone 8
+- Windows
+- OSX
+
+### OSX 특징
+
+ `isVirtual` 은 OSX에서 항상 false를 반환합니다.
+
+## device.serial
+
+하드웨어의 시리얼 값을 얻습니다 ([SERIAL](http://developer.android.com/reference/android/os/Build.html#SERIAL)).
+
+```js
+var string = device.serial;
+```
+
+### Supported Platforms
+
+- 안드로이드
+- OSX
+
