@@ -81,6 +81,11 @@ exports.defineAutoTests = function() {
 
     });
 
+    it("should contain a SDK version specification that is a string", function() {
+      expect(window.device.sdkversion).toBeDefined();
+      expect((String(window.device.sdkversion)).length > 0).toBe(true);
+    });
+    
   });
 };
 

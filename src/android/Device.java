@@ -76,6 +76,7 @@ public class Device extends CordovaPlugin {
             r.put("manufacturer", this.getManufacturer());
 	        r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
+            r.put("sdkversion", this.getSDKVersion());
             callbackContext.success(r);
         }
         else {
@@ -144,8 +145,7 @@ public class Device extends CordovaPlugin {
     }
 
     public String getSDKVersion() {
-        @SuppressWarnings("deprecation")
-        String sdkversion = android.os.Build.VERSION.SDK;
+        String sdkversion = "" + android.os.Build.VERSION.SDK_INT;
         return sdkversion;
     }
 
