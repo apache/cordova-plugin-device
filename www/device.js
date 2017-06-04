@@ -47,6 +47,15 @@ function Device() {
 
     var me = this;
 
+    // On certain platforms, like iOS, the failure callback won't be
+    // executed if the device native code does not exist. In this case we
+    // set a timeout to fire the channel. We choose 4.9 seconds as Cordova
+    // complains at 5 seconds.
+    var timeout = setTimeout(function() {
+      me.available = false;
+      channel.onCordovaInfoReady.fire();
+    }, 4900);
+
     channel.onCordovaReady.subscribe(function() {
         me.getInfo(function(info) {
             //ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
@@ -62,9 +71,14 @@ function Device() {
             me.manufacturer = info.manufacturer || 'unknown';
             me.serial = info.serial || 'unknown';
             channel.onCordovaInfoReady.fire();
+            clearTimeout(timeout);
         },function(e) {
             me.available = false;
-            utils.alert("[ERROR] Error initializing Cordova: " + e);
+            if (console && console.error) {
+              console.error("[ERROR] Error initializing Cordova Device Plugin: " + e);
+            }
+            channel.onCordovaInfoReady.fire();
+            clearTimeout(timeout);
         });
     });
 }
