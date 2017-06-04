@@ -42,7 +42,7 @@ Report issues with this plugin on the [Apache Cordova issue tracker](https://iss
 
 ## Installation
 
-    cordova plugin add cordova-plugin-device
+    cordova plugin add org.apache.cordova.device
 
 ## Properties
 
