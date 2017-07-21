@@ -12,18 +12,18 @@ matrix:
     os: osx
     osx_image: xcode7.3
     language: node_js
-    node_js: '4.2'
+    node_js: $TRAVIS_NODE_VERSION
   - env: PLATFORM=ios-10.0
     os: osx
     osx_image: xcode7.3
     language: node_js
-    node_js: '4.2'
+    node_js: $TRAVIS_NODE_VERSION
   - env: PLATFORM=android-4.4
     os: linux
     language: android
     jdk: oraclejdk8
     language: node_js
-    node_js: '4.2'
+    node_js: $TRAVIS_NODE_VERSION
     android:
       components:
       - tools
@@ -62,6 +62,7 @@ before_install:
   && npm install && popd
 - npm install -g cordova
 install:
+- rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
 - npm install
 script:
 - npm test
