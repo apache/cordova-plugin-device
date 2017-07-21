@@ -56,10 +56,13 @@ before_install:
 - if [[ "$PLATFORM" =~ ios ]]; then npm install -g ios-deploy; fi
 - if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-19,android-22,android-23,android-24,android-25;
   fi
-- git clone https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic
-  && npm install && popd
+- emulator -avd test -no-audio -no-window:
+        background: true
+        parallel: true
+- circle-android wait-for-boot
 - npm install -g cordova
 install:
 - npm install
 script:
 - npm test
+- npm run cordova-paramedic
