@@ -49,10 +49,10 @@ matrix:
       components:
       - tools
 before_install:
-- npm cache clean -f
 - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm
   && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm
   install $TRAVIS_NODE_VERSION
+- npm cache clean -f
 - node --version
 - if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
 - if [[ "$PLATFORM" =~ ios ]]; then npm install -g ios-deploy; fi
