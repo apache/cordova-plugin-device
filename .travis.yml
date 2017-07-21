@@ -1,11 +1,10 @@
 sudo: false
-group: deprecated-2017Q3
 addons:
   jwt:
     secure: egTo2EERSKVWdBoP+6ewd/JIyyly2XTT1xOVj27v2L148c453uRNPjXwiGRYu7vTw5rkGK+H54n4FG3rUOuEVNX9NDNC5TlkhTfmecXNzjyOIuV7xD0qg5s6Q3IXg8kAp9+JXWbVVR6hoPzmAAnTT4rcoh6cPg4Tf327W2sRGkw=
 env:
   global:
-  - SAUCE_USERNAME=snay
+  - SAUCE_USERNAME=none
   - TRAVIS_NODE_VERSION="4.2"
 matrix:
   include:
@@ -23,6 +22,7 @@ matrix:
     os: linux
     language: android
     jdk: oraclejdk8
+    node_js: '4.2'
     android:
       components:
       - tools
@@ -30,6 +30,7 @@ matrix:
     os: linux
     language: android
     jdk: oraclejdk8
+    node_js: '4.2'
     android:
       components:
       - tools
@@ -37,6 +38,7 @@ matrix:
     os: linux
     language: android
     jdk: oraclejdk8
+    node_js: '4.2'
     android:
       components:
       - tools
@@ -44,6 +46,7 @@ matrix:
     os: linux
     language: android
     jdk: oraclejdk8
+    node_js: '4.2'
     android:
       components:
       - tools
