@@ -58,7 +58,7 @@ before_install:
   fi
 - if [[ "$PLATFORM" =~ android ]]; then android create avd --force -n test --abi armeabi-v7a -t $PLATFORM;
   fi
-- if [[ "$PLATFORM" =~ android ]]; then emulator -avd test -no-audio -no-window: background: true parallel: true;
+- if [[ "$PLATFORM" =~ android ]]; then emulator -avd test -no-audio -no-window;
   fi
 - if [[ "$PLATFORM" =~ android ]]; then circle-android wait-for-boot
 - npm install -g cordova
