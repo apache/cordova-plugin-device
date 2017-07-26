@@ -4,7 +4,7 @@ addons:
     secure: egTo2EERSKVWdBoP+6ewd/JIyyly2XTT1xOVj27v2L148c453uRNPjXwiGRYu7vTw5rkGK+H54n4FG3rUOuEVNX9NDNC5TlkhTfmecXNzjyOIuV7xD0qg5s6Q3IXg8kAp9+JXWbVVR6hoPzmAAnTT4rcoh6cPg4Tf327W2sRGkw=
 env:
   global:
-  - SAUCE_USERNAME=snay
+  - SAUCE_USERNAME=none
   - TRAVIS_NODE_VERSION="4.2"
 matrix:
   include:
@@ -28,34 +28,34 @@ matrix:
     os: osx
     osx_image: xcode7.3
     language: node_js
-    node_js: '4.2'
+    node_js: $TRAVIS_NODE_VERSION
   - env: PLATFORM=ios-10.0
     os: osx
     osx_image: xcode7.3
     language: node_js
-    node_js: '4.2'
-  - env: PLATFORM=android-4.4
+    node_js: $TRAVIS_NODE_VERSION
+  - env: PLATFORM=android-19
     os: linux
     language: android
     jdk: oraclejdk8
     android:
       components:
       - tools
-  - env: PLATFORM=android-5.1
+  - env: PLATFORM=android-21
     os: linux
     language: android
     jdk: oraclejdk8
     android:
       components:
       - tools
-  - env: PLATFORM=android-6.0
+  - env: PLATFORM=android-23
     os: linux
     language: android
     jdk: oraclejdk8
     android:
       components:
       - tools
-  - env: PLATFORM=android-7.0
+  - env: PLATFORM=android-24
     os: linux
     language: android
     jdk: oraclejdk8
@@ -63,22 +63,23 @@ matrix:
       components:
       - tools
 before_install:
-- npm cache clean -f
 - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm
   && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm
   install $TRAVIS_NODE_VERSION
+- npm cache clean -f
 - node --version
 - if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
 - if [[ "$PLATFORM" =~ ios ]]; then npm install -g ios-deploy; fi
-- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-22,android-23,android-24,android-25;
+- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-19,android-22,android-23,android-24,android-25,sys-img-x86_64-android-22;
   fi
-- git clone https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic
-  && npm install && popd
+- if [[ "$PLATFORM" =~ android ]]; then avdmanager create avd --force -n test --abi armeabi-v7a -k "android-22";
+  fi
+- if [[ "$PLATFORM" =~ android ]]; then emulator -avd test -no-audio -no-window;
+  fi
+- if [[ "$PLATFORM" =~ android ]]; then circle-android wait-for-boot
 - npm install -g cordova
 install:
 - npm install
 script:
 - npm test
-- node /tmp/paramedic/main.js --config pr/$PLATFORM --plugin $(pwd) --shouldUseSauce
-  --buildName travis-plugin-device-$TRAVIS_JOB_NUMBER
-
+- npm run cordova-paramedic
