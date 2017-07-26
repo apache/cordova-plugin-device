@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 Ten plugin określa globalne `device` obiekt, który opisuje urządzenia sprzętowe i programowe. Mimo, że obiekt jest w globalnym zasięgu, nie jest dostępne dopiero po `deviceready` zdarzenie.
 
@@ -34,11 +36,11 @@ Ten plugin określa globalne `device` obiekt, który opisuje urządzenia sprzęt
 
 ## Właściwości
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
@@ -46,15 +48,15 @@ Pobierz wersję Cordova działa na urządzeniu.
 
 ### Obsługiwane platformy
 
-*   Amazon Fire OS
-*   Android
-*   BlackBerry 10
-*   Przeglądarka
-*   Firefox OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 i 8
-*   Windows 8
+  * Amazon Fire OS
+  * Android
+  * BlackBerry 10
+  * Przeglądarka
+  * Firefox OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 i 8
+  * Windows 8
 
 ## device.model
 
@@ -62,13 +64,13 @@ Pobierz wersję Cordova działa na urządzeniu.
 
 ### Obsługiwane platformy
 
-*   Android
-*   BlackBerry 10
-*   Przeglądarka
-*   iOS
-*   Tizen
-*   Windows Phone 7 i 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Przeglądarka
+  * iOS
+  * Tizen
+  * Windows Phone 7 i 8
+  * Windows 8
 
 ### Szybki przykład
 
@@ -82,18 +84,15 @@ Pobierz wersję Cordova działa na urządzeniu.
 
 ### Dziwactwa Androida
 
-*   Pobiera [nazwę produktu][1] zamiast [nazwy modelu][2], który często jest nazwą kod produkcji. Na przykład, Nexus One zwraca `Passion` , i zwraca Motorola Droid`voles`.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
- [2]: http://developer.android.com/reference/android/os/Build.html#MODEL
+  * Pobiera [nazwę produktu](http://developer.android.com/reference/android/os/Build.html#PRODUCT) zamiast [nazwy modelu](http://developer.android.com/reference/android/os/Build.html#MODEL), który często jest nazwą kod produkcji. Na przykład, Nexus One zwraca `Passion` , i zwraca Motorola Droid`voles`.
 
 ### Dziwactwa Tizen
 
-*   Zwraca modelu urządzenia przypisane przez dostawcę, na przykład,`TIZEN`
+  * Zwraca modelu urządzenia przypisane przez dostawcę, na przykład,`TIZEN`
 
 ### Windows Phone 7 i 8 dziwactwa
 
-*   Zwraca modelu urządzenia, określonej przez producenta. Na przykład Samsung ostrości zwraca`SGH-i917`.
+  * Zwraca modelu urządzenia, określonej przez producenta. Na przykład Samsung ostrości zwraca`SGH-i917`.
 
 ## device.platform
 
@@ -104,14 +103,14 @@ Uzyskać nazwę systemu operacyjnego urządzenia.
 
 ### Obsługiwane platformy
 
-*   Android
-*   BlackBerry 10
-*   Browser4
-*   Firefox OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 i 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Browser4
+  * Firefox OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 i 8
+  * Windows 8
 
 ### Szybki przykład
 
@@ -136,9 +135,7 @@ Urządzenia Windows Phone 8 raport platformy jako`Win32NT`.
 
 ## device.uuid
 
-Się urządzenia uniwersalnie unikatowy identyfikator ([UUID][3]).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+Się urządzenia uniwersalnie unikatowy identyfikator ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
 
     var string = device.uuid;
     
@@ -149,18 +146,29 @@ Szczegóły jak UUID jest generowane są określane przez producenta urządzenia
 
 ### Obsługiwane platformy
 
-*   Android
-*   BlackBerry 10
-*   iOS
-*   Tizen
-*   Windows Phone 7 i 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * iOS
+  * Tizen
+  * Windows Phone 7 i 8
+  * Windows 8
 
 ### Szybki przykład
 
-    / / Android: zwraca losowe 64-bitowa liczba całkowita (jako ciąg, znowu!) / / liczba całkowita jest generowany na pierwszego uruchomienia urządzenia / / / / BlackBerry: zwraca numer PIN urządzenia / / to jest unikatową liczbą całkowitą dziewięciu cyfr (jako ciąg, choć!) / / / / iPhone: (zacytowana w dokumentacji klasy UIDevice) / / zwraca ciąg wartości mieszania utworzone z wielu sprzętu identyfikuje.
-    Zapewniona jest unikatowy dla każdego urządzenia i nie może być związane z / do konta użytkownika.
-    / / Windows Phone 7: zwraca wartość mieszania urządzenia + bieżący użytkownik, / / jeśli nie zdefiniowane przez użytkownika, identyfikator guid jest generowany i będzie trwać do czasu odinstalowania aplikacji / / Tizen: zwraca urządzenia IMEI (International Mobile Equipment Identity lub IMEI jest liczbą / / unikatowe dla każdego telefonu komórkowego GSM i UMTS.
+    // Android: Returns a random 64-bit integer (as a string, again!)
+    //          The integer is generated on the device's first boot
+    //
+    // BlackBerry: Returns the PIN number of the device
+    //             This is a nine-digit unique integer (as a string, though!)
+    //
+    // iPhone: (Paraphrased from the UIDevice Class documentation)
+    //         Returns a string of hash values created from multiple hardware identifies.
+    //         It is guaranteed to be unique for every device and can't be tied
+    //         to the user account.
+    // Windows Phone 7 : Returns a hash of device+current user,
+    // if the user is not defined, a guid is generated and will persist until the app is uninstalled
+    // Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
+    // unique to every GSM and UMTS mobile phone.
     var deviceID = device.uuid;
     
 
@@ -181,13 +189,13 @@ Pobierz wersję systemu operacyjnego.
 
 ### Obsługiwane platformy
 
-*   Android 2.1 +
-*   BlackBerry 10
-*   Przeglądarka
-*   iOS
-*   Tizen
-*   Windows Phone 7 i 8
-*   Windows 8
+  * Android 2.1 +
+  * BlackBerry 10
+  * Przeglądarka
+  * iOS
+  * Tizen
+  * Windows Phone 7 i 8
+  * Windows 8
 
 ### Szybki przykład
 

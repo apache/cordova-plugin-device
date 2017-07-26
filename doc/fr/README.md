@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 Ce plugin définit un global `device` objet qui décrit le matériel et les logiciels de l'appareil. Bien que l'objet est dans la portée globale, il n'est pas disponible jusqu'après la `deviceready` événement.
 
@@ -34,43 +36,43 @@ Ce plugin définit un global `device` objet qui décrit le matériel et les logi
 
 ## Propriétés
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
 Retourne la version de Cordova en cours d'exécution sur l'appareil.
 
-### Plates-formes prises en charge
+### Plates-formes supportées
 
-*   Amazon Fire OS
-*   Android
-*   BlackBerry 10
-*   Navigateur
-*   Firefox OS
-*   iOS
-*   Paciarelli
-*   Windows Phone 7 et 8
-*   Windows 8
+  * Amazon Fire OS
+  * Android
+  * BlackBerry 10
+  * Navigateur
+  * Firefox OS
+  * iOS
+  * Paciarelli
+  * Windows Phone 7 et 8
+  * Windows 8
 
 ## device.model
 
 L'objet `device.model` retourne le nom du modèle de l'appareil/produit. Cette valeur est définie par le fabricant du périphérique et peut varier entre les différentes versions d'un même produit.
 
-### Plates-formes prises en charge
+### Plates-formes supportées
 
-*   Android
-*   BlackBerry 10
-*   Navigateur
-*   iOS
-*   Paciarelli
-*   Windows Phone 7 et 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Navigateur
+  * iOS
+  * Paciarelli
+  * Windows Phone 7 et 8
+  * Windows 8
 
-### Petit exemple
+### Exemple court
 
     // Android:    Nexus One       returns "Passion" (Nexus One code name)
     //             Motorola Droid  returns "voles"
@@ -84,18 +86,15 @@ L'objet `device.model` retourne le nom du modèle de l'appareil/produit. Cette v
 
 ### Quirks Android
 
-*   Retourne le [nom du produit][1] au lieu du [nom du modèle][2], ce qui équivaut souvent au nom de code de production. Par exemple, `Passion` pour le Nexus One et `voles` pour le Motorola Droid.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
- [2]: http://developer.android.com/reference/android/os/Build.html#MODEL
+  * Retourne le [nom du produit](http://developer.android.com/reference/android/os/Build.html#PRODUCT) au lieu du [nom du modèle](http://developer.android.com/reference/android/os/Build.html#MODEL), ce qui équivaut souvent au nom de code de production. Par exemple, `Passion` pour le Nexus One et `voles` pour le Motorola Droid.
 
 ### Bizarreries de paciarelli
 
-*   Retourne le modèle du dispositif, assigné par le vendeur, par exemple `TIZEN`
+  * Retourne le modèle du dispositif, assigné par le vendeur, par exemple `TIZEN`
 
-### Windows Phone 7 et 8 Quirks
+### Notes au sujet de Windows Phone 7 et 8
 
-*   Retourne le modèle de l'appareil spécifié par le fabricant. Par exemple `SGH-i917` pour le Samsung Focus.
+  * Retourne le modèle de l'appareil spécifié par le fabricant. Par exemple `SGH-i917` pour le Samsung Focus.
 
 ## device.platform
 
@@ -104,18 +103,18 @@ Obtenir le nom de système d'exploitation de l'appareil.
     var string = device.platform;
     
 
-### Plates-formes prises en charge
+### Plates-formes supportées
 
-*   Android
-*   BlackBerry 10
-*   Browser4
-*   Firefox OS
-*   iOS
-*   Paciarelli
-*   Windows Phone 7 et 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Browser4
+  * Firefox OS
+  * iOS
+  * Paciarelli
+  * Windows Phone 7 et 8
+  * Windows 8
 
-### Petit exemple
+### Exemple court
 
     // Depending on the device, a few examples are:
     //   - "Android"
@@ -138,9 +137,7 @@ Appareils Windows Phone 8 rapport de la plate-forme comme`Win32NT`.
 
 ## device.uuid
 
-Obtenir Universally Unique Identifier de l'appareil ([UUID][3]).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+Obtenir Universally Unique Identifier de l'appareil ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
 
     var string = device.uuid;
     
@@ -149,16 +146,16 @@ Obtenir Universally Unique Identifier de l'appareil ([UUID][3]).
 
 Les détails de comment un UUID généré sont déterminées par le fabricant du périphérique et sont spécifiques à la plate-forme ou le modèle de l'appareil.
 
-### Plates-formes prises en charge
+### Plates-formes supportées
 
-*   Android
-*   BlackBerry 10
-*   iOS
-*   Paciarelli
-*   Windows Phone 7 et 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * iOS
+  * Paciarelli
+  * Windows Phone 7 et 8
+  * Windows 8
 
-### Petit exemple
+### Exemple court
 
     // Android : retourne un nombre entier 64-bit aléatoire (sous la forme d'une chaîne de caractères, encore !)
     // Ce nombre entier est généré lors du premier démarrage de l'appareil
@@ -180,7 +177,7 @@ Les détails de comment un UUID généré sont déterminées par le fabricant du
 
 Le `uuid` sur iOS n'est pas propre à un périphérique, mais varie pour chaque application, pour chaque installation. Elle change si vous supprimez, puis réinstallez l'application, et éventuellement aussi quand vous mettre à jour d'iOS, ou même mettre à jour le soft par version (apparent dans iOS 5.1). Le `uuid` n'est pas une valeur fiable.
 
-### Windows Phone 7 et 8 Quirks
+### Notes au sujet de Windows Phone 7 et 8
 
 Le `uuid` pour Windows Phone 7 requiert l'autorisation `ID_CAP_IDENTITY_DEVICE` . Microsoft va probablement bientôt obsolète de cette propriété. Si la capacité n'est pas disponible, l'application génère un guid persistant qui est maintenu pendant toute la durée de l'installation de l'application sur le périphérique.
 
@@ -191,17 +188,17 @@ Téléchargez la version de système d'exploitation.
     var string = device.version;
     
 
-### Plates-formes prises en charge
+### Plates-formes supportées
 
-*   Android 2.1+
-*   BlackBerry 10
-*   Navigateur
-*   iOS
-*   Paciarelli
-*   Windows Phone 7 et 8
-*   Windows 8
+  * Android 2.1+
+  * BlackBerry 10
+  * Navigateur
+  * iOS
+  * Paciarelli
+  * Windows Phone 7 et 8
+  * Windows 8
 
-### Petit exemple
+### Exemple court
 
     // Android:    Froyo OS would return "2.2"
     //             Eclair OS would return "2.1", "2.0.1", or "2.0"

@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 這個外掛程式定義全球 `device` 物件，描述該設備的硬體和軟體。 雖然物件是在全球範圍內，但不是可用，直到後 `deviceready` 事件。
 
@@ -34,11 +36,11 @@
 
 ## 屬性
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
@@ -46,15 +48,15 @@
 
 ### 支援的平臺
 
-*   亞馬遜火 OS
-*   Android 系統
-*   黑莓 10
-*   瀏覽器
-*   火狐瀏覽器的作業系統
-*   iOS
-*   泰
-*   Windows Phone 7 和 8
-*   Windows 8
+  * 亞馬遜火 OS
+  * Android 系統
+  * 黑莓 10
+  * 瀏覽器
+  * 火狐瀏覽器作業系統
+  * iOS
+  * Tizen
+  * Windows Phone 7 和 8
+  * Windows 8
 
 ## device.model
 
@@ -62,13 +64,13 @@
 
 ### 支援的平臺
 
-*   Android 系統
-*   黑莓 10
-*   瀏覽器
-*   iOS
-*   泰
-*   Windows Phone 7 和 8
-*   Windows 8
+  * Android 系統
+  * 黑莓 10
+  * 瀏覽器
+  * iOS
+  * Tizen
+  * Windows Phone 7 和 8
+  * Windows 8
 
 ### 快速的示例
 
@@ -82,18 +84,15 @@
 
 ### Android 的怪癖
 
-*   獲取[產品名稱][1]而不是[產品型號名稱][2]，這往往是生產代碼名稱。 例如，Nexus One 返回 `Passion` ，和摩托羅拉 Droid 返回`voles`.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
- [2]: http://developer.android.com/reference/android/os/Build.html#MODEL
+  * 獲取[產品名稱](http://developer.android.com/reference/android/os/Build.html#PRODUCT)而不是[產品型號名稱](http://developer.android.com/reference/android/os/Build.html#MODEL)，這往往是生產代碼名稱。 例如，Nexus One 返回 `Passion` ，和摩托羅拉 Droid 返回`voles`.
 
 ### Tizen 怪癖
 
-*   例如，返回與供應商指派的設備模型`TIZEN`
+  * 例如，返回與供應商指派的設備模型`TIZEN`
 
 ### Windows Phone 7 和 8 怪癖
 
-*   返回由製造商指定的設備模型。例如，三星焦點返回`SGH-i917`.
+  * 返回由製造商指定的設備模型。例如，三星焦點返回`SGH-i917`.
 
 ## device.platform
 
@@ -104,14 +103,14 @@
 
 ### 支援的平臺
 
-*   Android 系統
-*   黑莓 10
-*   Browser4
-*   火狐瀏覽器的作業系統
-*   iOS
-*   泰
-*   Windows Phone 7 和 8
-*   Windows 8
+  * Android 系統
+  * 黑莓 10
+  * Browser4
+  * 火狐瀏覽器作業系統
+  * iOS
+  * Tizen
+  * Windows Phone 7 和 8
+  * Windows 8
 
 ### 快速的示例
 
@@ -136,9 +135,7 @@ Windows Phone 8 設備報告作為平臺`Win32NT`.
 
 ## device.uuid
 
-獲取設備的通用唯一識別碼 ([UUID][3]).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+獲取設備的通用唯一識別碼 ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
 
     var string = device.uuid;
     
@@ -149,12 +146,12 @@ Windows Phone 8 設備報告作為平臺`Win32NT`.
 
 ### 支援的平臺
 
-*   Android 系統
-*   黑莓 10
-*   iOS
-*   Tizen
-*   Windows Phone 7 和 8
-*   Windows 8
+  * Android 系統
+  * 黑莓 10
+  * iOS
+  * Tizen
+  * Windows Phone 7 和 8
+  * Windows 8
 
 ### 快速的示例
 
@@ -181,13 +178,13 @@ Windows Phone 8 設備報告作為平臺`Win32NT`.
 
 ### 支援的平臺
 
-*   Android 2.1 +
-*   黑莓 10
-*   瀏覽器
-*   iOS
-*   泰
-*   Windows Phone 7 和 8
-*   Windows 8
+  * Android 2.1 +
+  * 黑莓 10
+  * 瀏覽器
+  * iOS
+  * Tizen
+  * Windows Phone 7 和 8
+  * Windows 8
 
 ### 快速的示例
 

@@ -21,8 +21,8 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="org.apache.cordova.device"
-    version="0.2.11-dev">
+    id="cordova-plugin-device"
+    version="1.1.7-dev">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -75,7 +75,7 @@
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
     </platform>
-    
+
     <!-- ubuntu -->
     <platform name="ubuntu">
         <header-file src="src/ubuntu/device.h" />
@@ -95,6 +95,8 @@
 
         <header-file src="src/ios/CDVDevice.h" />
         <source-file src="src/ios/CDVDevice.m" />
+
+		<framework src="libz.tbd" />
     </platform>
 
     <!-- blackberry10 -->
@@ -138,11 +140,37 @@
         <source-file src="src/wp/Device.cs" />
     </platform>
 
-    <!-- windows8 -->
-    <platform name="windows8">
-        <js-module src="src/windows8/DeviceProxy.js" name="DeviceProxy">
-            <merges target="" />
+    <!-- windows -->
+    <platform name="windows">
+        <js-module src="src/windows/DeviceProxy.js" name="DeviceProxy">
+            <runs />
         </js-module>
     </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="browser-package" value="Device" />
+            </feature>
+        </config-file>
+
+        <js-module src="src/browser/DeviceProxy.js" name="DeviceProxy">
+            <runs />
+        </js-module>
+    </platform>
+
+    <!-- osx -->
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="ios-package" value="CDVDevice"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/osx/CDVDevice.h" />
+        <source-file src="src/osx/CDVDevice.m" />
+    </platform>
+
 
 </plugin>

@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 이 플러그인 정의 전역 `device` 개체, 디바이스의 하드웨어 및 소프트웨어에 설명 합니다. 개체는 전역 범위에서 비록 그것은 후까지 사용할 수 있는 `deviceready` 이벤트.
 
@@ -34,11 +36,11 @@
 
 ## 속성
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
@@ -46,15 +48,15 @@
 
 ### 지원 되는 플랫폼
 
-*   아마존 화재 운영 체제
-*   안 드 로이드
-*   블랙베리 10
-*   브라우저
-*   Firefox 운영 체제
-*   iOS
-*   Tizen
-*   Windows Phone 7과 8
-*   윈도우 8
+  * 아마존 화재 운영 체제
+  * 안 드 로이드
+  * 블랙베리 10
+  * 브라우저
+  * Firefox 운영 체제
+  * iOS
+  * Tizen
+  * Windows Phone 7과 8
+  * 윈도우 8
 
 ## device.model
 
@@ -62,13 +64,13 @@
 
 ### 지원 되는 플랫폼
 
-*   안 드 로이드
-*   블랙베리 10
-*   브라우저
-*   iOS
-*   Tizen
-*   Windows Phone 7과 8
-*   윈도우 8
+  * 안 드 로이드
+  * 블랙베리 10
+  * 브라우저
+  * iOS
+  * Tizen
+  * Windows Phone 7과 8
+  * 윈도우 8
 
 ### 빠른 예제
 
@@ -82,18 +84,15 @@
 
 ### 안 드 로이드 단점
 
-*   어떤은 종종 프로덕션 코드 이름 대신 [제품 모델 이름][1], [제품 이름][2] 을 가져옵니다. 예를 들어 넥서스 하나 반환 합니다 `Passion` , 모토로라 Droid를 반환 합니다`voles`.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#MODEL
- [2]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
+  * 어떤은 종종 프로덕션 코드 이름 대신 [제품 모델 이름](http://developer.android.com/reference/android/os/Build.html#MODEL), [제품 이름](http://developer.android.com/reference/android/os/Build.html#PRODUCT) 을 가져옵니다. 예를 들어 넥서스 하나 반환 합니다 `Passion` , 모토로라 Droid를 반환 합니다`voles`.
 
 ### Tizen 특수
 
-*   예를 들어, 공급 업체에 의해 할당 된 디바이스 모델을 반환 합니다.`TIZEN`
+  * 예를 들어, 공급 업체에 의해 할당 된 디바이스 모델을 반환 합니다.`TIZEN`
 
 ### Windows Phone 7, 8 특수
 
-*   제조업체에서 지정 하는 장치 모델을 반환 합니다. 예를 들어 삼성 포커스를 반환 합니다.`SGH-i917`.
+  * 제조업체에서 지정 하는 장치 모델을 반환 합니다. 예를 들어 삼성 포커스를 반환 합니다.`SGH-i917`.
 
 ## device.platform
 
@@ -104,14 +103,14 @@
 
 ### 지원 되는 플랫폼
 
-*   안 드 로이드
-*   블랙베리 10
-*   Browser4
-*   Firefox 운영 체제
-*   iOS
-*   Tizen
-*   Windows Phone 7과 8
-*   윈도우 8
+  * 안 드 로이드
+  * 블랙베리 10
+  * Browser4
+  * Firefox 운영 체제
+  * iOS
+  * Tizen
+  * Windows Phone 7과 8
+  * 윈도우 8
 
 ### 빠른 예제
 
@@ -136,9 +135,7 @@ Windows Phone 8 장치 보고 플랫폼으로`Win32NT`.
 
 ## device.uuid
 
-소자의 보편적으로 고유 식별자 ([UUID][3] 를 얻을합니다).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+소자의 보편적으로 고유 식별자 ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier) 를 얻을합니다).
 
     var string = device.uuid;
     
@@ -149,12 +146,12 @@ UUID 생성 방법의 자세한 내용은 장치 제조업체에 의해 결정 �
 
 ### 지원 되는 플랫폼
 
-*   안 드 로이드
-*   블랙베리 10
-*   iOS
-*   Tizen
-*   Windows Phone 7과 8
-*   윈도우 8
+  * 안 드 로이드
+  * 블랙베리 10
+  * iOS
+  * Tizen
+  * Windows Phone 7과 8
+  * 윈도우 8
 
 ### 빠른 예제
 
@@ -181,13 +178,13 @@ UUID 생성 방법의 자세한 내용은 장치 제조업체에 의해 결정 �
 
 ### 지원 되는 플랫폼
 
-*   안 드 로이드 2.1 +
-*   블랙베리 10
-*   브라우저
-*   iOS
-*   Tizen
-*   Windows Phone 7과 8
-*   윈도우 8
+  * 안 드 로이드 2.1 +
+  * 블랙베리 10
+  * 브라우저
+  * iOS
+  * Tizen
+  * Windows Phone 7과 8
+  * 윈도우 8
 
 ### 빠른 예제
 

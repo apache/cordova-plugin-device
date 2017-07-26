@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 このプラグインをグローバル定義します `device` オブジェクトは、デバイスのハードウェアとソフトウェアについて説明します。 それは後まで利用可能なオブジェクトがグローバル スコープでは、 `deviceready` イベント。
 
@@ -34,11 +36,11 @@
 
 ## プロパティ
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
@@ -46,15 +48,15 @@
 
 ### サポートされているプラットフォーム
 
-*   アマゾン火 OS
-*   アンドロイド
-*   ブラックベリー 10
-*   ブラウザー
-*   Firefox の OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 と 8
-*   Windows 8
+  * アマゾン火 OS
+  * アンドロイド
+  * ブラックベリー 10
+  * ブラウザー
+  * Firefox の OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 と 8
+  * Windows 8
 
 ## device.model
 
@@ -62,13 +64,13 @@
 
 ### サポートされているプラットフォーム
 
-*   アンドロイド
-*   ブラックベリー 10
-*   ブラウザー
-*   iOS
-*   Tizen
-*   Windows Phone 7 と 8
-*   Windows 8
+  * アンドロイド
+  * ブラックベリー 10
+  * ブラウザー
+  * iOS
+  * Tizen
+  * Windows Phone 7 と 8
+  * Windows 8
 
 ### 簡単な例
 
@@ -82,18 +84,15 @@
 
 ### Android の癖
 
-*   生産コード名は[モデル名][1]の代わりに[製品名][2]を取得します。 たとえば、ネクサス 1 つを返します `Passion` 、Motorola のドロイドを返します`voles`.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#MODEL
- [2]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
+  * 生産コード名は[モデル名](http://developer.android.com/reference/android/os/Build.html#MODEL)の代わりに[製品名](http://developer.android.com/reference/android/os/Build.html#PRODUCT)を取得します。 たとえば、ネクサス 1 つを返します `Passion` 、Motorola のドロイドを返します`voles`.
 
 ### Tizen の癖
 
-*   たとえば、ベンダーによって割り当てられているデバイスのモデルを返します`TIZEN`
+  * たとえば、ベンダーによって割り当てられているデバイスのモデルを返します`TIZEN`
 
 ### Windows Phone 7 と 8 癖
 
-*   製造元によって指定されたデバイスのモデルを返します。たとえば、三星フォーカスを返します`SGH-i917`.
+  * 製造元によって指定されたデバイスのモデルを返します。たとえば、三星フォーカスを返します`SGH-i917`.
 
 ## device.platform
 
@@ -104,14 +103,14 @@
 
 ### サポートされているプラットフォーム
 
-*   アンドロイド
-*   ブラックベリー 10
-*   Browser4
-*   Firefox の OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 と 8
-*   Windows 8
+  * アンドロイド
+  * ブラックベリー 10
+  * Browser4
+  * Firefox の OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 と 8
+  * Windows 8
 
 ### 簡単な例
 
@@ -136,25 +135,23 @@ Windows Phone 8 デバイスとプラットフォームを報告します。`Win
 
 ## device.uuid
 
-デバイスのユニバーサル ・ ユニーク識別子 ([UUID][3]を取得します。).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+デバイスのユニバーサル ・ ユニーク識別子 ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)を取得します。).
 
     var string = device.uuid;
     
 
-### 説明
+### 解説
 
 UUID を生成する方法の詳細は、デバイスの製造元によって決定され、デバイスのプラットフォームやモデルに固有です。
 
 ### サポートされているプラットフォーム
 
-*   アンドロイド
-*   ブラックベリー 10
-*   iOS
-*   Tizen
-*   Windows Phone 7 と 8
-*   Windows 8
+  * アンドロイド
+  * ブラックベリー 10
+  * iOS
+  * Tizen
+  * Windows Phone 7 と 8
+  * Windows 8
 
 ### 簡単な例
 
@@ -181,13 +178,13 @@ UUID を生成する方法の詳細は、デバイスの製造元によって決
 
 ### サポートされているプラットフォーム
 
-*   アンドロイド 2.1 +
-*   ブラックベリー 10
-*   ブラウザー
-*   iOS
-*   Tizen
-*   Windows Phone 7 と 8
-*   Windows 8
+  * アンドロイド 2.1 +
+  * ブラックベリー 10
+  * ブラウザー
+  * iOS
+  * Tizen
+  * Windows Phone 7 と 8
+  * Windows 8
 
 ### 簡単な例
 

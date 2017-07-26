@@ -19,6 +19,8 @@
  *
 */
 
+/* global PluginResult */
+
 function getModelName () {
     var modelName = window.qnx.webplatform.device.modelName;
     //Pre 10.2 (meaning Z10 or Q10)
@@ -57,6 +59,7 @@ module.exports = {
             modelName = getModelName(),
             uuid = getUUID(),
             info = {
+                manufacturer: 'BlackBerry',
                 platform: "blackberry10",
                 version: window.qnx.webplatform.device.scmBundle,
                 model: modelName,

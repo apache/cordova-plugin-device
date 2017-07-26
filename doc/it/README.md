@@ -1,23 +1,25 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)
 
 Questo plugin definisce un global `device` oggetto che descrive il dispositivo hardware e software. Sebbene l'oggetto sia in ambito globale, non è disponibile fino a dopo il `deviceready` evento.
 
@@ -34,11 +36,11 @@ Questo plugin definisce un global `device` oggetto che descrive il dispositivo h
 
 ## Proprietà
 
-*   device.cordova
-*   device.model
-*   device.platform
-*   device.uuid
-*   device.version
+  * device.cordova
+  * device.model
+  * device.platform
+  * device.uuid
+  * device.version
 
 ## device.cordova
 
@@ -46,15 +48,15 @@ Ottenere la versione di Cordova in esecuzione nel dispositivo.
 
 ### Piattaforme supportate
 
-*   Amazon fuoco OS
-*   Android
-*   BlackBerry 10
-*   Browser
-*   Firefox OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 e 8
-*   Windows 8
+  * Amazon fuoco OS
+  * Android
+  * BlackBerry 10
+  * Browser
+  * Firefox OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 e 8
+  * Windows 8
 
 ## device.model
 
@@ -62,13 +64,13 @@ Il `device.model` restituisce il nome del modello del dispositivo o del prodotto
 
 ### Piattaforme supportate
 
-*   Android
-*   BlackBerry 10
-*   Browser
-*   iOS
-*   Tizen
-*   Windows Phone 7 e 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Browser
+  * iOS
+  * Tizen
+  * Windows Phone 7 e 8
+  * Windows 8
 
 ### Esempio rapido
 
@@ -82,18 +84,15 @@ Il `device.model` restituisce il nome del modello del dispositivo o del prodotto
 
 ### Stranezze Android
 
-*   Ottiene il [nome del prodotto][1] anziché il [nome del modello][2], che è spesso il nome di codice di produzione. Ad esempio, restituisce il Nexus One `Passion` , e Motorola Droid restituisce`voles`.
-
- [1]: http://developer.android.com/reference/android/os/Build.html#PRODUCT
- [2]: http://developer.android.com/reference/android/os/Build.html#MODEL
+  * Ottiene il [nome del prodotto](http://developer.android.com/reference/android/os/Build.html#PRODUCT) anziché il [nome del modello](http://developer.android.com/reference/android/os/Build.html#MODEL), che è spesso il nome di codice di produzione. Ad esempio, restituisce il Nexus One `Passion` , e Motorola Droid restituisce`voles`.
 
 ### Tizen stranezze
 
-*   Restituisce il modello di dispositivo assegnato dal fornitore, ad esempio,`TIZEN`
+  * Restituisce il modello di dispositivo assegnato dal fornitore, ad esempio,`TIZEN`
 
 ### Windows Phone 7 e 8 stranezze
 
-*   Restituisce il modello di dispositivo specificato dal produttore. Ad esempio, restituisce il Samsung Focus`SGH-i917`.
+  * Restituisce il modello di dispositivo specificato dal produttore. Ad esempio, restituisce il Samsung Focus`SGH-i917`.
 
 ## device.platform
 
@@ -104,14 +103,14 @@ Ottenere il nome del sistema operativo del dispositivo.
 
 ### Piattaforme supportate
 
-*   Android
-*   BlackBerry 10
-*   Browser4
-*   Firefox OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 e 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * Browser4
+  * Firefox OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 e 8
+  * Windows 8
 
 ### Esempio rapido
 
@@ -136,9 +135,7 @@ Dispositivi Windows Phone 8 segnalano la piattaforma come`Win32NT`.
 
 ## device.uuid
 
-Ottenere identificatore del dispositivo univoco universale ([UUID][3]).
-
- [3]: http://en.wikipedia.org/wiki/Universally_Unique_Identifier
+Ottenere identificatore del dispositivo univoco universale ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
 
     var string = device.uuid;
     
@@ -149,12 +146,12 @@ I dettagli di come viene generato un UUID sono determinati dal produttore del di
 
 ### Piattaforme supportate
 
-*   Android
-*   BlackBerry 10
-*   iOS
-*   Tizen
-*   Windows Phone 7 e 8
-*   Windows 8
+  * Android
+  * BlackBerry 10
+  * iOS
+  * Tizen
+  * Windows Phone 7 e 8
+  * Windows 8
 
 ### Esempio rapido
 
@@ -181,13 +178,13 @@ Ottenere la versione del sistema operativo.
 
 ### Piattaforme supportate
 
-*   Android 2.1 +
-*   BlackBerry 10
-*   Browser
-*   iOS
-*   Tizen
-*   Windows Phone 7 e 8
-*   Windows 8
+  * Android 2.1 +
+  * BlackBerry 10
+  * Browser
+  * iOS
+  * Tizen
+  * Windows Phone 7 e 8
+  * Windows 8
 
 ### Esempio rapido
 
