@@ -287,14 +287,15 @@ var isSim = device.isVirtual;
 ### Supported Platforms
 
 - Android 2.1+
+- Browser
 - iOS
 - Windows Phone 8
 - Windows
 - OSX
 
-### OSX Quirk
+### OSX and Browser Quirk
 
-The `isVirtual` property on OS X always returns false.
+The `isVirtual` property on OS X and Browser always returns false.
 
 ## device.serial
 

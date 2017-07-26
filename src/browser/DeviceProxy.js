@@ -75,7 +75,8 @@ module.exports = {
                 platform: getPlatform(),
                 model: getModel(),
                 version: getVersion(),
-                uuid: null
+                uuid: null,
+                isVirtual: false
             });
         }, 0);
     }
