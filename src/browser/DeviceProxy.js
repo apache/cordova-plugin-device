@@ -20,19 +20,19 @@
  */
 var browser = require('cordova/platform');
 
-function getPlatform() {
-    return "browser";
+function getPlatform () {
+    return 'browser';
 }
 
-function getModel() {
+function getModel () {
     return getBrowserInfo(true);
 }
 
-function getVersion() {
+function getVersion () {
     return getBrowserInfo(false);
 }
 
-function getBrowserInfo(getModel) {
+function getBrowserInfo (getModel) {
     var userAgent = navigator.userAgent;
     var returnVal = '';
     var offset;
@@ -66,7 +66,6 @@ function getBrowserInfo(getModel) {
     return returnVal;
 }
 
-
 module.exports = {
     getDeviceInfo: function (success, error) {
         setTimeout(function () {
@@ -75,10 +74,11 @@ module.exports = {
                 platform: getPlatform(),
                 model: getModel(),
                 version: getVersion(),
-                uuid: null
+                uuid: null,
+                isVirtual: false
             });
         }, 0);
     }
 };
 
-require("cordova/exec/proxy").add("Device", module.exports);
+require('cordova/exec/proxy').add('Device', module.exports);

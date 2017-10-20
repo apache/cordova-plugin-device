@@ -22,12 +22,16 @@
 /* global Cordova */
 
 module.exports = {
-    getInfo:function(win,fail,args) {
+    getInfo: function (win, fail, args) {
         Cordova.exec(function (model, cordova, platform, uuid, version) {
-            win({name: name, model: model, cordova: cordova,
-                 platform: platform, uuid: uuid, version: version});
-        }, null, "com.cordova.Device", "getInfo", []);
+            win({name: name, // eslint-disable-line no-undef
+                model: model,
+                cordova: cordova,
+                platform: platform,
+                uuid: uuid,
+                version: version});
+        }, null, 'com.cordova.Device', 'getInfo', []);
     }
 };
 
-require("cordova/exec/proxy").add("Device", module.exports);
+require('cordova/exec/proxy').add('Device', module.exports);
