@@ -61,14 +61,9 @@ Get the version of Cordova running on the device.
 
 ### Supported Platforms
 
-- Amazon Fire OS
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Windows Phone 7 and 8
 - Windows
 - OSX
 
@@ -81,11 +76,8 @@ different across versions of the same product.
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
 - iOS
-- Tizen
-- Windows Phone 7 and 8
 - Windows
 - OSX
 
@@ -107,14 +99,6 @@ var model = device.model;
 
 - Gets the [product name](http://developer.android.com/reference/android/os/Build.html#PRODUCT) instead of the [model name](http://developer.android.com/reference/android/os/Build.html#MODEL), which is often the production code name. For example, the Nexus One returns `Passion`, and Motorola Droid returns `voles`.
 
-### Tizen Quirks
-
-- Returns the device model assigned by the vendor, for example, `TIZEN`
-
-### Windows Phone 7 and 8 Quirks
-
-- Returns the device model specified by the manufacturer. For example, the Samsung Focus returns `SGH-i917`.
-
 ## device.platform
 
 Get the device's operating system name.
@@ -125,12 +109,8 @@ var string = device.platform;
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Windows Phone 7 and 8
 - Windows
 - OSX
 
@@ -148,14 +128,6 @@ var string = device.platform;
 var devicePlatform = device.platform;
 ```
 
-### Windows Phone 7 Quirks
-
-Windows Phone 7 devices report the platform as `WinCE`.
-
-### Windows Phone 8 Quirks
-
-Windows Phone 8 devices report the platform as `Win32NT`.
-
 ## device.uuid
 
 Get the device's Universally Unique Identifier ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
@@ -171,10 +143,7 @@ The details of how a UUID is generated are determined by the device manufacturer
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Tizen
-- Windows Phone 7 and 8
 - Windows
 - OSX
 
@@ -206,14 +175,6 @@ The UUID will be the same if app is restored from a backup or iCloud as it is sa
 
 The `uuid` on OSX is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property.
 
-### Windows Phone 7 and 8 Quirks
-
-The `uuid` for Windows Phone 7 requires the permission
-`ID_CAP_IDENTITY_DEVICE`.  Microsoft will likely deprecate this
-property soon.  If the capability is not available, the application
-generates a persistent guid that is maintained for the duration of the
-application's installation on the device.
-
 ## device.version
 
 Get the operating system version.
@@ -223,11 +184,8 @@ Get the operating system version.
 ### Supported Platforms
 
 - Android 2.1+
-- BlackBerry 10
 - Browser
 - iOS
-- Tizen
-- Windows Phone 7 and 8
 - Windows
 - OSX
 
@@ -261,9 +219,7 @@ Get the device's manufacturer.
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Windows Phone 7 and 8
 - Windows
 
 ### Quick Example
@@ -289,7 +245,6 @@ var isSim = device.isVirtual;
 - Android 2.1+
 - Browser
 - iOS
-- Windows Phone 8
 - Windows
 - OSX
 
