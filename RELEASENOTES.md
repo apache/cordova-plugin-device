@@ -20,6 +20,9 @@
 -->
 # Release Notes
 
+### 2.0.0 (Dec 15, 2017)
+* [CB-13670](https://issues.apache.org/jira/browse/CB-13670) Remove deprecated platforms
+
 ### 1.1.7 (Nov 06, 2017)
 * [CB-13472](https://issues.apache.org/jira/browse/CB-13472) (CI) Fixed Travis **Android** builds again
 * [CB-12895](https://issues.apache.org/jira/browse/CB-12895) setup `eslint` and removed `jshint`
