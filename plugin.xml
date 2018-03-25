@@ -55,8 +55,6 @@
 
         <header-file src="src/ios/CDVDevice.h" />
         <source-file src="src/ios/CDVDevice.m" />
-
-		<framework src="libz.tbd" />
     </platform>
 
     <!-- windows -->
