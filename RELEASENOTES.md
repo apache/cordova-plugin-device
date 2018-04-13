@@ -20,6 +20,9 @@
 -->
 # Release Notes
 
+### 2.0.2 (Apr 12, 2018)
+* [CB-13893](https://issues.apache.org/jira/browse/CB-13893) **iOS** delete `libz.tbd` from device plugin
+
 ### 2.0.1 (Dec 27, 2017)
 * [CB-13702](https://issues.apache.org/jira/browse/CB-13702) Fix to allow 2.0.0 version install
 
