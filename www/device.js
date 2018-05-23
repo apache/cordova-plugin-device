@@ -44,6 +44,7 @@ function Device () {
     this.manufacturer = null;
     this.isVirtual = null;
     this.serial = null;
+    this.bluetooth = null;
 
     var me = this;
 
@@ -61,6 +62,7 @@ function Device () {
             me.isVirtual = info.isVirtual;
             me.manufacturer = info.manufacturer || 'unknown';
             me.serial = info.serial || 'unknown';
+            me.bluetooth = info.bluetooth || 'unknown';
             channel.onCordovaInfoReady.fire();
         }, function (e) {
             me.available = false;
