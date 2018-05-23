@@ -76,6 +76,7 @@ public class Device extends CordovaPlugin {
             r.put("manufacturer", this.getManufacturer());
 	        r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
+	    r.put("bluetooth", this.getBluetoothMAC());
             callbackContext.success(r);
         }
         else {
@@ -110,6 +111,11 @@ public class Device extends CordovaPlugin {
      */
     public String getUuid() {
         String uuid = Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        return uuid;
+    }
+
+    public String getBluetoothMAC() {
+        String mac = Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), "bluetooth_address");
         return uuid;
     }
 
