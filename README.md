@@ -44,6 +44,12 @@ Report issues with this plugin on the [Apache Cordova issue tracker](https://iss
 
     cordova plugin add cordova-plugin-device
 
+## HD/ SD Detection
+
+- iOS directly injects the `HD_APP` variable into Javascript
+- Android can't reliable inject variables anymore, so we expose the `NativeHDCheck` object instead.
+    - `NativeHDCheck` exposes the method `isHDApp()` to Javascript
+
 ## Properties
 
 - device.cordova
