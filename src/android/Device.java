@@ -98,8 +98,15 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
         systemWebView.getSettings().setAppCacheMaxSize(0);
         systemWebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
 
+        HDCheck hdCheck = new HDCheck(this.cordova.getActivity().getApplicationContext());
+
+        isTablet = hdCheck.isHDApp();
+        if (!isTablet) {
+            this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         // "Injects" the NativeHDCheck to Javascript and allows it to natively check if the device is HD or SD via its methode ".isHDApp()"
-        systemWebView.addJavascriptInterface(new HDCheck(this.cordova.getActivity().getApplicationContext()), "NativeHDCheck");
+        systemWebView.addJavascriptInterface(hdCheck, "NativeHDCheck");
 
         // shake recognition
         SensorManager sensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -124,7 +131,7 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             r.put("platform", ANDROID_PLATFORM);
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
-	        r.put("isVirtual", this.isVirtual());
+            r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
 
             r.put("appname", getAppName());
@@ -228,8 +235,8 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
     }
 
     public boolean isVirtual() {
-	return android.os.Build.FINGERPRINT.contains("generic") ||
-	    android.os.Build.PRODUCT.contains("sdk");
+        return android.os.Build.FINGERPRINT.contains("generic") ||
+                android.os.Build.PRODUCT.contains("sdk");
     }
 
     @Override
