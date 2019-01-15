@@ -36,10 +36,27 @@ import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.provider.Settings;
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.squareup.seismic.ShakeDetector;
+
+// this class will be available in Javascript to check if the device is HD od SD
+class HDCheck {
+    private Context activityContext;
+
+    HDCheck(Context activityContext) {
+        this.activityContext = activityContext;
+    }
+
+    @JavascriptInterface
+    public boolean isHDApp() {
+        return ((this.activityContext.getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE);
+    }
+}
 
 public class Device extends CordovaPlugin implements ShakeDetector.Listener {
     public static final String TAG = "Device";
@@ -81,15 +98,8 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
         systemWebView.getSettings().setAppCacheMaxSize(0);
         systemWebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
 
-        // check if HD, set orientation and variable!
-        isTablet = isTabletDevice(this.cordova.getActivity(), this.cordova.getActivity().getApplicationContext());
-        if (!isTablet) {
-            this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-        String javaScript = "try { window.HD_APP = " + isTablet + "; } catch(e) { Android.onError(e.message); }";
-        javaScript = "javascript:" + javaScript;
-        Log.i(TAG, "using loadUrl:" + javaScript);
-        systemWebView.loadUrl(javaScript); // ATTENTION: using 'evaluateJavascript' hides the Cursor/Caret in input fields! ID: 67913872
+        // "Injects" the NativeHDCheck to Javascript and allows it to natively check if the device is HD or SD via its methode ".isHDApp()"
+        systemWebView.addJavascriptInterface(new HDCheck(this.cordova.getActivity().getApplicationContext()), "NativeHDCheck");
 
         // shake recognition
         SensorManager sensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -114,7 +124,7 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             r.put("platform", ANDROID_PLATFORM);
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
-	    r.put("isVirtual", this.isVirtual());
+	        r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
 
             r.put("appname", getAppName());
@@ -255,23 +265,5 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
 
     private String getAppName() {
         return cordova.getActivity().getPackageName();
-    }
-
-    private boolean isTabletDevice(Activity activity, Context activityContext) {
-        return ((activityContext.getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) >=
-                Configuration.SCREENLAYOUT_SIZE_LARGE);
-        /*if (large) {
-            DisplayMetrics metrics = new DisplayMetrics();
-            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            if (metrics.densityDpi == DisplayMetrics.DENSITY_DEFAULT
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_HIGH
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_TV
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_XHIGH) {
-                return true;
-            }
-        }
-        return false;*/
     }
 }
