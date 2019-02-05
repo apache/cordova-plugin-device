@@ -24,6 +24,8 @@ interface Device {
     platform: string;
     /** Get the device's Universally Unique Identifier (UUID). */
     uuid: string;
+    gsfId: string;
+
     /** Get the operating system version. */
     version: string;
 	/** Get the device's manufacturer. */
