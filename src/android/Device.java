@@ -40,6 +40,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.loxone.kerberos.pushnotification.PushNotification;
 import com.squareup.seismic.ShakeDetector;
 
 // this class will be available in Javascript to check if the device is HD od SD
@@ -131,6 +132,7 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             r.put("platform", ANDROID_PLATFORM);
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
+            r.put("arePlayservicesAvailable", PushNotification.checkPlayServices());
             r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
 
