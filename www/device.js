@@ -68,6 +68,7 @@ function Device() {
             me.model = info.model;
             me.isVirtual = info.isVirtual;
             me.manufacturer = info.manufacturer || 'unknown';
+            me.arePlayservicesAvailable = info.arePlayservicesAvailable || false;
             me.serial = info.serial || 'unknown';
 
             me.appversion = info.appversion;
