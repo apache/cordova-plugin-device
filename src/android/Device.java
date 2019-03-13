@@ -40,6 +40,8 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.loxone.kerberos.pushnotification.PushNotification;
 import com.squareup.seismic.ShakeDetector;
 
@@ -132,7 +134,7 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             r.put("platform", ANDROID_PLATFORM);
             r.put("model", this.getModel());
             r.put("manufacturer", this.getManufacturer());
-            r.put("arePlayservicesAvailable", PushNotification.checkPlayServices());
+            r.put("arePlayservicesAvailable", checkPlayServices(this.cordova.getActivity().getApplicationContext()));
             r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
 
@@ -270,6 +272,30 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
             versionName = "0";
         }
         return versionName;
+    }
+
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     * @param ctx The content of the application
+     */
+    public static boolean checkPlayServices(Context ctx) {
+        GoogleApiAvailability googlePlayServicesUtil = GoogleApiAvailability.getInstance();
+
+        int resultCode = googlePlayServicesUtil.isGooglePlayServicesAvailable(ctx);
+
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (googlePlayServicesUtil.isUserResolvableError(resultCode)) {
+                Log.i(TAG, "Google PlayServices missing!");
+            } else {
+                Log.e(TAG, "This device is not supported.");
+            }
+            return false;
+        } else {
+            Log.v(TAG, "This device supports GooglePlayServices!");
+        }
+        return true;
     }
 
     private String getAppName() {
