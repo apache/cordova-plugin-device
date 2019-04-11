@@ -27,6 +27,8 @@
 #import "Macros.h"
 #import <WebKit/WebKit.h>
 
+@import LocalAuthentication;
+
 @implementation UIDevice (ModelVersion)
 
 - (NSString*)modelVersion
@@ -105,6 +107,7 @@
              
              @"isTablet": @([self isTablet]),
              @"has3DTouch": @([self has3DTouch]),
+             @"biometricType": [self getBiometryType],
              
              @"accessibility": accessibility
              };
@@ -157,6 +160,23 @@
     } else {
         return false;
     }
+}
+
+-(NSString *)getBiometryType {
+    LAContext * laContext = [LAContext alloc];
+    NSString *bioType = @"none";
+    
+    if ([[laContext init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+        bioType = @"touchID";
+        
+        if (@available(iOS 11.0, *)) {
+            if ([laContext biometryType] == LABiometryTypeFaceID) {
+                bioType = @"faceID";
+            }
+        }
+    }
+    
+    return bioType;
 }
 
 
