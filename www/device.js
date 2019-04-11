@@ -76,6 +76,7 @@ function Device() {
 
             me.isTablet = info.isTablet || false;
             me.has3DTouch = info.has3DTouch || false;
+            me.biometricType = info.biometricType || "unknown";
 
             me.accessibility = info.accessibility || { textSizeAdjustment: 100 };
 
