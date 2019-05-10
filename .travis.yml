@@ -35,11 +35,7 @@ _android: &_android
       - 'google-gdk-license-.+'
 
 matrix:
-  include:
-    # additional `npm test` in directory
-    - env: ADDITIONAL_TESTS_DIR=./spec/testable-plugin/tests/foo
-      <<: *_ios
-    
+  include:    
     # local tests, without saucelabs
     - env: PLATFORM=local/browser
       <<: *_ios
