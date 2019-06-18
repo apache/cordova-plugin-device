@@ -1,3 +1,7 @@
+# This Travis configuration file is built after a Cordova Paramedic 
+# specific template with minimal modifications and adaptations:
+# https://github.com/apache/cordova-paramedic/blob/master/.travis.yml
+
 sudo: false
 
 addons:
@@ -66,6 +70,8 @@ matrix:
     - env: PLATFORM=android-8.0
       <<: *_android
     - env: PLATFORM=android-8.1
+      <<: *_android
+    - env: PLATFORM=android-9.0
       <<: *_android
 
 before_install:
