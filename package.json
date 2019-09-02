@@ -1,6 +1,6 @@
 {
   "name": "fitatu-cordova-plugin-device",
-  "version": "1.1.4-dev",
+  "version": "1.1.4",
   "description": "Cordova Device Plugin",
   "cordova": {
     "id": "cordova-plugin-device",
