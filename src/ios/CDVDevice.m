@@ -55,7 +55,7 @@
 {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString* UUID_KEY = @"CDVUUID";
-    
+
     // Check user defaults first to maintain backwards compaitibility with previous versions
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
@@ -71,7 +71,7 @@
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
     }
-    
+
     return app_uuid;
 }
 
@@ -86,10 +86,10 @@
 - (NSDictionary*)deviceProperties
 {
     UIDevice* device = [UIDevice currentDevice];
-    
+
     NSString *versionString = [NSString stringWithFormat:@"%@ (%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
     NSString *nameString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
-    
+
     NSNumber *adjustment = [NSNumber numberWithInt:[self calculateFontSizeAdjustment]];
     NSDictionary *accessibility = [NSDictionary dictionaryWithObject:adjustment forKey:@"textSizeAdjustment"];
 
@@ -101,14 +101,14 @@
              @"uuid": [self uniqueAppInstanceIdentifier:device],
              @"cordova": [[self class] cordovaVersion],
              @"isVirtual": @([self isVirtual]),
-             
+
              @"appversion": versionString,
              @"appname": nameString,
-             
+
              @"isTablet": @([self isTablet]),
              @"has3DTouch": @([self has3DTouch]),
              @"biometricType": [self getBiometryType],
-             
+
              @"accessibility": accessibility
              };
 }
@@ -135,17 +135,17 @@
 
 -(void)pluginInitialize {
     [super pluginInitialize];
-    
+
     // clearing the webView cache.. (we had a view problems with cached, invalid local responses)
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    
+
     WKWebView *webview = (WKWebView *)[self webView];
     //[webview evaluateJavaScript:[NSString stringWithFormat:@"window.HD_APP = %@;", [self isTablet] ? @"true" : @"false"] completionHandler:nil];
-    
+
     UIScreenEdgePanGestureRecognizer *screenEdgeRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(navigateBack:)];
     screenEdgeRecognizer.edges = UIRectEdgeLeft;
     [webview addGestureRecognizer:screenEdgeRecognizer];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fontSizeDidChange) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
@@ -154,7 +154,9 @@
 }
 
 -(BOOL)has3DTouch {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+    if (SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(@"13.0")) {
+        return true;
+    } else if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         UIWindow *mainWindow = [[UIApplication sharedApplication] delegate].window;
         return [mainWindow traitCollection].forceTouchCapability == UIForceTouchCapabilityAvailable;
     } else {
@@ -165,17 +167,17 @@
 -(NSString *)getBiometryType {
     LAContext * laContext = [LAContext alloc];
     NSString *bioType = @"none";
-    
+
     if ([[laContext init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
         bioType = @"touchID";
-        
+
         if (@available(iOS 11.0, *)) {
             if ([laContext biometryType] == LABiometryTypeFaceID) {
                 bioType = @"faceID";
             }
         }
     }
-    
+
     return bioType;
 }
 
