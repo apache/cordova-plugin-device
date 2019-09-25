@@ -154,7 +154,8 @@
 }
 
 -(BOOL)has3DTouch {
-    if (SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(@"13.0")) {
+    // All iOS 13 devices support 3D-Touch, it has been re-branded to HapticTouch
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"13.0")) {
         return true;
     } else if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         UIWindow *mainWindow = [[UIApplication sharedApplication] delegate].window;
