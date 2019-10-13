@@ -21,7 +21,6 @@
 
 var argscheck = require('cordova/argscheck');
 var channel = require('cordova/channel');
-var utils = require('cordova/utils');
 var exec = require('cordova/exec');
 var cordova = require('cordova');
 
@@ -64,7 +63,7 @@ function Device () {
             channel.onCordovaInfoReady.fire();
         }, function (e) {
             me.available = false;
-            utils.alert('[ERROR] Error initializing Cordova: ' + e);
+            console.error('[ERROR] Error initializing cordova-plugin-device: ' + e);
         });
     });
 }
