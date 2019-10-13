@@ -64,7 +64,7 @@ function Device () {
             channel.onCordovaInfoReady.fire();
         }, function (e) {
             me.available = false;
-            utils.alert('[ERROR] Error initializing Cordova: ' + e);
+            console.error('[ERROR] Error initializing cordova-plugin-device: ' + e);
         });
     });
 }
