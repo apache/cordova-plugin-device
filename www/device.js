@@ -38,6 +38,7 @@ function Device () {
     this.platform = null;
     this.version = null;
     this.uuid = null;
+    this.gsfId = null;
     this.cordova = null;
     this.model = null;
     this.manufacturer = null;
@@ -55,6 +56,7 @@ function Device () {
             me.platform = info.platform;
             me.version = info.version;
             me.uuid = info.uuid;
+            me.gsfId = info.gsfId;
             me.cordova = buildLabel;
             me.model = info.model;
             me.isVirtual = info.isVirtual;
