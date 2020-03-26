@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
 
 var argscheck = require('cordova/argscheck');
 var channel = require('cordova/channel');
@@ -47,24 +47,27 @@ function Device () {
     var me = this;
 
     channel.onCordovaReady.subscribe(function () {
-        me.getInfo(function (info) {
-            // ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
-            // TODO: CB-5105 native implementations should not return info.cordova
-            var buildLabel = cordova.version;
-            me.available = true;
-            me.platform = info.platform;
-            me.version = info.version;
-            me.uuid = info.uuid;
-            me.cordova = buildLabel;
-            me.model = info.model;
-            me.isVirtual = info.isVirtual;
-            me.manufacturer = info.manufacturer || 'unknown';
-            me.serial = info.serial || 'unknown';
-            channel.onCordovaInfoReady.fire();
-        }, function (e) {
-            me.available = false;
-            console.error('[ERROR] Error initializing cordova-plugin-device: ' + e);
-        });
+        me.getInfo(
+            function (info) {
+                // ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
+                // TODO: CB-5105 native implementations should not return info.cordova
+                var buildLabel = cordova.version;
+                me.available = true;
+                me.platform = info.platform;
+                me.version = info.version;
+                me.uuid = info.uuid;
+                me.cordova = buildLabel;
+                me.model = info.model;
+                me.isVirtual = info.isVirtual;
+                me.manufacturer = info.manufacturer || 'unknown';
+                me.serial = info.serial || 'unknown';
+                channel.onCordovaInfoReady.fire();
+            },
+            function (e) {
+                me.available = false;
+                console.error('[ERROR] Error initializing cordova-plugin-device: ' + e);
+            }
+        );
     });
 }
 
