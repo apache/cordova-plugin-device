@@ -260,7 +260,7 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
 
 
     private String getAppVersion() {
-        String packageName = getAppName();
+        String packageName = cordova.getActivity().getPackageName();
         String versionName = null;
         try {
             PackageManager packageManager = cordova.getActivity().getPackageManager();
@@ -299,6 +299,6 @@ public class Device extends CordovaPlugin implements ShakeDetector.Listener {
     }
 
     private String getAppName() {
-        return cordova.getActivity().getPackageName();
+        return String.valueOf(cordova.getActivity().getTitle());
     }
 }
