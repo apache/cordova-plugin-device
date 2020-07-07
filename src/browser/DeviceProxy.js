@@ -41,10 +41,9 @@ function getBrowserInfo (getModel) {
         if (getModel) {
             returnVal = 'Edge';
         } else {
+            returnVal = userAgent.substring(offset + 4);
             if ((offset = userAgent.indexOf('Edge')) !== -1) {
                 returnVal = userAgent.substring(offset + 5);
-            } else {
-                returnVal = userAgent.substring(offset + 4);
             }
         }
     } else if ((offset = userAgent.indexOf('Chrome')) !== -1) {
