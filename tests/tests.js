@@ -17,9 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
-
-/* eslint-env jasmine */
+ */
 
 exports.defineAutoTests = function () {
     describe('Device Information (window.device)', function () {
@@ -29,18 +27,18 @@ exports.defineAutoTests = function () {
 
         it('should contain a platform specification that is a string', function () {
             expect(window.device.platform).toBeDefined();
-            expect((String(window.device.platform)).length > 0).toBe(true);
+            expect(String(window.device.platform).length > 0).toBe(true);
         });
 
         it('should contain a version specification that is a string', function () {
             expect(window.device.version).toBeDefined();
-            expect((String(window.device.version)).length > 0).toBe(true);
+            expect(String(window.device.version).length > 0).toBe(true);
         });
 
         it('should contain a UUID specification that is a string or a number', function () {
             expect(window.device.uuid).toBeDefined();
             if (typeof window.device.uuid === 'string' || typeof window.device.uuid === 'object') {
-                expect((String(window.device.uuid)).length > 0).toBe(true);
+                expect(String(window.device.uuid).length > 0).toBe(true);
             } else {
                 expect(window.device.uuid > 0).toBe(true);
             }
@@ -48,12 +46,12 @@ exports.defineAutoTests = function () {
 
         it('should contain a cordova specification that is a string', function () {
             expect(window.device.cordova).toBeDefined();
-            expect((String(window.device.cordova)).length > 0).toBe(true);
+            expect(String(window.device.cordova).length > 0).toBe(true);
         });
 
         it('should depend on the presence of cordova.version string', function () {
             expect(window.cordova.version).toBeDefined();
-            expect((String(window.cordova.version)).length > 0).toBe(true);
+            expect(String(window.cordova.version).length > 0).toBe(true);
         });
 
         it('should contain device.cordova equal to cordova.version', function () {
@@ -62,12 +60,12 @@ exports.defineAutoTests = function () {
 
         it('should contain a model specification that is a string', function () {
             expect(window.device.model).toBeDefined();
-            expect((String(window.device.model)).length > 0).toBe(true);
+            expect(String(window.device.model).length > 0).toBe(true);
         });
 
         it('should contain a manufacturer property that is a string', function () {
             expect(window.device.manufacturer).toBeDefined();
-            expect((String(window.device.manufacturer)).length > 0).toBe(true);
+            expect(String(window.device.manufacturer).length > 0).toBe(true);
         });
 
         it('should contain an isVirtual property that is a boolean', function () {
@@ -77,10 +75,8 @@ exports.defineAutoTests = function () {
 
         it('should contain a serial number specification that is a string', function () {
             expect(window.device.serial).toBeDefined();
-            expect((String(window.device.serial)).length > 0).toBe(true);
-
+            expect(String(window.device.serial).length > 0).toBe(true);
         });
-
     });
 };
 
@@ -100,14 +96,19 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         log.innerHTML = '';
     };
 
-    var device_tests = '<h3>Press Dump Device button to get device information</h3>' +
+    var device_tests =
+        '<h3>Press Dump Device button to get device information</h3>' +
         '<div id="dump_device"></div>' +
         'Expected result: Status box will get updated with device info. (i.e. platform, version, uuid, model, etc)';
 
     contentEl.innerHTML = '<div id="info"></div>' + device_tests;
 
-    createActionButton('Dump device', function () {
-        clearLog();
-        logMessage(JSON.stringify(window.device, null, '\t'));
-    }, 'dump_device');
+    createActionButton(
+        'Dump device',
+        function () {
+            clearLog();
+            logMessage(JSON.stringify(window.device, null, '\t'));
+        },
+        'dump_device'
+    );
 };
