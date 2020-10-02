@@ -13,10 +13,7 @@
       "osx"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/apache/cordova-plugin-device"
-  },
+  "repository": "github:apache/cordova-plugin-device",
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-device/issues"
   },
