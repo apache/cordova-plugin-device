@@ -14,9 +14,7 @@
     ]
   },
   "repository": "github:apache/cordova-plugin-device",
-  "bugs": {
-    "url": "https://github.com/apache/cordova-plugin-device/issues"
-  },
+  "bugs": "https://github.com/apache/cordova-plugin-device/issues",
   "keywords": [
     "cordova",
     "device",
