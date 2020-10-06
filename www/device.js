@@ -43,6 +43,7 @@ function Device () {
     this.manufacturer = null;
     this.isVirtual = null;
     this.serial = null;
+    this.isiOSAppOnMac = null;
 
     var me = this;
 
@@ -59,6 +60,7 @@ function Device () {
                 me.cordova = buildLabel;
                 me.model = info.model;
                 me.isVirtual = info.isVirtual;
+                me.isiOSAppOnMac = info.isiOSAppOnMac || false;
                 me.manufacturer = info.manufacturer || 'unknown';
                 me.serial = info.serial || 'unknown';
 
