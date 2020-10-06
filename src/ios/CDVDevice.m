@@ -53,7 +53,7 @@
 {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString* UUID_KEY = @"CDVUUID";
-    
+
     // Check user defaults first to maintain backwards compaitibility with previous versions
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
@@ -69,7 +69,7 @@
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
     }
-    
+
     return app_uuid;
 }
 
@@ -92,7 +92,8 @@
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],
              @"cordova": [[self class] cordovaVersion],
-             @"isVirtual": @([self isVirtual])
+             @"isVirtual": @([self isVirtual]),
+             @"isiOSAppOnMac": @([self isiOSAppOnMac])
              };
 }
 
@@ -110,6 +111,17 @@
     #else
         return false;
     #endif
+}
+
+
+- (BOOL) isiOSAppOnMac
+{
+    if (@available(iOS 14.0, *)) {
+        return [NSProcessInfo processInfo].isiOSAppOnMac;
+    } else {
+        // Fallback on earlier versions
+        return false;
+    }
 }
 
 @end
