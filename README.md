@@ -262,3 +262,16 @@ var string = device.serial;
 - Android
 - OSX
 
+## device.isiOSAppOnMac
+
+Is the iOS app running on the Mac desktop? Will only return true on a Mac with an ARM64 processor (Apple Silicon).
+Returns false for all other platforms.
+
+```js
+var boolean = device.isiOSAppOnMac;
+```
+
+### Supported Platforms
+
+- iOS
+

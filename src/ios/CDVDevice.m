@@ -119,7 +119,7 @@
     if (@available(iOS 14.0, *)) {
         return [NSProcessInfo processInfo].isiOSAppOnMac;
     } else {
-        // Fallback on earlier versions
+        // Fallback on earlier versions, and platforms
         return false;
     }
 }
