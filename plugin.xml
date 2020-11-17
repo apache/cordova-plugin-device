@@ -30,6 +30,10 @@
     <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</repo>
     <issue>https://issues.apache.org/jira/browse/CB/component/12320648</issue>
 
+    <engines>
+        <engine name="cordova-electron" version=">=3.0.0" />
+    </engines>
+
     <js-module src="www/device.js" name="device">
         <clobbers target="device" />
     </js-module>
@@ -55,6 +59,11 @@
 
         <header-file src="src/ios/CDVDevice.h" />
         <source-file src="src/ios/CDVDevice.m" />
+    </platform>
+
+    <!-- electron -->
+    <platform name="electron">
+        <framework src="src/electron" />
     </platform>
 
     <!-- windows -->

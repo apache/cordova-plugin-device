@@ -20,6 +20,7 @@
     "device",
     "ecosystem:cordova",
     "cordova-android",
+    "cordova-electron",
     "cordova-ios",
     "cordova-windows",
     "cordova-browser",
@@ -34,7 +35,8 @@
   "engines": {
     "cordovaDependencies": {
       "3.0.0": {
-        "cordova": ">100"
+        "cordova": ">100",
+        "cordova-electron": ">=3.0.0"
       }
     }
   },
