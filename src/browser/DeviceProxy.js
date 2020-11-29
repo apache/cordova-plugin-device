@@ -21,7 +21,7 @@
 var browser = require('cordova/platform');
 
 function getPlatform () {
-    return 'browser';
+    return navigator.userAgent.indexOf('Electron') !== -1 ? 'electron' : 'browser';
 }
 
 function getModel () {
