@@ -37,9 +37,13 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Device" >
+            <feature name="Device">
                 <param name="android-package" value="org.apache.cordova.device.Device"/>
             </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+            <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
         </config-file>
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
