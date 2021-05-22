@@ -148,7 +148,6 @@ The details of how a UUID is generated are determined by the device manufacturer
 
 ```js
 // Android: Returns a random 64-bit integer (as a string, again!)
-//          The integer is generated on the device's first boot
 //
 // BlackBerry: Returns the PIN number of the device
 //             This is a nine-digit unique integer (as a string, though!)
@@ -161,6 +160,22 @@ The details of how a UUID is generated are determined by the device manufacturer
 // unique to every GSM and UMTS mobile phone.
 var deviceID = device.uuid;
 ```
+
+### Android Quirk
+
+The `uuid` on Android is a 64-bit integer (expressed as a hexadecimal string). The behaviour of this `uuid` is different on two different OS versions-
+
+**For < Android 8.0 (API level 26)**
+
+In versions of the platform lower than Android 8.0, the `uuid` is randomly generated when the user first sets up the device and should remain constant for the lifetime of the user's device.
+
+**For Android 8.0 or higher**
+
+The above behaviour was changed in Android 8.0. Read it in detail [here](https://developer.android.com/about/versions/oreo/android-8.0-changes#privacy-all).
+
+On Android 8.0 and higher versions, the `uuid` will be unique to each combination of app-signing key, user, and device. The value is scoped by signing key and user. The value may change if a factory reset is performed on the device or if an APK signing key changes.
+
+Read more here https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID.
 
 ### iOS Quirk
 
