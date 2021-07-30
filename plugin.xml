@@ -20,9 +20,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-device"
-    version="2.0.4-dev">
+    xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-device" version="2.0.4-dev">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -31,13 +29,13 @@
     <issue>https://issues.apache.org/jira/browse/CB/component/12320648</issue>
 
     <js-module src="www/device.js" name="device">
-        <clobbers target="device" />
+        <clobbers target="cordova.plugins.device" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Device" >
+            <feature name="Device">
                 <param name="android-package" value="org.apache.cordova.device.Device"/>
             </feature>
         </config-file>
