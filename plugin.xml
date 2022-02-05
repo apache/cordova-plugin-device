@@ -81,7 +81,7 @@
     <platform name="osx">
         <config-file target="config.xml" parent="/*">
             <feature name="Device">
-                <param name="ios-package" value="CDVDevice"/>
+                <param name="ios-package" value="Device"/>
             </feature>
         </config-file>
 
