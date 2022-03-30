@@ -7,6 +7,7 @@
     "id": "cordova-plugin-device",
     "platforms": [
       "android",
+      "electron",
       "ios",
       "windows",
       "browser",
