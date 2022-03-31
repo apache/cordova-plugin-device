@@ -12,7 +12,7 @@
   "author": "Apache Software Foundation",
   "license": "Apache-2.0",
   "dependencies": {
-    "systeminformation": "^5.8.7"
+    "systeminformation": "^5.11.9"
   },
   "cordova": {
     "serviceName": "Device"
