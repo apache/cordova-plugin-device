@@ -23,7 +23,7 @@
 
 #define SYSTEM_VERSION_PLIST    @"/System/Library/CoreServices/SystemVersion.plist"
 
-@implementation CDVDevice
+@implementation Device
 
 - (NSString*) modelVersion {
     size_t size;
