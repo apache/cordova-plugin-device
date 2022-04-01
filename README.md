@@ -104,6 +104,16 @@ var model = device.model;
 
 - Gets the [product name](https://developer.android.com/reference/android/os/Build.html#PRODUCT) instead of the [model name](https://developer.android.com/reference/android/os/Build.html#MODEL), which is often the production code name. For example, the Nexus One returns `Passion`, and Motorola Droid returns `voles`.
 
+### iOS Quirks
+
+The model value is based on the identifier that Apple supplies.
+
+If you need the exact device name, e.g. iPhone 13 Pro Max, a mapper needs to be created to convert the known identifiers to the associated device name.
+
+Example: The identifier `iPhone14,3` is associated to the device `iPhone 13 Pro Max`.
+
+For the full list of all identifiers to device names, see [here](https://www.theiphonewiki.com/wiki/Models)
+
 ## device.platform
 
 Get the device's operating system name.
