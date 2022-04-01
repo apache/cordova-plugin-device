@@ -244,7 +244,7 @@ var isSim = device.isVirtual;
 
 ## device.sdkVersion (Android only)
 
-Will return the Android device's installed SDK version.
+Will return the Android device's SDK version.
 
 ### Supported Platforms
 
