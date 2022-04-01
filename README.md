@@ -52,7 +52,17 @@ function onDeviceReady() {
 
 ## device.cordova
 
-Get the version of Cordova running on the device.
+Returns the Cordova platform's version that is bundled in the application.
+
+The version information comes from the `cordova.js` file.
+
+This property does not display other installed platforms' version information. Only the respective running platform's version is displayed.
+
+Example:
+
+If Cordova Android 10.1.1 is installed on the Cordova project, the `cordova.js` file, in the Android application, will contain `10.1.1`.
+
+The `device.cordova` property will display `10.1.1`.
 
 ### Supported Platforms
 
