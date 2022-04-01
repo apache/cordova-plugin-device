@@ -49,6 +49,7 @@ function onDeviceReady() {
 - device.manufacturer
 - device.isVirtual
 - device.serial
+- device.sdkVersion (Android only)
 
 ## device.cordova
 
@@ -250,6 +251,10 @@ whether the device is running on a simulator.
 ```js
 var isSim = device.isVirtual;
 ```
+
+## device.sdkVersion (Android only)
+
+Will return the Android device's SDK version.
 
 ### Supported Platforms
 

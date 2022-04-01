@@ -61,6 +61,12 @@ function Device () {
                 me.isVirtual = info.isVirtual;
                 me.manufacturer = info.manufacturer || 'unknown';
                 me.serial = info.serial || 'unknown';
+
+                // SDK Version is Android specific. If defined, it will be appended.
+                if (info.sdkVersion !== undefined) {
+                    me.sdkVersion = info.sdkVersion;
+                }
+
                 channel.onCordovaInfoReady.fire();
             },
             function (e) {
