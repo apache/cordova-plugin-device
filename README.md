@@ -205,7 +205,6 @@ Get the operating system version.
 //
 // iOS:     iOS 3.2 returns "3.2"
 //
-// Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
 // Windows 8: return the current OS version, ex on Windows 8.1 returns 6.3.9600.16384
 //
 // OS X:        El Capitan would return "10.11.2"
