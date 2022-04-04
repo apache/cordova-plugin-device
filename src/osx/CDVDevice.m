@@ -37,7 +37,6 @@
     return modelVersion;
 }
 
-
 - (NSString*) getSerialNr {
     NSString* serialNr;
     io_service_t platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"));
@@ -101,6 +100,7 @@
     devProps[@"cordova"] = [[self class] cordovaVersion];
     devProps[@"serial"] = [self getSerialNr];
     devProps[@"isVirtual"] = @NO;
+    devProps[@"isiOSAppOnMac"]: [self isiOSAppOnMac];
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
@@ -108,6 +108,15 @@
 
 + (NSString*) cordovaVersion {
     return CDV_VERSION;
+}
+
++ (BOOL) isiOSAppOnMac {
+    if (@available(iOS 14.0, *)) {
+        return [NSProcessInfo processInfo].isiOSAppOnMac;
+    } else {
+        // Fallback on earlier versions and platforms
+        return false;
+    }
 }
 
 @end
