@@ -291,6 +291,10 @@ var string = device.serial;
 - Android
 - OS X
 
+### Android Quirk
+
+As of Android 9, the underlying native API that powered the `uuid` property is deprecated and will always return `UNKNOWN` without proper permissions. Cordova have never implemented handling the required permissions. As of Android 10, **all** non-resettable device identifiers are no longer readable by normal applications and will always return `UNKNOWN`. More information can be [read here](https://developer.android.com/about/versions/10/privacy/changes#non-resettable-device-ids).
+
 ## device.isiOSAppOnMac
 
 The iOS app is running on the Mac desktop (Apple Silicon ARM64 processor, M1 or newer). 
