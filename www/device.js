@@ -60,7 +60,10 @@ function Device () {
                 me.cordova = buildLabel;
                 me.model = info.model;
                 me.isVirtual = info.isVirtual;
-                me.isiOSAppOnMac = info.isiOSAppOnMac || false;
+                // isiOSAppOnMac is iOS specific. If defined, it will be appended.
+                if (info.isiOSAppOnMac !== undefined) {
+                    me.isiOSAppOnMac = info.isiOSAppOnMac;
+                }
                 me.manufacturer = info.manufacturer || 'unknown';
                 me.serial = info.serial || 'unknown';
                 channel.onCordovaInfoReady.fire();
