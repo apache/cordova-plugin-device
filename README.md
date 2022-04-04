@@ -297,8 +297,8 @@ As of Android 9, the underlying native API that powered the `uuid` property is d
 
 ## device.isiOSAppOnMac
 
-Is the iOS app running on the Mac desktop? Will only return true on a Mac with an ARM64 processor (Apple Silicon).
-Returns false for all other platforms.
+The iOS app is running on the Mac desktop (Apple Silicon ARM64 processor, M1 or newer). 
+This parameter is only returned for iOS V14.0 or later, and is not returned for Android devices.
 
 ```js
 var boolean = device.isiOSAppOnMac;
