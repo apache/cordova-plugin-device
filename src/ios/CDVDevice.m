@@ -21,6 +21,8 @@
 #include <sys/sysctl.h>
 #include "TargetConditionals.h"
 
+#import <Availability.h>
+
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
 
@@ -116,12 +118,13 @@
 
 - (BOOL) isiOSAppOnMac
 {
+    #if __IPHONE_14_0
     if (@available(iOS 14.0, *)) {
-        return [NSProcessInfo processInfo].isiOSAppOnMac;
-    } else {
-        // Fallback on earlier versions, and platforms
-        return false;
+        return [[NSProcessInfo processInfo] isiOSAppOnMac];
     }
+    #endif
+
+    return false;
 }
 
 @end
