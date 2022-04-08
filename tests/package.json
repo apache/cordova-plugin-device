@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-device-tests",
-  "version": "2.1.0-dev",
+  "version": "2.1.0",
   "description": "",
   "cordova": {
     "id": "cordova-plugin-device-tests",
