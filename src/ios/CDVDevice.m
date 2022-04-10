@@ -86,10 +86,14 @@
 - (NSDictionary*)deviceProperties
 {
     UIDevice* device = [UIDevice currentDevice];
+	//strip non-alphanumeric from device name
+    NSCharacterSet *charactersToRemove = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    NSString *deviceName = [[[device name] componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
 
     return @{
              @"manufacturer": @"Apple",
              @"model": [device modelVersion],
+             @"name": deviceName,
              @"platform": @"iOS",
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],

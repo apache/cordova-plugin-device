@@ -40,6 +40,7 @@ function Device () {
     this.uuid = null;
     this.cordova = null;
     this.model = null;
+    this.name = null;
     this.manufacturer = null;
     this.isVirtual = null;
     this.serial = null;
@@ -59,6 +60,7 @@ function Device () {
                 me.uuid = info.uuid;
                 me.cordova = buildLabel;
                 me.model = info.model;
+                me.name = info.name;
                 me.isVirtual = info.isVirtual;
                 // isiOSAppOnMac is iOS specific. If defined, it will be appended.
                 if (info.isiOSAppOnMac !== undefined) {
