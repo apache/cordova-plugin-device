@@ -1,12 +1,13 @@
 {
   "name": "cordova-plugin-device",
-  "version": "2.0.4-dev",
+  "version": "2.1.1-dev",
   "description": "Cordova Device Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
     "id": "cordova-plugin-device",
     "platforms": [
       "android",
+      "electron",
       "ios",
       "windows",
       "browser",
@@ -20,6 +21,7 @@
     "device",
     "ecosystem:cordova",
     "cordova-android",
+    "cordova-electron",
     "cordova-ios",
     "cordova-windows",
     "cordova-browser",
@@ -34,7 +36,8 @@
   "engines": {
     "cordovaDependencies": {
       "3.0.0": {
-        "cordova": ">100"
+        "cordova": ">100",
+        "cordova-electron": ">=3.0.0"
       }
     }
   },

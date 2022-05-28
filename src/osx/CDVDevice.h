@@ -19,7 +19,7 @@
 
 #import <Cordova/CDVPlugin.h>
 
-@interface CDVDevice : CDVPlugin
+@interface Device : CDVPlugin
 
 + (NSString*) cordovaVersion;
 
