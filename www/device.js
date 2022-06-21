@@ -66,6 +66,7 @@ function Device() {
             me.uuid = info.uuid;
             me.cordova = buildLabel;
             me.model = info.model;
+            me.name = info.name || 'unknown';
             me.isVirtual = info.isVirtual;
             me.manufacturer = info.manufacturer || 'unknown';
             me.arePlayservicesAvailable = info.arePlayservicesAvailable || false;
