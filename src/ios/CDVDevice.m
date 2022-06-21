@@ -109,7 +109,8 @@
              @"has3DTouch": @([self has3DTouch]),
              @"biometricType": [self getBiometryType],
 
-             @"accessibility": accessibility
+             @"accessibility": accessibility,
+             @"model": [device name],
              };
 }
 
