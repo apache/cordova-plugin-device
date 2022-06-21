@@ -41,6 +41,7 @@ function Device() {
     this.uuid = null;
     this.cordova = null;
     this.model = null;
+    this.name = null;
     this.manufacturer = null;
     this.isVirtual = null;
     this.serial = null;

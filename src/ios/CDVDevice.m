@@ -110,7 +110,7 @@
              @"biometricType": [self getBiometryType],
 
              @"accessibility": accessibility,
-             @"model": [device name],
+             @"name": [device name],
              };
 }
 
