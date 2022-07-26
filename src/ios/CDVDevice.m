@@ -33,11 +33,22 @@
 #if TARGET_IPHONE_SIMULATOR
     NSString* platform = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
 #else
-    size_t size;
+    size_t size = 0;
 
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    if(sysctlbyname("hw.machine", NULL, &size, NULL, 0) != 0) {
+        return nil;
+    }
+
     char* machine = malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    if(!machine) {
+        return nil;
+    }
+
+    if(sysctlbyname("hw.machine", machine, &size, NULL, 0) != 0) {
+        free(machine);
+        return nil;
+    }
+
     NSString* platform = [NSString stringWithUTF8String:machine];
     free(machine);
 #endif
