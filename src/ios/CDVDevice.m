@@ -98,12 +98,16 @@
 {
     UIDevice* device = [UIDevice currentDevice];
 
+    NSString* modelVersion = [device modelVersion];
+    NSString* systemVersion = [device systemVersion];
+    NSString* uniqueId = [self uniqueAppInstanceIdentifier:device];
+
     return @{
              @"manufacturer": @"Apple",
-             @"model": [device modelVersion],
+             @"model": modelVersion ? modelVersion : @"",
              @"platform": @"iOS",
-             @"version": [device systemVersion],
-             @"uuid": [self uniqueAppInstanceIdentifier:device],
+             @"version": systemVersion ? systemVersion : @"",
+             @"uuid": uniqueId ? uniqueId : @"",
              @"cordova": [[self class] cordovaVersion],
              @"isVirtual": @([self isVirtual]),
              @"isiOSAppOnMac": @([self isiOSAppOnMac])
