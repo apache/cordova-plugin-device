@@ -79,8 +79,10 @@
             CFRelease(uuid);
         }
 
-        [userDefaults setObject:app_uuid forKey:UUID_KEY];
-        [userDefaults synchronize];
+        if (app_uuid != nil) {
+            [userDefaults setObject:app_uuid forKey:UUID_KEY];
+            [userDefaults synchronize];
+        }
     }
 
     return app_uuid;
