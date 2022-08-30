@@ -85,6 +85,32 @@
         }
     }
 
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSURL* app_support_dir_url =
+        [[fileManager URLsForDirectory: NSApplicationSupportDirectory
+                             inDomains: NSUserDomainMask] firstObject];
+    NSURL* app_uuid_file_url =
+        [app_support_dir_url URLByAppendingPathComponent: UUID_KEY];
+    NSString* backup_app_uuid =
+        [NSString stringWithContentsOfURL: app_uuid_file_url
+                                 encoding: NSASCIIStringEncoding error: NULL];
+
+    if(app_uuid == nil) {
+        app_uuid = backup_app_uuid;
+    } else if(backup_app_uuid == nil || ![app_uuid isEqualToString: backup_app_uuid]) {
+        NSData* app_uuid_data = [app_uuid dataUsingEncoding: NSASCIIStringEncoding];
+        [fileManager createDirectoryAtURL: app_support_dir_url
+              withIntermediateDirectories: YES
+                               attributes: nil
+                                    error: NULL];
+        [app_uuid_data writeToURL:app_uuid_file_url
+                          options: NSDataWritingFileProtectionNone
+                            error: nil];
+        [app_uuid_file_url setResourceValue: @YES
+                                     forKey: NSURLIsExcludedFromBackupKey
+                                      error: NULL];
+    }
+
     return app_uuid;
 }
 
