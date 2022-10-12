@@ -90,7 +90,7 @@ different across versions of the same product.
 ### Quick Example
 
 ```js
-// Android:    Nexus One       returns "Passion" (Nexus One code name)
+// Android:    Pixel 4         returns "Pixel 4"
 //             Motorola Droid  returns "voles"
 // Browser:    Google Chrome   returns "Chrome"
 //             Safari          returns "Safari"
@@ -102,7 +102,7 @@ var model = device.model;
 
 ### Android Quirks
 
-- Gets the [product name](https://developer.android.com/reference/android/os/Build.html#PRODUCT) instead of the [model name](https://developer.android.com/reference/android/os/Build.html#MODEL), which is often the production code name. For example, the Nexus One returns `Passion`, and Motorola Droid returns `voles`.
+- Gets the [model name](https://developer.android.com/reference/android/os/Build.html#MODEL).
 
 ### iOS Quirks
 
