@@ -35,9 +35,11 @@
   "license": "Apache-2.0",
   "engines": {
     "cordovaDependencies": {
-      "3.0.0": {
-        "cordova": ">100",
+      "2.1.0": {
         "cordova-electron": ">=3.0.0"
+      },
+      "3.0.0": {
+        "cordova": ">100"
       }
     }
   },
