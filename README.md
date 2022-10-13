@@ -90,11 +90,13 @@ different across versions of the same product.
 ### Quick Example
 
 ```js
-// Android:    Pixel 4         returns "Pixel 4"
-//             Motorola Droid  returns "voles"
-// Browser:    Google Chrome   returns "Chrome"
-//             Safari          returns "Safari"
-// iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See https://www.theiphonewiki.com/wiki/Models
+// Android: Pixel 4             returns "Pixel 4"
+//          Motorola Moto G3    returns "MotoG3"
+// Browser: Google Chrome       returns "Chrome"
+//          Safari              returns "Safari"
+// iOS:     iPad Mini           returns "iPad2,5"
+//          iPhone 5            returns "iPhone5,1"
+// See https://www.theiphonewiki.com/wiki/Models
 // OS X:                        returns "x86_64"
 //
 var model = device.model;
