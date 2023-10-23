@@ -70,8 +70,6 @@ The `device.cordova` property will display `10.1.1`.
 - Android
 - Browser
 - iOS
-- Windows
-- OS X
 
 ## device.model
 
@@ -84,8 +82,6 @@ different across versions of the same product.
 - Android
 - Browser
 - iOS
-- Windows
-- OS X
 
 ### Quick Example
 
@@ -128,8 +124,6 @@ var string = device.platform;
 - Android
 - Browser
 - iOS
-- Windows
-- OS X
 
 ### Quick Example
 
@@ -138,8 +132,6 @@ var string = device.platform;
 //   - "Android"
 //   - "browser"
 //   - "iOS"
-//   - "WinCE"
-//   - "Mac OS X"
 //
 var devicePlatform = device.platform;
 ```
@@ -160,8 +152,6 @@ The details of how a UUID is generated are determined by the device manufacturer
 
 - Android
 - iOS
-- Windows
-- OS X
 
 ### Quick Example
 
@@ -170,9 +160,6 @@ The details of how a UUID is generated are determined by the device manufacturer
 //
 // iOS: (Paraphrased from the UIDevice Class documentation)
 //         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it.
-//
-// Windows Phone 7 : Returns a hash of device+current user,
-// if the user is not defined, a guid is generated and will persist until the app is uninstalled
 //
 var deviceID = device.uuid;
 ```
@@ -214,8 +201,6 @@ Get the operating system version.
 - Android
 - Browser
 - iOS
-- Windows
-- OS X
 
 ### Quick Example
 
@@ -227,10 +212,6 @@ Get the operating system version.
 // Browser:    Returns version number for the browser
 //
 // iOS:     iOS 3.2 returns "3.2"
-//
-// Windows 8: return the current OS version, ex on Windows 8.1 returns 6.3.9600.16384
-//
-// OS X:        El Capitan would return "10.11.2"
 //
 var deviceVersion = device.version;
 ```
@@ -245,7 +226,6 @@ Get the device's manufacturer.
 
 - Android
 - iOS
-- Windows
 
 ### Quick Example
 
