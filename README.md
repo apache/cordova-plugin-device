@@ -318,7 +318,7 @@ However, as an app developer, it will be your responsibility to identify additio
 
 In this case, you will need to review the "[Describing data use in privacy manifests](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests)" to understand the list of known `NSPrivacyCollectedDataTypes` and `NSPrivacyCollectedDataTypePurposes`.
 
-For example, with this plugin, you may collect the device ID for app functionality or analytics. In the case of app functionality, you would write the following in `config.xml`:
+For example, if you collected the device ID for app functionality and analytics, you would write the following in `config.xml`:
 
 ```xml
 <platform name="ios">
@@ -340,6 +340,7 @@ For example, with this plugin, you may collect the device ID for app functionali
                 <false/>
                 <key>NSPrivacyCollectedDataTypePurposes</key>
                 <array>
+                    <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
                     <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
                 </array>
             </dict>
