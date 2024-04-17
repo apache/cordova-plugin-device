@@ -59,6 +59,8 @@
 
         <header-file src="src/ios/CDVDevice.h" />
         <source-file src="src/ios/CDVDevice.m" />
+
+        <resource-file src="src/ios/CDVDevice.bundle" target="CDVDevice.bundle" />
     </platform>
 
     <!-- electron -->
