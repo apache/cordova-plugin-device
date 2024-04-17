@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-device",
-  "version": "2.1.1-dev",
+  "version": "2.2.0-dev",
   "description": "Cordova Device Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
