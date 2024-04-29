@@ -29,15 +29,9 @@ let package = Package(
             name: "cordova-plugin-device",
             targets: ["cordova-plugin-device"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/apache/cordova-ios.git", branch: "master")
-    ],
     targets: [
         .target(
             name: "cordova-plugin-device",
-            dependencies: [
-                .product(name: "CordovaLib", package: "cordova-ios")
-            ],
             path: "src/",
             sources: ["ios"],
             publicHeadersPath: "ios"
