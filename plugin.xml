@@ -68,13 +68,6 @@
         <framework src="src/electron" />
     </platform>
 
-    <!-- windows -->
-    <platform name="windows">
-        <js-module src="src/windows/DeviceProxy.js" name="DeviceProxy">
-            <runs />
-        </js-module>
-    </platform>
-
     <!-- browser -->
     <platform name="browser">
         <config-file target="config.xml" parent="/*">
@@ -87,18 +80,5 @@
             <runs />
         </js-module>
     </platform>
-
-    <!-- osx -->
-    <platform name="osx">
-        <config-file target="config.xml" parent="/*">
-            <feature name="Device">
-                <param name="ios-package" value="Device"/>
-            </feature>
-        </config-file>
-
-        <header-file src="src/osx/CDVDevice.h" />
-        <source-file src="src/osx/CDVDevice.m" />
-    </platform>
-
 
 </plugin>
