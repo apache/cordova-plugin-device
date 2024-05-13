@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-device",
-  "version": "2.2.0-dev",
+  "version": "3.0.0-dev",
   "description": "Cordova Device Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
@@ -38,7 +38,7 @@
       "2.1.0": {
         "cordova-electron": ">=3.0.0"
       },
-      "3.0.0": {
+      "4.0.0": {
         "cordova": ">100"
       }
     }
