@@ -21,11 +21,9 @@ description: Get device information.
 #         under the License.
 -->
 
-|Android 4.4|Android 5.1|iOS 9.3|iOS 10.0|Windows 10 Store|Travis CI|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=android-4.4,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=android-4.4,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=android-5.1,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=android-5.1,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=ios-9.3,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=ios-9.3,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=ios-10.0,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=ios-10.0,PLUGIN=cordova-plugin-device/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-device/)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)|
-
 # cordova-plugin-device
+
+[![Android Testsuite](https://github.com/apache/cordova-plugin-device/actions/workflows/android.yml/badge.svg)](https://github.com/apache/cordova-plugin-device/actions/workflows/android.yml) [![Chrome Testsuite](https://github.com/apache/cordova-plugin-device/actions/workflows/chrome.yml/badge.svg)](https://github.com/apache/cordova-plugin-device/actions/workflows/chrome.yml) [![iOS Testsuite](https://github.com/apache/cordova-plugin-device/actions/workflows/ios.yml/badge.svg)](https://github.com/apache/cordova-plugin-device/actions/workflows/ios.yml) [![Lint Test](https://github.com/apache/cordova-plugin-device/actions/workflows/lint.yml/badge.svg)](https://github.com/apache/cordova-plugin-device/actions/workflows/lint.yml)
 
 This plugin defines a global `device` object, which describes the device's hardware and software.
 Although the object is in the global scope, it is not available until after the `deviceready` event.
@@ -36,9 +34,6 @@ function onDeviceReady() {
     console.log(device.cordova);
 }
 ```
-
-Report issues with this plugin on the [Apache Cordova issue tracker](https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20%22Plugin%20Device%22%20ORDER%20BY%20priority%20DESC%2C%20summary%20ASC%2C%20updatedDate%20DESC)
-
 
 ## Installation
 
@@ -54,23 +49,27 @@ Report issues with this plugin on the [Apache Cordova issue tracker](https://iss
 - device.manufacturer
 - device.isVirtual
 - device.serial
+- device.sdkVersion (Android only)
 
 ## device.cordova
 
-Get the version of Cordova running on the device.
+Returns the Cordova platform's version that is bundled in the application.
+
+The version information comes from the `cordova.js` file.
+
+This property does not display other installed platforms' version information. Only the respective running platform's version is displayed.
+
+Example:
+
+If Cordova Android 10.1.1 is installed on the Cordova project, the `cordova.js` file, in the Android application, will contain `10.1.1`.
+
+The `device.cordova` property will display `10.1.1`.
 
 ### Supported Platforms
 
-- Amazon Fire OS
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Windows Phone 7 and 8
-- Windows
-- OSX
 
 ## device.model
 
@@ -81,39 +80,37 @@ different across versions of the same product.
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
 - iOS
-- Tizen
-- Windows Phone 7 and 8
-- Windows
-- OSX
 
 ### Quick Example
 
 ```js
-// Android:    Nexus One       returns "Passion" (Nexus One code name)
-//             Motorola Droid  returns "voles"
-// BlackBerry: Torch 9800      returns "9800"
-// Browser:    Google Chrome   returns "Chrome"
-//             Safari          returns "Safari"
-// iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
-// OSX:                        returns "x86_64"
+// Android: Pixel 4             returns "Pixel 4"
+//          Motorola Moto G3    returns "MotoG3"
+// Browser: Google Chrome       returns "Chrome"
+//          Safari              returns "Safari"
+// iOS:     iPad Mini           returns "iPad2,5"
+//          iPhone 5            returns "iPhone5,1"
+// See https://www.theiphonewiki.com/wiki/Models
+// OS X:                        returns "x86_64"
 //
 var model = device.model;
 ```
 
 ### Android Quirks
 
-- Gets the [product name](http://developer.android.com/reference/android/os/Build.html#PRODUCT) instead of the [model name](http://developer.android.com/reference/android/os/Build.html#MODEL), which is often the production code name. For example, the Nexus One returns `Passion`, and Motorola Droid returns `voles`.
+- Gets the [model name](https://developer.android.com/reference/android/os/Build.html#MODEL).
 
-### Tizen Quirks
+### iOS Quirks
 
-- Returns the device model assigned by the vendor, for example, `TIZEN`
+The model value is based on the identifier that Apple supplies.
 
-### Windows Phone 7 and 8 Quirks
+If you need the exact device name, e.g. iPhone 13 Pro Max, a mapper needs to be created to convert the known identifiers to the associated device name.
 
-- Returns the device model specified by the manufacturer. For example, the Samsung Focus returns `SGH-i917`.
+Example: The identifier `iPhone14,3` is associated to the device `iPhone 13 Pro Max`.
+
+For the full list of all identifiers to device names, see [here](https://www.theiphonewiki.com/wiki/Models)
 
 ## device.platform
 
@@ -125,40 +122,23 @@ var string = device.platform;
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Windows Phone 7 and 8
-- Windows
-- OSX
 
 ### Quick Example
 
 ```js
 // Depending on the device, a few examples are:
 //   - "Android"
-//   - "BlackBerry 10"
 //   - "browser"
 //   - "iOS"
-//   - "WinCE"
-//   - "Tizen"
-//   - "Mac OS X"
+//
 var devicePlatform = device.platform;
 ```
 
-### Windows Phone 7 Quirks
-
-Windows Phone 7 devices report the platform as `WinCE`.
-
-### Windows Phone 8 Quirks
-
-Windows Phone 8 devices report the platform as `Win32NT`.
-
 ## device.uuid
 
-Get the device's Universally Unique Identifier ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
+Get the device's Universally Unique Identifier ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)).
 
 ```js
 var string = device.uuid;
@@ -171,48 +151,44 @@ The details of how a UUID is generated are determined by the device manufacturer
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Tizen
-- Windows Phone 7 and 8
-- Windows
-- OSX
 
 ### Quick Example
 
 ```js
 // Android: Returns a random 64-bit integer (as a string, again!)
-//          The integer is generated on the device's first boot
 //
-// BlackBerry: Returns the PIN number of the device
-//             This is a nine-digit unique integer (as a string, though!)
-//
-// iPhone: (Paraphrased from the UIDevice Class documentation)
+// iOS: (Paraphrased from the UIDevice Class documentation)
 //         Returns the [UIDevice identifierForVendor] UUID which is unique and the same for all apps installed by the same vendor. However the UUID can be different if the user deletes all apps from the vendor and then reinstalls it.
-// Windows Phone 7 : Returns a hash of device+current user,
-// if the user is not defined, a guid is generated and will persist until the app is uninstalled
-// Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
-// unique to every GSM and UMTS mobile phone.
+//
 var deviceID = device.uuid;
 ```
+
+### Android Quirk
+
+The `uuid` on Android is a 64-bit integer (expressed as a hexadecimal string). The behaviour of this `uuid` is different on two different OS versions-
+
+**For < Android 8.0 (API level 26)**
+
+In versions of the platform lower than Android 8.0, the `uuid` is randomly generated when the user first sets up the device and should remain constant for the lifetime of the user's device.
+
+**For Android 8.0 or higher**
+
+The above behaviour was changed in Android 8.0. Read it in detail [here](https://developer.android.com/about/versions/oreo/android-8.0-changes#privacy-all).
+
+On Android 8.0 and higher versions, the `uuid` will be unique to each combination of app-signing key, user, and device. The value is scoped by signing key and user. The value may change if a factory reset is performed on the device or if an APK signing key changes.
+
+Read more here https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID.
 
 ### iOS Quirk
 
 The `uuid` on iOS uses the identifierForVendor property. It is unique to the device across the same vendor, but will be different for different vendors and will change if all apps from the vendor are deleted and then reinstalled.
-Refer [here](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor) for details.
+Refer [here](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) for details.
 The UUID will be the same if app is restored from a backup or iCloud as it is saved in preferences. Users using older versions of this plugin will still receive the same previous UUID generated by another means as it will be retrieved from preferences.
 
-### OSX Quirk
+### OS X Quirk
 
-The `uuid` on OSX is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property.
-
-### Windows Phone 7 and 8 Quirks
-
-The `uuid` for Windows Phone 7 requires the permission
-`ID_CAP_IDENTITY_DEVICE`.  Microsoft will likely deprecate this
-property soon.  If the capability is not available, the application
-generates a persistent guid that is maintained for the duration of the
-application's installation on the device.
+The `uuid` on OS X is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property.
 
 ## device.version
 
@@ -222,14 +198,9 @@ Get the operating system version.
 
 ### Supported Platforms
 
-- Android 2.1+
-- BlackBerry 10
+- Android
 - Browser
 - iOS
-- Tizen
-- Windows Phone 7 and 8
-- Windows
-- OSX
 
 ### Quick Example
 
@@ -238,16 +209,9 @@ Get the operating system version.
 //             Eclair OS would return "2.1", "2.0.1", or "2.0"
 //             Version can also return update level "2.1-update1"
 //
-// BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
-//
 // Browser:    Returns version number for the browser
 //
-// iPhone:     iOS 3.2 returns "3.2"
-//
-// Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
-// Windows 8: return the current OS version, ex on Windows 8.1 returns 6.3.9600.16384
-// Tizen: returns "TIZEN_20120425_2"
-// OSX:        El Capitan would return "10.11.2"
+// iOS:     iOS 3.2 returns "3.2"
 //
 var deviceVersion = device.version;
 ```
@@ -261,17 +225,13 @@ Get the device's manufacturer.
 ### Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Windows Phone 7 and 8
-- Windows
 
 ### Quick Example
 
 ```js
 // Android:    Motorola XT1032 would return "motorola"
-// BlackBerry: returns "BlackBerry"
-// iPhone:     returns "Apple"
+// iOS:     returns "Apple"
 //
 var deviceManufacturer = device.manufacturer;
 ```
@@ -284,21 +244,21 @@ whether the device is running on a simulator.
 var isSim = device.isVirtual;
 ```
 
+## device.sdkVersion (Android only)
+
+Get the Android device's SDK version ([SDK_INT](https://developer.android.com/reference/android/os/Build.VERSION#SDK_INT)).
+
 ### Supported Platforms
 
-- Android 2.1+
-- iOS
-- Windows Phone 8
-- Windows
-- OSX
+- Android
 
-### OSX Quirk
+### OS X and Browser Quirk
 
-The `isVirtual` property on OS X always returns false.
+The `isVirtual` property on OS X and Browser always returns false.
 
 ## device.serial
 
-Get the device hardware serial number ([SERIAL](http://developer.android.com/reference/android/os/Build.html#SERIAL)).
+Get the device hardware serial number ([SERIAL](https://developer.android.com/reference/android/os/Build.html#SERIAL)).
 
 ```js
 var string = device.serial;
@@ -307,5 +267,66 @@ var string = device.serial;
 ### Supported Platforms
 
 - Android
-- OSX
+- OS X
 
+### Android Quirk
+
+As of Android 9, the underlying native API that powered the `uuid` property is deprecated and will always return `UNKNOWN` without proper permissions. Cordova have never implemented handling the required permissions. As of Android 10, **all** non-resettable device identifiers are no longer readable by normal applications and will always return `UNKNOWN`. More information can be [read here](https://developer.android.com/about/versions/10/privacy/changes#non-resettable-device-ids).
+
+## device.isiOSAppOnMac
+
+The iOS app is running on the Mac desktop (Apple Silicon ARM64 processor, M1 or newer). 
+This parameter is only returned for iOS V14.0 or later, and is not returned for Android devices.
+
+```js
+var boolean = device.isiOSAppOnMac;
+```
+
+### Supported Platforms
+
+- iOS
+
+---
+
+## iOS Privacy Manifest
+
+As of May 1, 2024, Apple requires a privacy manifest file to be created for apps and third-party SDKs. The purpose of the privacy manifest file is to explain the data being collected and the reasons for the required APIs it uses. Starting with `cordova-ios@7.1.0`, APIs are available for configuring the privacy manifest file from `config.xml`.
+
+This plugin comes pre-bundled with a `PrivacyInfo.xcprivacy` file that contains the list of APIs it uses and the reasons for using them.
+
+However, as an app developer, it will be your responsibility to identify additional information explaining what your app does with that data.
+
+In this case, you will need to review the "[Describing data use in privacy manifests](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests)" to understand the list of known `NSPrivacyCollectedDataTypes` and `NSPrivacyCollectedDataTypePurposes`.
+
+For example, if you collected the device ID for app functionality and analytics, you would write the following in `config.xml`:
+
+```xml
+<platform name="ios">
+    <privacy-manifest>
+        <key>NSPrivacyTracking</key>
+        <false/>
+        <key>NSPrivacyTrackingDomains</key>
+        <array/>
+        <key>NSPrivacyAccessedAPITypes</key>
+        <array/>
+        <key>NSPrivacyCollectedDataTypes</key>
+        <array>
+            <dict>
+                <key>NSPrivacyCollectedDataType</key>
+                <string>NSPrivacyCollectedDataTypeDeviceID</string>
+                <key>NSPrivacyCollectedDataTypeLinked</key>
+                <false/>
+                <key>NSPrivacyCollectedDataTypeTracking</key>
+                <false/>
+                <key>NSPrivacyCollectedDataTypePurposes</key>
+                <array>
+                    <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+                    <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+                </array>
+            </dict>
+        </array>
+    </privacy-manifest>
+</platform>
+```
+
+Also, ensure all four keys—`NSPrivacyTracking`, `NSPrivacyTrackingDomains`, `NSPrivacyAccessedAPITypes`, and `NSPrivacyCollectedDataTypes`—are defined, even if you are not making an addition to the other items. Apple requires all to be defined.

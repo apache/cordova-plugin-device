@@ -17,17 +17,26 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
 
-/* global Cordova */
+const { system, osInfo } = require('systeminformation');
 
 module.exports = {
-    getInfo:function(win,fail,args) {
-        Cordova.exec(function (model, cordova, platform, uuid, version) {
-            win({name: name, model: model, cordova: cordova,
-                 platform: platform, uuid: uuid, version: version});
-        }, null, "com.cordova.Device", "getInfo", []);
+    getDeviceInfo: async () => {
+        try {
+            const { manufacturer, model, uuid } = await system();
+            const { platform, distro, codename, build: version } = await osInfo();
+
+            return {
+                manufacturer,
+                model,
+                platform: platform === 'darwin' ? codename : distro,
+                version,
+                uuid,
+                isVirtual: false
+            };
+        } catch (e) {
+            console.log(e);
+        }
     }
 };
-
-require("cordova/exec/proxy").add("Device", module.exports);

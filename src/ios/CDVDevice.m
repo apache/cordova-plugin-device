@@ -21,6 +21,8 @@
 #include <sys/sysctl.h>
 #include "TargetConditionals.h"
 
+#import <Availability.h>
+
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
 
@@ -28,6 +30,9 @@
 
 - (NSString*)modelVersion
 {
+#if TARGET_IPHONE_SIMULATOR
+    NSString* platform = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+#else
     size_t size;
 
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
@@ -35,7 +40,7 @@
     sysctlbyname("hw.machine", machine, &size, NULL, 0);
     NSString* platform = [NSString stringWithUTF8String:machine];
     free(machine);
-
+#endif
     return platform;
 }
 
@@ -50,7 +55,7 @@
 {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString* UUID_KEY = @"CDVUUID";
-    
+
     // Check user defaults first to maintain backwards compaitibility with previous versions
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
@@ -66,7 +71,7 @@
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
     }
-    
+
     return app_uuid;
 }
 
@@ -89,7 +94,8 @@
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],
              @"cordova": [[self class] cordovaVersion],
-             @"isVirtual": @([self isVirtual])
+             @"isVirtual": @([self isVirtual]),
+             @"isiOSAppOnMac": @([self isiOSAppOnMac])
              };
 }
 
@@ -107,6 +113,18 @@
     #else
         return false;
     #endif
+}
+
+
+- (BOOL) isiOSAppOnMac
+{
+    #if __IPHONE_14_0
+    if (@available(iOS 14.0, *)) {
+        return [[NSProcessInfo processInfo] isiOSAppOnMac];
+    }
+    #endif
+
+    return false;
 }
 
 @end

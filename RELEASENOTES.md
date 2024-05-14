@@ -7,9 +7,9 @@
 # to you under the Apache License, Version 2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
-# 
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -19,6 +19,68 @@
 #
 -->
 # Release Notes
+
+### 2.1.0 (Apr 08, 2022)
+
+* [GH-167](https://github.com/apache/cordova-plugin-device/pull/167) feat(ios): detect if app is running on a macOS desktop with Apple Silicon
+* [GH-166](https://github.com/apache/cordova-plugin-device/pull/166) chore: rebuild `package-lock` v2
+* [GH-158](https://github.com/apache/cordova-plugin-device/pull/158) doc(ios): add `device.model` quirks
+* [GH-157](https://github.com/apache/cordova-plugin-device/pull/157) feat(android): `getInfo` response to include `sdkVersion`
+* [GH-156](https://github.com/apache/cordova-plugin-device/pull/156) doc(README): update `device.cordova` info
+* [GH-124](https://github.com/apache/cordova-plugin-device/pull/124) doc(README): various enhancments
+* [GH-154](https://github.com/apache/cordova-plugin-device/pull/154) chore(electron): fix `package.json` typo
+* [GH-152](https://github.com/apache/cordova-plugin-device/pull/152) fix(osx): rename classes to fix plugin
+* [GH-135](https://github.com/apache/cordova-plugin-device/pull/135) feat(electron): add support
+* [GH-146](https://github.com/apache/cordova-plugin-device/pull/146) ci(ios): update workflow w/ **iOS** 15
+* [GH-145](https://github.com/apache/cordova-plugin-device/pull/145) ci: add action-badge
+* [GH-144](https://github.com/apache/cordova-plugin-device/pull/144) ci: remove `travis` & `appveyor`
+* [GH-143](https://github.com/apache/cordova-plugin-device/pull/143) doc(android): Noted quirks on `serial` property
+* [GH-138](https://github.com/apache/cordova-plugin-device/pull/138) doc(android): Update information about `device.uuid`
+* [GH-141](https://github.com/apache/cordova-plugin-device/pull/141) ci: add gh-actions workflows
+* [GH-132](https://github.com/apache/cordova-plugin-device/pull/132) chore: clean up `package.json`
+* chore(asf): update git notification settings
+* Update CONTRIBUTING.md
+* [GH-122](https://github.com/apache/cordova-plugin-device/pull/122) refactor(`eslint`): use `cordova-eslint`
+* [GH-120](https://github.com/apache/cordova-plugin-device/pull/120) ci: updates Node.js versions
+* [GH-121](https://github.com/apache/cordova-plugin-device/pull/121) chore(npm): improve ignore list
+* [GH-119](https://github.com/apache/cordova-plugin-device/pull/119) chore: replaces bugs URL
+* [GH-109](https://github.com/apache/cordova-plugin-device/pull/109) Log error to `console`, not to `dialog` box
+* fix(types): remove version number
+
+### 2.0.3 (Jun 14, 2019)
+
+-   build: add .gitattributes to force LF (instead of possible CRLF on Windows) ([`02ae405`](https://github.com/apache/cordova-plugin-device/commit/02ae405))
+-   build: add .npmignore to remove unneeded files from npm package ([`8dbe703`](https://github.com/apache/cordova-plugin-device/commit/8dbe703))
+-   docs: remove outdated translations ([`db4e1f1`](https://github.com/apache/cordova-plugin-device/commit/db4e1f1))
+-   ci(travis): Remove android 4.4 that SauceLabs removed ([`594fa61`](https://github.com/apache/cordova-plugin-device/commit/594fa61))
+-   ci(travis): Update Travis CI configuration for new paramedic ([#97](https://github.com/apache/cordova-plugin-device/issues/97)) ([`db0ad32`](https://github.com/apache/cordova-plugin-device/commit/db0ad32))
+-   feat: update typings ([#90](https://github.com/apache/cordova-plugin-device/issues/90)) ([`52a0655`](https://github.com/apache/cordova-plugin-device/commit/52a0655), [`61ad76c`](https://github.com/apache/cordova-plugin-device/commit/61ad76c))
+-   chore(github): Add or update GitHub pull request and issue template ([`e213286`](https://github.com/apache/cordova-plugin-device/commit/e213286))
+-   docs: remove JIRA link ([`2d12d55`](https://github.com/apache/cordova-plugin-device/commit/2d12d55))
+-   ci(travis): also accept terms for android sdk `android-27` ([`f870c9b`](https://github.com/apache/cordova-plugin-device/commit/f870c9b))
+-   fix: [CB-14106](https://issues.apache.org/jira/browse/CB-14106) - device.model is different on simulator and on real device ([#80](https://github.com/apache/cordova-plugin-device/issues/80)) ([`d65cdf6`](https://github.com/apache/cordova-plugin-device/commit/d65cdf6))
+
+### 2.0.2 (Apr 12, 2018)
+* [CB-13893](https://issues.apache.org/jira/browse/CB-13893) **iOS** delete `libz.tbd` from device plugin
+
+### 2.0.1 (Dec 27, 2017)
+* [CB-13702](https://issues.apache.org/jira/browse/CB-13702) Fix to allow 2.0.0 version install
+
+### 2.0.0 (Dec 15, 2017)
+* [CB-13670](https://issues.apache.org/jira/browse/CB-13670) Remove deprecated platforms
+
+### 1.1.7 (Nov 06, 2017)
+* [CB-13472](https://issues.apache.org/jira/browse/CB-13472) (CI) Fixed Travis **Android** builds again
+* [CB-12895](https://issues.apache.org/jira/browse/CB-12895) setup `eslint` and removed `jshint`
+* [CB-13113](https://issues.apache.org/jira/browse/CB-13113) (browser) `device.isVirtual` is always false
+* [CB-13028](https://issues.apache.org/jira/browse/CB-13028) (CI) **Browser** builds on Travis and AppVeyor
+* [CB-13000](https://issues.apache.org/jira/browse/CB-13000) (CI) Speed up **Android** builds
+* [CB-12847](https://issues.apache.org/jira/browse/CB-12847) added `bugs` entry to `package.json`.
+
+### 1.1.6 (Apr 27, 2017)
+* [CB-12622](https://issues.apache.org/jira/browse/CB-12622) Added **Android 6.0** build badge to `README`
+* [CB-12685](https://issues.apache.org/jira/browse/CB-12685) added `package.json` to tests folder
+* [CB-12105](https://issues.apache.org/jira/browse/CB-12105) (browser) Properly detect Edge
 
 ### 1.1.5 (Feb 28, 2017)
 * [CB-12353](https://issues.apache.org/jira/browse/CB-12353) Corrected merges usage in `plugin.xml`

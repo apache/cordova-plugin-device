@@ -1,62 +1,45 @@
 {
   "name": "cordova-plugin-device",
-  "version": "1.1.6-dev",
+  "version": "3.0.0-dev",
   "description": "Cordova Device Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
     "id": "cordova-plugin-device",
     "platforms": [
-      "firefoxos",
-      "tizen",
       "android",
-      "amazon-fireos",
-      "ubuntu",
+      "electron",
       "ios",
-      "blackberry10",
-      "wp7",
-      "wp8",
-      "windows8",
-      "windows",
-      "browser",
-      "osx"
+      "browser"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/apache/cordova-plugin-device"
-  },
+  "repository": "github:apache/cordova-plugin-device",
+  "bugs": "https://github.com/apache/cordova-plugin-device/issues",
   "keywords": [
     "cordova",
     "device",
     "ecosystem:cordova",
-    "cordova-firefoxos",
-    "cordova-tizen",
     "cordova-android",
-    "cordova-amazon-fireos",
-    "cordova-ubuntu",
+    "cordova-electron",
     "cordova-ios",
-    "cordova-blackberry10",
-    "cordova-wp7",
-    "cordova-wp8",
-    "cordova-windows8",
-    "cordova-windows",
-    "cordova-browser",
-    "cordova-osx"
+    "cordova-browser"
   ],
   "scripts": {
-    "test": "npm run jshint",
-    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+    "test": "npm run lint",
+    "lint": "eslint ."
   },
   "author": "Apache Software Foundation",
   "license": "Apache-2.0",
   "engines": {
     "cordovaDependencies": {
-      "2.0.0": {
+      "2.1.0": {
+        "cordova-electron": ">=3.0.0"
+      },
+      "4.0.0": {
         "cordova": ">100"
       }
     }
   },
   "devDependencies": {
-    "jshint": "^2.6.0"
+    "@cordova/eslint-config": "^3.0.0"
   }
 }
