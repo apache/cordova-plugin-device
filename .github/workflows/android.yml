@@ -23,6 +23,7 @@ on:
       - '**.md'
       - 'LICENSE'
       - '.eslint*'
+
   pull_request:
     paths-ignore:
       - '**.md'
@@ -56,11 +57,22 @@ jobs:
     strategy:
       matrix:
         versions:
-          # Test the lowest minimum supported APIs
           - android: 7
             android-api: 24
 
-          # Test the last 3-4 supported APIs
+          - android: 7.1
+            android-api: 25
+
+          - android: 8
+            android-api: 26
+
+          - android: 8.1
+            android-api: 27
+            system-image-arch: x86
+
+          - android: 9
+            android-api: 28
+
           - android: 10
             android-api: 29
 
@@ -72,6 +84,9 @@ jobs:
 
           - android: 13
             android-api: 33
+
+          - android: 14
+            android-api: 34
 
     timeout-minutes: 60
 
