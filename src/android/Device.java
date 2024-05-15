@@ -98,7 +98,7 @@ public class Device extends CordovaPlugin {
      * @return android.provider.Settings.Secure.ANDROID_ID
      */
     public String getUuid() {
-        return Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        return Settings.Secure.getString(this.cordova.getContext().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
     }
 
     public String getModel() {
