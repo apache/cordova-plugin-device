@@ -20,6 +20,35 @@
 -->
 # Release Notes
 
+### 3.0.0 (Jun 05, 2024)
+
+**Breaking Changes:**
+
+* [GH-181](https://github.com/apache/cordova-plugin-device/pull/181) fix!: remove deprecated platforms
+* [GH-183](https://github.com/apache/cordova-plugin-device/pull/183) refactor(android)!: Remove unused code
+* [GH-200](https://github.com/apache/cordova-plugin-device/pull/200) fix(android)!: set platform requirement `>= 7.0.0`
+* [GH-201](https://github.com/apache/cordova-plugin-device/pull/201) fix(android)!: access Context through `webView.getContext()`
+
+**Features & Fixes:**
+
+* [GH-193](https://github.com/apache/cordova-plugin-device/pull/193) feat(ios): add bundled resources for privacy manifest
+* [GH-182](https://github.com/apache/cordova-plugin-device/pull/182) fix(electron): use correct engine for 2.1.0 in `package.json`
+
+**Chores:**
+
+* [GH-203](https://github.com/apache/cordova-plugin-device/pull/203) chore: rebuilt `package-lock.json` w/ version 3
+* [GH-202](https://github.com/apache/cordova-plugin-device/pull/202) chore: Use github links in `plugin.xml`
+* [GH-191](https://github.com/apache/cordova-plugin-device/pull/191) chore: update asf config
+* [GH-189](https://github.com/apache/cordova-plugin-device/pull/189) chore: Update `SUPPORT_QUESTION.md` template
+
+**CI & Docs:**
+
+* [GH-198](https://github.com/apache/cordova-plugin-device/pull/198) ci: update gh-action's workflow
+* [GH-180](https://github.com/apache/cordova-plugin-device/pull/180) ci: sync workflow with paramedic
+* [GH-175](https://github.com/apache/cordova-plugin-device/pull/175) ci(android): update java requirement for `cordova-android@11`
+* [GH-184](https://github.com/apache/cordova-plugin-device/pull/184) docs(android): correct model description
+* [GH-174](https://github.com/apache/cordova-plugin-device/pull/174) doc(android): clarify documentation and types for `sdkVersion` field
+
 ### 2.1.0 (Apr 08, 2022)
 
 * [GH-167](https://github.com/apache/cordova-plugin-device/pull/167) feat(ios): detect if app is running on a macOS desktop with Apple Silicon
