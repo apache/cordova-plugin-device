@@ -33,11 +33,22 @@
 #if TARGET_IPHONE_SIMULATOR
     NSString* platform = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
 #else
-    size_t size;
+    size_t size = 0;
 
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    if(sysctlbyname("hw.machine", NULL, &size, NULL, 0) != 0) {
+        return nil;
+    }
+
     char* machine = malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    if(!machine) {
+        return nil;
+    }
+
+    if(sysctlbyname("hw.machine", machine, &size, NULL, 0) != 0) {
+        free(machine);
+        return nil;
+    }
+
     NSString* platform = [NSString stringWithUTF8String:machine];
     free(machine);
 #endif
@@ -68,8 +79,36 @@
             CFRelease(uuid);
         }
 
-        [userDefaults setObject:app_uuid forKey:UUID_KEY];
-        [userDefaults synchronize];
+        if (app_uuid != nil) {
+            [userDefaults setObject:app_uuid forKey:UUID_KEY];
+            [userDefaults synchronize];
+        }
+    }
+
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSURL* app_support_dir_url =
+        [[fileManager URLsForDirectory: NSApplicationSupportDirectory
+                             inDomains: NSUserDomainMask] firstObject];
+    NSURL* app_uuid_file_url =
+        [app_support_dir_url URLByAppendingPathComponent: UUID_KEY];
+    NSString* backup_app_uuid =
+        [NSString stringWithContentsOfURL: app_uuid_file_url
+                                 encoding: NSASCIIStringEncoding error: NULL];
+
+    if(app_uuid == nil) {
+        app_uuid = backup_app_uuid;
+    } else if(backup_app_uuid == nil || ![app_uuid isEqualToString: backup_app_uuid]) {
+        NSData* app_uuid_data = [app_uuid dataUsingEncoding: NSASCIIStringEncoding];
+        [fileManager createDirectoryAtURL: app_support_dir_url
+              withIntermediateDirectories: YES
+                               attributes: nil
+                                    error: NULL];
+        [app_uuid_data writeToURL:app_uuid_file_url
+                          options: NSDataWritingFileProtectionNone
+                            error: nil];
+        [app_uuid_file_url setResourceValue: @YES
+                                     forKey: NSURLIsExcludedFromBackupKey
+                                      error: NULL];
     }
 
     return app_uuid;
@@ -87,12 +126,16 @@
 {
     UIDevice* device = [UIDevice currentDevice];
 
+    NSString* modelVersion = [device modelVersion];
+    NSString* systemVersion = [device systemVersion];
+    NSString* uniqueId = [self uniqueAppInstanceIdentifier:device];
+
     return @{
              @"manufacturer": @"Apple",
-             @"model": [device modelVersion],
+             @"model": modelVersion ? modelVersion : @"",
              @"platform": @"iOS",
-             @"version": [device systemVersion],
-             @"uuid": [self uniqueAppInstanceIdentifier:device],
+             @"version": systemVersion ? systemVersion : @"",
+             @"uuid": uniqueId ? uniqueId : @"",
              @"cordova": [[self class] cordovaVersion],
              @"isVirtual": @([self isVirtual]),
              @"isiOSAppOnMac": @([self isiOSAppOnMac])
