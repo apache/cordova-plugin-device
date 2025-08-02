@@ -18,7 +18,7 @@
  * under the License.
  *
  */
-var browser = require('cordova/platform');
+const browser = require('cordova/platform');
 
 function getPlatform () {
     return 'browser';
@@ -33,9 +33,9 @@ function getVersion () {
 }
 
 function getBrowserInfo (getModel) {
-    var userAgent = navigator.userAgent;
-    var returnVal = '';
-    var offset;
+    const userAgent = navigator.userAgent;
+    let returnVal = '';
+    let offset;
 
     if ((offset = userAgent.indexOf('Edge')) !== -1) {
         returnVal = getModel ? 'Edge' : userAgent.substring(offset + 5);
