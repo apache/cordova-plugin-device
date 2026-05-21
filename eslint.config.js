@@ -17,24 +17,17 @@
     under the License.
 */
 
-const { system, osInfo } = require('systeminformation');
+const { defineConfig } = require('eslint/config');
+const nodeConfig = require('@cordova/eslint-config/node');
+const browserConfig = require('@cordova/eslint-config/browser-tests');
 
-module.exports = {
-    getDeviceInfo: async () => {
-        try {
-            const { manufacturer, model, uuid } = await system();
-            const { platform, distro, codename, build: version } = await osInfo();
-
-            return {
-                manufacturer,
-                model,
-                platform: platform === 'darwin' ? codename : distro,
-                version,
-                uuid,
-                isVirtual: false
-            };
-        } catch (e) {
-            console.log(e);
-        }
-    }
-};
+module.exports = defineConfig([
+    ...nodeConfig,
+    ...browserConfig.map((config) => ({
+        files: [
+            'www/**/*.js',
+            'tests/**/*.js'
+        ],
+        ...config
+    }))
+]);
