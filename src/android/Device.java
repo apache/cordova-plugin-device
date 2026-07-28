@@ -30,6 +30,7 @@ import android.provider.Settings;
 
 public class Device extends CordovaPlugin {
 
+    @Deprecated
     public static String uuid;                                // Device UUID
 
     private static final String ANDROID_PLATFORM = "Android";
@@ -85,47 +86,96 @@ public class Device extends CordovaPlugin {
 
     /**
      * Get the OS name.
+     * @deprecated
+     * This method is expected to be private.
      *
      * @return "Android"
      */
+    @Deprecated
     public String getPlatform() {
         return ANDROID_PLATFORM;
     }
 
     /**
      * Get the device's Universally Unique Identifier (UUID).
+     * @deprecated
+     * This method is expected to be private.
      *
      * @return android.provider.Settings.Secure.ANDROID_ID
      */
+    @Deprecated
     public String getUuid() {
         return Settings.Secure.getString(this.cordova.getContext().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
     }
 
+    /**
+     * Get the name of the device's model.
+     * @deprecated
+     * This method is expected to be private.
+     *
+     * @return android.os.Build.MODEL
+     */
+    @Deprecated
     public String getModel() {
         return android.os.Build.MODEL;
     }
 
+    /**
+     * Get the device's manufacturer.
+     * @deprecated
+     * This method is expected to be private.
+     *
+     * @return android.os.Build.MANUFACTURER
+     */
+    @Deprecated
     public String getManufacturer() {
         return android.os.Build.MANUFACTURER;
     }
 
+    /**
+     * Get the device hardware serial number.
+     * @deprecated
+     * This method is expected to be private.
+     *
+     * @return android.os.Build.SERIAL
+     */
+    @Deprecated
     public String getSerialNumber() {
         return android.os.Build.SERIAL;
     }
 
     /**
      * Get the OS version.
+     * @deprecated
+     * This method is expected to be private.
      *
      * @return android.os.Build.VERSION.RELEASE
      */
+    @Deprecated
     public String getOSVersion() {
         return android.os.Build.VERSION.RELEASE;
     }
 
+    /**
+     * Get the Android device's SDK version.
+     * @deprecated
+     * This method is expected to be private.
+     *
+     * @return android.os.Build.VERSION.SDK_INT
+     */
+    @Deprecated
     public String getSDKVersion() {
         return String.valueOf(android.os.Build.VERSION.SDK_INT);
     }
 
+    /**
+     * Get whether the device is running on a simulator.
+     * @deprecated
+     * This method is expected to be private.
+     *
+     * @return whether the device is running on a simulator
+     */
+    @Deprecated
     public boolean isVirtual() {
 	return android.os.Build.FINGERPRINT.contains("generic") ||
 	    android.os.Build.PRODUCT.contains("sdk");
