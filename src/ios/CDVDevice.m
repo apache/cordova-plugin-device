@@ -93,15 +93,9 @@
              @"platform": @"iOS",
              @"version": [device systemVersion],
              @"uuid": [self uniqueAppInstanceIdentifier:device],
-             @"cordova": [[self class] cordovaVersion],
              @"isVirtual": @([self isVirtual]),
              @"isiOSAppOnMac": @([self isiOSAppOnMac])
              };
-}
-
-+ (NSString*)cordovaVersion
-{
-    return CDV_VERSION;
 }
 
 - (BOOL)isVirtual

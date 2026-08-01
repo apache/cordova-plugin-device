@@ -23,8 +23,6 @@
 @interface CDVDevice : CDVPlugin
 {}
 
-+ (NSString*)cordovaVersion;
-
 - (void)getDeviceInfo:(CDVInvokedUrlCommand*)command;
 
 @end
